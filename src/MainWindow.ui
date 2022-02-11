@@ -1,0 +1,2767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>SpaceSkyNet</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>704</width>
+    <height>396</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>704</width>
+    <height>396</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>2560</width>
+    <height>1400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="mainTabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="generalTab">
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <attribute name="title">
+        <string>General</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="generalHorizontalLayout" stretch="1,1">
+          <item>
+           <layout class="QGridLayout" name="startLayout">
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QClickedLabel" name="startLogo">
+              <property name="minimumSize">
+               <size>
+                <width>275</width>
+                <height>275</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Click it and start task!</string>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background: transparent</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="generalSettingVerticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="danserModeAndisRecordHorizontalLayout">
+              <item>
+               <layout class="QFormLayout" name="danserModeFormLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="danserModeLabel">
+                  <property name="text">
+                   <string>Mode:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="danserModeComboBox">
+                  <item>
+                   <property name="text">
+                    <string notr="true">danser</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string notr="true">knockout</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string notr="true">play</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string notr="true">replay</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="isRecordCheckBox">
+                <property name="toolTip">
+                 <string>realtime preview or generate recording</string>
+                </property>
+                <property name="text">
+                 <string>Record Mode</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="osrSelectButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>SELECT REPLAY(.OSR)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="osuSelectButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>SELECT BEATMAP(.OSU)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="replayPathVerticalLayout" stretch="1,1">
+              <item>
+               <widget class="QLabel" name="osrPathLabel">
+                <property name="text">
+                 <string>Replay(.osr) path:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QClickedLineEdit" name="osrPathLineEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="beatmapPathVerticalLayout" stretch="1,1">
+              <item>
+               <widget class="QLabel" name="osuPathLabel">
+                <property name="text">
+                 <string>Beatmap(.osu) path:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QClickedLineEdit" name="osuPathLineEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QComboBox" name="skinsComboBox"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="settingsTab">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="settingsHorizontalLayout" stretch="0">
+          <item>
+           <widget class="QTabWidget" name="settingsTabWidget">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="generalSettings">
+             <attribute name="title">
+              <string>General</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <layout class="QGridLayout" name="generalSettingsGridLayout" rowstretch="3,2" columnstretch="3,2">
+                <property name="verticalSpacing">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0" rowspan="2">
+                 <widget class="QGroupBox" name="basicGroupBox">
+                  <property name="title">
+                   <string>Basic</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_6">
+                   <item row="0" column="0">
+                    <layout class="QFormLayout" name="basicFormLayout">
+                     <property name="horizontalSpacing">
+                      <number>6</number>
+                     </property>
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="usernameVerticalLayout">
+                       <item>
+                        <widget class="QLabel" name="usernameLabel">
+                         <property name="text">
+                          <string>Username:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="usernameLineEdit">
+                         <property name="toolTip">
+                          <string>Your username (not the username of the replay)</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QGridLayout" name="songsDBGridLayout">
+                       <item row="0" column="0" colspan="2">
+                        <widget class="QLabel" name="songsDBModeLabel">
+                         <property name="text">
+                          <string>Songs DB Mode:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QComboBox" name="songsDBModeComboBox">
+                         <item>
+                          <property name="text">
+                           <string notr="true">osu!</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string notr="true">danser</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QPushButton" name="songsDBUpdatePushButton">
+                         <property name="text">
+                          <string>Update</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="0" colspan="2">
+                      <layout class="QFormLayout" name="songsPathFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="songsPathLabel">
+                         <property name="text">
+                          <string>Songs Path:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QClickedLineEdit" name="songsPathLineEdit">
+                         <property name="readOnly">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="2" column="0" colspan="2">
+                      <layout class="QFormLayout" name="skinsPathFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="skinsPathLabel">
+                         <property name="text">
+                          <string>Skins Path:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QClickedLineEdit" name="skinsPathLineEdit">
+                         <property name="readOnly">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="3" column="0" colspan="2">
+                      <layout class="QFormLayout" name="danserPathFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="danserPathLabel">
+                         <property name="text">
+                          <string>danser Path:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QClickedLineEdit" name="danserPathLineEdit">
+                         <property name="readOnly">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="4" column="0" colspan="2">
+                      <layout class="QFormLayout" name="osuApiFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="osuApiPathLabel">
+                         <property name="text">
+                          <string>osu! api:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLineEdit" name="osuApiLineEdit">
+                         <property name="toolTip">
+                          <string>get it from https://osu.ppy.sh/api/</string>
+                         </property>
+                         <property name="echoMode">
+                          <enum>QLineEdit::Password</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="5" column="0" colspan="2">
+                      <layout class="QFormLayout" name="languageFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="languageLabel">
+                         <property name="text">
+                          <string>Language:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QComboBox" name="languageComboBox">
+                         <item>
+                          <property name="text">
+                           <string>English</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Chinese(Simplified)</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QGroupBox" name="volumeGroupBox">
+                  <property name="title">
+                   <string>Volume</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <item>
+                    <layout class="QVBoxLayout" name="volumeVerticalLayout">
+                     <item>
+                      <layout class="QFormLayout" name="globalVolumeFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="globalVolumeLabel">
+                         <property name="text">
+                          <string>Global:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabeledSlider" name="globalVolumeSlider">
+                         <property name="cursor">
+                          <cursorShape>SizeHorCursor</cursorShape>
+                         </property>
+                         <property name="mouseTracking">
+                          <bool>false</bool>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="autoFillBackground">
+                          <bool>false</bool>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="maximum">
+                          <number>100</number>
+                         </property>
+                         <property name="value">
+                          <number>100</number>
+                         </property>
+                         <property name="tracking">
+                          <bool>false</bool>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="invertedAppearance">
+                          <bool>false</bool>
+                         </property>
+                         <property name="invertedControls">
+                          <bool>false</bool>
+                         </property>
+                         <property name="tickPosition">
+                          <enum>QSlider::NoTicks</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QFormLayout" name="musicVolumeFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="musicVolumeLabel">
+                         <property name="text">
+                          <string>Music:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabeledSlider" name="musicVolumeSlider">
+                         <property name="cursor">
+                          <cursorShape>SizeHorCursor</cursorShape>
+                         </property>
+                         <property name="maximum">
+                          <number>100</number>
+                         </property>
+                         <property name="value">
+                          <number>100</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QFormLayout" name="hitSoundVolumeFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="hitSoundVolumeLabel">
+                         <property name="text">
+                          <string>HitSound:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabeledSlider" name="hitSoundVolumeSlider">
+                         <property name="cursor">
+                          <cursorShape>SizeHorCursor</cursorShape>
+                         </property>
+                         <property name="maximum">
+                          <number>100</number>
+                         </property>
+                         <property name="value">
+                          <number>100</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="invertedAppearance">
+                          <bool>false</bool>
+                         </property>
+                         <property name="invertedControls">
+                          <bool>false</bool>
+                         </property>
+                         <property name="tickPosition">
+                          <enum>QSlider::NoTicks</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QGroupBox" name="graphicsGroupBox">
+                  <property name="title">
+                   <string>Graphics</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_5">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="graphicsVerticalLayout" stretch="2,2">
+                     <item>
+                      <layout class="QHBoxLayout" name="graphicsResolutionHorizontalLayout">
+                       <property name="spacing">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="resolutionLabel">
+                         <property name="text">
+                          <string>Resolution:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="graphicsWidth"/>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="resolutionMiddleX">
+                         <property name="text">
+                          <string notr="true">x</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="graphicsHeight"/>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QFormLayout" name="graphicsOtherFormLayout">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="graphicsOtherCheckBoxVerticalLayout">
+                         <item>
+                          <widget class="QCheckBox" name="fullScreenCheckBox">
+                           <property name="text">
+                            <string>Full Screen</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="vsyncCheckBox">
+                           <property name="text">
+                            <string>Vsync</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="showFPSCheckBox">
+                           <property name="text">
+                            <string>Show FPS</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="0" column="1">
+                        <layout class="QVBoxLayout" name="graphicsOtherSpinBoxVerticalLayout">
+                         <item>
+                          <layout class="QFormLayout" name="MSAAFormLayout">
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="MSAALabel">
+                             <property name="text">
+                              <string>MSAA:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QSpinBox" name="MSAASpinBox">
+                             <property name="minimum">
+                              <number>0</number>
+                             </property>
+                             <property name="maximum">
+                              <number>16</number>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QFormLayout" name="FPSCapFormLayout">
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="FPSCapLabel">
+                             <property name="text">
+                              <string>FPS Cap:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QSpinBox" name="FPSCapSpinBox">
+                             <property name="minimum">
+                              <number>0</number>
+                             </property>
+                             <property name="maximum">
+                              <number>10000</number>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="beatmapSettings">
+             <attribute name="title">
+              <string>Beatmap</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QGroupBox" name="beatmapBasicGroupBox">
+                <property name="title">
+                 <string>Basic</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_31">
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="beatmapBasicGridLayout">
+                   <item row="0" column="0">
+                    <layout class="QGridLayout" name="timingRangeGridLayout" rowstretch="1,1">
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="timingRangeLabel">
+                       <property name="text">
+                        <string>Timing:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1" rowspan="2">
+                      <widget class="QLabeledRangeSlider" name="timingRangeSlider">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="0">
+                    <layout class="QHBoxLayout" name="beatmapSpeedPitchHorizontalLayout">
+                     <item>
+                      <layout class="QFormLayout" name="beatmapSpeedFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="beatmapSpeedLabel">
+                         <property name="text">
+                          <string>Beatmap Speed:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QDoubleSpinBox" name="beatmapSpeedDoubleSpinBox">
+                         <property name="decimals">
+                          <number>1</number>
+                         </property>
+                         <property name="minimum">
+                          <double>1.000000000000000</double>
+                         </property>
+                         <property name="maximum">
+                          <double>10.000000000000000</double>
+                         </property>
+                         <property name="singleStep">
+                          <double>0.100000000000000</double>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QFormLayout" name="beatmapPitchFormLayout">
+                       <item row="0" column="1">
+                        <widget class="QDoubleSpinBox" name="beatmapPitchDoubleSpinBox">
+                         <property name="toolTip">
+                          <string>If you set beatmap pitch less than 1, it may be fun.</string>
+                         </property>
+                         <property name="decimals">
+                          <number>1</number>
+                         </property>
+                         <property name="minimum">
+                          <double>0.000000000000000</double>
+                         </property>
+                         <property name="maximum">
+                          <double>5.900000000000000</double>
+                         </property>
+                         <property name="singleStep">
+                          <double>0.100000000000000</double>
+                         </property>
+                         <property name="stepType">
+                          <enum>QAbstractSpinBox::DefaultStepType</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="beatmapPitchLabel">
+                         <property name="text">
+                          <string>Beatmap Pitch:</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QGroupBox" name="specialGroupBox">
+                   <property name="title">
+                    <string>Special</string>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_30">
+                    <item row="0" column="0">
+                     <layout class="QFormLayout" name="cursorsInMirrorCollageFormLayout">
+                      <item row="0" column="0">
+                       <widget class="QCheckBox" name="cursorsInMirrorCollageCheckBox">
+                        <property name="text">
+                         <string>Cursors in Mirror Collage</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="QSpinBox" name="cursorsInMirrorCollageSpinBox">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="minimum">
+                         <number>1</number>
+                        </property>
+                        <property name="maximum">
+                         <number>1000</number>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item row="1" column="0">
+                     <layout class="QFormLayout" name="cursorsInTagModeFormLayout">
+                      <item row="0" column="0">
+                       <widget class="QCheckBox" name="cursorsInTagModeCheckBox">
+                        <property name="text">
+                         <string>Cursors in TAG mode</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="QSpinBox" name="cursorsInTagModeSpinBox">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="minimum">
+                         <number>1</number>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="beatmapCustomizeGroupBox">
+                <property name="title">
+                 <string>Customize</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_27">
+                 <property name="topMargin">
+                  <number>4</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>4</number>
+                 </property>
+                 <property name="spacing">
+                  <number>6</number>
+                 </property>
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="beatmapCustomizeGridLayout">
+                   <item row="0" column="0">
+                    <widget class="QCheckBox" name="customizeBeatmapAttributesCheckBox">
+                     <property name="text">
+                      <string>Customize Beatmap Attributes</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" rowspan="2">
+                    <widget class="QGroupBox" name="beatmapAttributesGroupBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="title">
+                      <string>Beatmap Attributes</string>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_4">
+                      <item>
+                       <layout class="QVBoxLayout" name="beatmapAttributesVerticalLayout">
+                        <item>
+                         <layout class="QFormLayout" name="CSFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="CSLabel">
+                            <property name="text">
+                             <string>CS:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledDoubleSlider" name="CSHorizontalSlider">
+                            <property name="maximum">
+                             <number>12</number>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="ARFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="ARLabel">
+                            <property name="text">
+                             <string>AR:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledDoubleSlider" name="ARHorizontalSlider">
+                            <property name="maximum">
+                             <number>12</number>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="ODFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="ODLabel">
+                            <property name="text">
+                             <string>OD:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledDoubleSlider" name="ODHorizontalSlider">
+                            <property name="maximum">
+                             <number>12</number>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="HPFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="HPLabel">
+                            <property name="text">
+                             <string>HP:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledDoubleSlider" name="HPHorizontalSlider">
+                            <property name="maximum">
+                             <number>12</number>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QGroupBox" name="beatmapModsGroupBox">
+                     <property name="toolTip">
+                      <string>Displays the map with given mods. This is ignored in replay mode!</string>
+                     </property>
+                     <property name="title">
+                      <string>Mods</string>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_29">
+                      <item row="0" column="0">
+                       <layout class="QGridLayout" name="beatmapModsGridLayout">
+                        <item row="0" column="0">
+                         <widget class="QCheckBox" name="SDPFCheckBox">
+                          <property name="text">
+                           <string notr="true">SD/PF</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QCheckBox" name="NFCheckBox">
+                          <property name="text">
+                           <string notr="true">NF</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QCheckBox" name="HDCheckBox">
+                          <property name="text">
+                           <string notr="true">HD</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QCheckBox" name="FLCheckBox">
+                          <property name="text">
+                           <string notr="true">FL</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QCheckBox" name="DTNCCheckBox">
+                          <property name="text">
+                           <string notr="true">DT/NC</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QCheckBox" name="HTCheckBox">
+                          <property name="text">
+                           <string notr="true">HT</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QCheckBox" name="EZHRCheckBox">
+                          <property name="text">
+                           <string notr="true">EZ/HR</string>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="tristate">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="recordingSettings">
+             <attribute name="title">
+              <string>Recording</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <widget class="QGroupBox" name="recordingGroupBox">
+                <property name="title">
+                 <string>Recording</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_8">
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="recordingGridLayout" columnstretch="1,1">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="recordingGeneralVerticalLayout">
+                     <item>
+                      <layout class="QHBoxLayout" name="recordingResolutionVorizontalLayout">
+                       <property name="spacing">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="recordingResolutionLabel">
+                         <property name="text">
+                          <string>Resolution:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="recordingWidth"/>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="recordingResolutionMiddleX">
+                         <property name="text">
+                          <string notr="true">x</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="recordingHeight"/>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="recordingFPSHorizontalLayout">
+                       <item>
+                        <layout class="QFormLayout" name="recordingFPSFormLayout">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="recordingFPSLabel">
+                           <property name="text">
+                            <string>FPS:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QSpinBox" name="recordingFPSSpinBox">
+                           <property name="minimum">
+                            <number>0</number>
+                           </property>
+                           <property name="maximum">
+                            <number>10000</number>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="motionBlurcheckBox">
+                         <property name="toolTip">
+                          <string>Forced to be disabled if star rating of the map is less than 5 stars.</string>
+                         </property>
+                         <property name="text">
+                          <string>Motion Blur</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QFormLayout" name="recordingEncoderFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="recordingEncoderLabel">
+                         <property name="text">
+                          <string>Encoder:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QComboBox" name="recordingEncoderComboBox">
+                         <item>
+                          <property name="text">
+                           <string>CPU</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>NVIDIA GPU (NVENC)</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>AMD GPU (VCE)</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Intel GPU (QSV)</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Customize</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="outputPathVerticalLayout">
+                       <item>
+                        <widget class="QLabel" name="outputPathLabel">
+                         <property name="text">
+                          <string>Output Path:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QClickedLineEdit" name="outputPathLineEdit">
+                         <property name="readOnly">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="outputNameVerticalLayout">
+                       <item>
+                        <widget class="QLabel" name="outputNameLabel">
+                         <property name="text">
+                          <string>Output Name:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="outputNameLineEdit">
+                         <property name="toolTip">
+                          <string>output name template tooltips</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QWidget" name="empty_widget_1" native="true"/>
+                   </item>
+                   <item row="0" column="1" rowspan="2">
+                    <widget class="QGroupBox" name="encoderConfigGroupBox">
+                     <property name="title">
+                      <string>Encoder Config Customize</string>
+                     </property>
+                     <layout class="QFormLayout" name="formLayout_17">
+                      <item row="0" column="0" colspan="2">
+                       <layout class="QVBoxLayout" name="encoderConfigVerticalLayout">
+                        <item>
+                         <layout class="QFormLayout" name="videoCodecCustomizeFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="videoCodecCustomizeLabel">
+                            <property name="text">
+                             <string>Video Codec:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLineEdit" name="videoCodecCustomizeLineEdit">
+                            <property name="echoMode">
+                             <enum>QLineEdit::Normal</enum>
+                            </property>
+                            <property name="clearButtonEnabled">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QVBoxLayout" name="encoderOptionCustomizeVerticalLayout">
+                          <item>
+                           <widget class="QLabel" name="encoderOptionCustomizeLabel">
+                            <property name="text">
+                             <string>Encoder Option:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLineEdit" name="encoderOptionCustomizeLineEdit"/>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="presetCustomizeFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="presetCustomizeLabel">
+                            <property name="text">
+                             <string>Preset:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLineEdit" name="presetCustomizeLineEdit"/>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="audioCodecFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="audioCodecCustomizeLabel">
+                            <property name="text">
+                             <string>Audio Codec:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLineEdit" name="audioCodecCustomizeLineEdit"/>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QVBoxLayout" name="audioOptionCustomizeVerticalLayout">
+                          <item>
+                           <widget class="QLabel" name="audioOptionCustomizeLabel">
+                            <property name="text">
+                             <string>Audio Option:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLineEdit" name="audioOptionCustomizeLineEdit"/>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="gameplaySettings">
+             <attribute name="title">
+              <string>Gameplay</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_12">
+              <item row="0" column="0">
+               <layout class="QVBoxLayout" name="gameplaySettingsVerticalLayout">
+                <item>
+                 <layout class="QGridLayout" name="gameplaySettingsGridLayout">
+                  <property name="spacing">
+                   <number>6</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="boundariesGroupBox">
+                    <property name="title">
+                     <string>Boundaries</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_23">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="boundariesShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QGroupBox" name="scoreGroupBox">
+                    <property name="title">
+                     <string>Score</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_11">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="scoreShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QGroupBox" name="hpBarGroupBox">
+                    <property name="title">
+                     <string>Hp Bar</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_13">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="hpBarShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QGroupBox" name="comboCounterGroupBox">
+                    <property name="title">
+                     <string>Combo Counter</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_17">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="comboCounterShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="hitCounterGroupBox">
+                    <property name="title">
+                     <string>Hit Counter</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_24">
+                     <property name="leftMargin">
+                      <number>9</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="hitCounterShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QGroupBox" name="aimErrorMeterGroupBox">
+                    <property name="title">
+                     <string>Aim Error Meter</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_18">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="aimErrorMeterShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QGroupBox" name="keyOverlayGroupBox">
+                    <property name="title">
+                     <string>Key Overlay</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_20">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="keyOverlayShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QGroupBox" name="strainGraphGroupBox">
+                    <property name="title">
+                     <string>Strain Graph</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_26">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="strainGraphShowCheckBox">
+                       <property name="text">
+                        <string>Show</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="gameplaySettingsHorizontalLayout">
+                  <item>
+                   <widget class="QGroupBox" name="resultsScreenGroupBox">
+                    <property name="title">
+                     <string>Results Screen</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_2">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>9</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <layout class="QVBoxLayout" name="resultsScreenVerticalLayout">
+                       <item>
+                        <widget class="QCheckBox" name="resultsScreenShowCheckBox">
+                         <property name="text">
+                          <string>Show</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="resultsScreenUseLocalTimeZoneCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Use LocalTimeZone</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QFormLayout" name="resultsScreenTimeFormLayout">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="resultsScreenTimeLabel">
+                           <property name="text">
+                            <string>Time:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QSpinBox" name="resultsScreenTimeSpinBox">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="modsGroupBox">
+                    <property name="title">
+                     <string>Mods</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout">
+                     <item>
+                      <layout class="QVBoxLayout" name="modsVerticalLayout">
+                       <item>
+                        <widget class="QCheckBox" name="modsShowCheckBox">
+                         <property name="text">
+                          <string>Show</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="modsHideInReplaysCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Hide In Replays</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="modsFoldInReplaysCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Fold In Replays</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="scoreBoardGroupBox">
+                    <property name="title">
+                     <string>Score Board</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_4">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="scoreBoardVerticalLayout">
+                       <item>
+                        <widget class="QCheckBox" name="scoreBoardShowCheckBox">
+                         <property name="text">
+                          <string>Show</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="scoreBoardHideOthersCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Hide Others</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="scoreBoardShowAvatarsCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Show Avatars</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="ppCounterGroupBox">
+                    <property name="title">
+                     <string>PP Counter</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_2">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="ppCounterVerticalLayout">
+                       <item>
+                        <widget class="QCheckBox" name="ppCounterShowCheckBox">
+                         <property name="text">
+                          <string>Show</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="ppCounterUseLazerPPCheckBox">
+                         <property name="text">
+                          <string>Use Lazer PP</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="gameplaySettingsGridLayout_2" stretch="4,1">
+                  <item>
+                   <widget class="QGroupBox" name="inputGroupBox">
+                    <property name="title">
+                     <string>Input</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_22">
+                     <property name="topMargin">
+                      <number>4</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <layout class="QGridLayout" name="inputGridLayout" rowstretch="0,0" columnstretch="0,0">
+                       <property name="horizontalSpacing">
+                        <number>20</number>
+                       </property>
+                       <item row="0" column="1">
+                        <widget class="QCheckBox" name="mouseButtonsDisabledCheckBox">
+                         <property name="text">
+                          <string> Disable Mouse Buttons</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QWidget" name="empty_widget_2" native="true"/>
+                       </item>
+                       <item row="0" column="0" rowspan="2">
+                        <layout class="QGridLayout" name="inputKeyGridLayout">
+                         <property name="horizontalSpacing">
+                          <number>10</number>
+                         </property>
+                         <item row="0" column="0">
+                          <layout class="QHBoxLayout" name="leftKeyHorizontalLayout" stretch="1,1">
+                           <item>
+                            <widget class="QLabel" name="leftKeyLabel">
+                             <property name="text">
+                              <string>Left:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="leftKeyPushButton">
+                             <property name="text">
+                              <string notr="true"/>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item row="0" column="1">
+                          <layout class="QHBoxLayout" name="restartKeyHorizontalLayout" stretch="1,1">
+                           <item>
+                            <widget class="QLabel" name="restartKeyLabel">
+                             <property name="text">
+                              <string>Restart:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="restartKeyPushButton">
+                             <property name="text">
+                              <string notr="true"/>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item row="1" column="0">
+                          <layout class="QHBoxLayout" name="rightKeyHorizontalLayout" stretch="1,1">
+                           <item>
+                            <widget class="QLabel" name="rightKeyLabel">
+                             <property name="text">
+                              <string>Right:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="rightKeyPushButton">
+                             <property name="text">
+                              <string notr="true"/>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item row="1" column="1">
+                          <layout class="QHBoxLayout" name="smokeKeyHorizontalLayout" stretch="1,1">
+                           <item>
+                            <widget class="QLabel" name="smokeKeyLabel">
+                             <property name="text">
+                              <string>Smoke:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="smokeKeyPushButton">
+                             <property name="text">
+                              <string notr="true"/>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="hitErrorMeterGroupBox">
+                    <property name="title">
+                     <string>Hit Error Meter</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_7">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="hitErrorMeterVerticalLayout">
+                       <item>
+                        <widget class="QCheckBox" name="hitErrorMeterShowCheckBox">
+                         <property name="text">
+                          <string>Show</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="hitErrorMeterShowUnstableRateCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="toolTip">
+                          <string>Only shows if hit error meter is enabled.</string>
+                         </property>
+                         <property name="text">
+                          <string>Show UR</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="skinSettings">
+             <attribute name="title">
+              <string>Skin</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_19">
+              <item row="0" column="0">
+               <layout class="QGridLayout" name="skinSettingsGridLayout">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="skinGeneralGroupBox">
+                  <property name="title">
+                   <string>General</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_16">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="skinGeneralVerticalLayout">
+                     <item>
+                      <widget class="QRadioButton" name="useSkinColorsRadioButton">
+                       <property name="text">
+                        <string>Use Skin Colors</string>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">useSkinOrBeatmapColorsButtonGroup</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="useBeatmapColorsRadioButton">
+                       <property name="text">
+                        <string>Use Beatmap Colors</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">useSkinOrBeatmapColorsButtonGroup</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="useSkinCursorCheckBox">
+                       <property name="toolTip">
+                        <string>If disabled, Danser cursor will be used.</string>
+                       </property>
+                       <property name="text">
+                        <string>Use Skin Cursor</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="useSkinHitsoundsCheckBox">
+                       <property name="text">
+                        <string>Use Skin Hitsounds</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="1" rowspan="2">
+                 <widget class="QGroupBox" name="cursorGroupBox">
+                  <property name="title">
+                   <string>Cursor</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_15">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="cursorVerticalLayout">
+                     <item>
+                      <widget class="QCheckBox" name="scaleToCSCheckBox">
+                       <property name="text">
+                        <string>Scale To CS</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="cursorRipplesCheckBox">
+                       <property name="toolTip">
+                        <string>Waves will appear below where the player clicked</string>
+                       </property>
+                       <property name="text">
+                        <string>Cursor Ripples</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QGridLayout" name="cursorSizeGridLayout">
+                       <item row="0" column="1">
+                        <widget class="QLabeledDoubleSlider" name="cursorSizeSlider">
+                         <property name="minimum">
+                          <number>50</number>
+                         </property>
+                         <property name="maximum">
+                          <number>200</number>
+                         </property>
+                         <property name="pageStep">
+                          <number>50</number>
+                         </property>
+                         <property name="value">
+                          <number>100</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="tickPosition">
+                          <enum>QSlider::TicksAbove</enum>
+                         </property>
+                         <property name="tickInterval">
+                          <number>50</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="cursorSizeLabel">
+                         <property name="text">
+                          <string>Cursor Size:</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="forceLongTrailVerticalLayout">
+                       <item>
+                        <widget class="QCheckBox" name="forceLongTrailCheckBox">
+                         <property name="text">
+                          <string>Force Long Trail</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QFormLayout" name="longTrailDensityFormLayout">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="longTrailDensityLabel">
+                           <property name="text">
+                            <string>Long Trail Density:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QSpinBox" name="longTrailDensitySpinBox">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="minimum">
+                            <number>0</number>
+                           </property>
+                           <property name="maximum">
+                            <number>10000</number>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QFormLayout" name="longTrailLengthFormLayout">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="longTrailLengthLabel">
+                           <property name="text">
+                            <string>Long Trail Length:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QSpinBox" name="longTrailLengthSpinBox">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="minimum">
+                            <number>0</number>
+                           </property>
+                           <property name="maximum">
+                            <number>10000</number>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="cursorRainbowCheckBox">
+                       <property name="text">
+                        <string>Cursor Rainbow</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="cursorTrailGlowCheckBox">
+                       <property name="text">
+                        <string>Cursor Trail Glow</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="0" rowspan="2">
+                 <widget class="QWidget" name="empty_widget_3" native="true"/>
+                </item>
+                <item row="0" column="2" rowspan="2">
+                 <widget class="QGroupBox" name="objectsGroupBox">
+                  <property name="title">
+                   <string>Objects</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_14">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="objectsVerticalLayout">
+                     <item>
+                      <widget class="QCheckBox" name="drawFollowPointsCheckBox">
+                       <property name="toolTip">
+                        <string>The lines between circles, basically</string>
+                       </property>
+                       <property name="text">
+                        <string>Draw Follow Points</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="drawComboNumbersCheckBox">
+                       <property name="toolTip">
+                        <string>The number inside circles / sliders</string>
+                       </property>
+                       <property name="text">
+                        <string>Draw Combo Numbers</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="scaleToTheBeatCheckBox">
+                       <property name="toolTip">
+                        <string>Sliders and circles will bounce to the rhythm of the music</string>
+                       </property>
+                       <property name="text">
+                        <string>Scale To The Beat</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="sliderMergeCheckBox">
+                       <property name="toolTip">
+                        <string>Merges sliders, can be nice for some type of maps but it is not something you'd see in osu!</string>
+                       </property>
+                       <property name="text">
+                        <string>Slider Merge</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="objectsRainbowCheckBox">
+                       <property name="toolTip">
+                        <string>Makes the sliders and circles rainbow! Enabling this will override &quot;Use skin combo colors&quot; and &quot;Use beatmap combo colors&quot;</string>
+                       </property>
+                       <property name="text">
+                        <string>Rainbow</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="flashToTheBeatCheckBox">
+                       <property name="toolTip">
+                        <string>Sliders and circles will flash to the beat!</string>
+                       </property>
+                       <property name="text">
+                        <string>Flash To The Beat</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="useHitCircleColorCheckBox">
+                       <property name="text">
+                        <string>Use Hit Circle Color</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="sliderSnakingInCheckBox">
+                       <property name="text">
+                        <string>Slider Snaking In</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="sliderSnakingOutCheckBox">
+                       <property name="text">
+                        <string>Slider Snaking Out</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="otherSettings">
+             <attribute name="title">
+              <string>Other</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_21">
+              <item row="0" column="0">
+               <widget class="QGroupBox" name="playfieldGroupBox">
+                <property name="title">
+                 <string>Play Field</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_25">
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="playfieldGridLayout">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="playfieldCheckBoxVerticalLayout">
+                     <item>
+                      <widget class="QCheckBox" name="seizureWarningCheckBox">
+                       <property name="toolTip">
+                        <string>Can be nice if you upload the video to YouTube for example.</string>
+                       </property>
+                       <property name="text">
+                        <string>Seizure Warning</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="loadStoryboardCheckBox">
+                       <property name="text">
+                        <string>Load Storyboard</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="loadVideoCheckBox">
+                       <property name="text">
+                        <string>Load Video</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="bgParallaxCheckBox">
+                       <property name="text">
+                        <string>Background parallax</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="showDanserLogoCheckBox">
+                       <property name="text">
+                        <string>Show Danser Logo</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="skipIntroCheckBox">
+                       <property name="text">
+                        <string>Skip Intro</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="quickStartCheckBox">
+                       <property name="text">
+                        <string>Quick Start</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QGroupBox" name="backgroundDimGroupBox">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>140</height>
+                      </size>
+                     </property>
+                     <property name="title">
+                      <string> Background dim</string>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_14">
+                      <item>
+                       <layout class="QVBoxLayout" name="backgroundDimVerticalLayout">
+                        <item>
+                         <layout class="QFormLayout" name="introBGDimFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="introBGDimLabel">
+                            <property name="text">
+                             <string>Intro:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledSlider" name="introBGDimSlider">
+                            <property name="cursor">
+                             <cursorShape>SizeHorCursor</cursorShape>
+                            </property>
+                            <property name="mouseTracking">
+                             <bool>false</bool>
+                            </property>
+                            <property name="layoutDirection">
+                             <enum>Qt::LeftToRight</enum>
+                            </property>
+                            <property name="autoFillBackground">
+                             <bool>false</bool>
+                            </property>
+                            <property name="inputMethodHints">
+                             <set>Qt::ImhNone</set>
+                            </property>
+                            <property name="maximum">
+                             <number>100</number>
+                            </property>
+                            <property name="value">
+                             <number>100</number>
+                            </property>
+                            <property name="tracking">
+                             <bool>false</bool>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="invertedAppearance">
+                             <bool>false</bool>
+                            </property>
+                            <property name="invertedControls">
+                             <bool>false</bool>
+                            </property>
+                            <property name="tickPosition">
+                             <enum>QSlider::NoTicks</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="inGameBGDimFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="inGameBGDmabel">
+                            <property name="text">
+                             <string>In Game:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledSlider" name="inGameBGDimSlider">
+                            <property name="cursor">
+                             <cursorShape>SizeHorCursor</cursorShape>
+                            </property>
+                            <property name="maximum">
+                             <number>100</number>
+                            </property>
+                            <property name="value">
+                             <number>100</number>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QFormLayout" name="breakBGDimFormLayout">
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="breakBGDimLabel">
+                            <property name="text">
+                             <string>Break:</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabeledSlider" name="breakBGDimSlider">
+                            <property name="cursor">
+                             <cursorShape>SizeHorCursor</cursorShape>
+                            </property>
+                            <property name="maximum">
+                             <number>100</number>
+                            </property>
+                            <property name="value">
+                             <number>100</number>
+                            </property>
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="invertedAppearance">
+                             <bool>false</bool>
+                            </property>
+                            <property name="invertedControls">
+                             <bool>false</bool>
+                            </property>
+                            <property name="tickPosition">
+                             <enum>QSlider::NoTicks</enum>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QWidget" name="empty_widget_6" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QWidget" name="empty_widget_7" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>80</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="aboutPage">
+             <attribute name="title">
+              <string>About</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_28">
+              <item row="0" column="0">
+               <layout class="QGridLayout" name="aboutPageGridLayout">
+                <item row="0" column="0">
+                 <widget class="QWidget" name="empty_widget_5" native="true"/>
+                </item>
+                <item row="0" column="1">
+                 <layout class="QHBoxLayout" name="danserGuiHorizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="danserGuiLogo">
+                    <property name="minimumSize">
+                     <size>
+                      <width>60</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>60</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="danserGuiDescriptionLlabel">
+                    <property name="text">
+                     <string>**[Danser Gui](https://github.com/spaceskynet/danser-gui) - A Gui Application made for [DANSER](https://github.com/Wieku/danser-go)**</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::MarkdownText</enum>
+                    </property>
+                    <property name="openExternalLinks">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QWidget" name="empty_widget_4" native="true"/>
+                </item>
+                <item row="1" column="0" colspan="3">
+                 <widget class="QLabel" name="aboutMainMarkdownLabel">
+                  <property name="text">
+                   <string>This program (Danser GUI) is mainly created by [@SpaceSkyNet](https://github.com/spaceskynet), which is licensed under the [MIT License](https://github.com/spaceskynet/danser-gui/blob/master/LICENSE).
+
+**Thanks to these projects:**
+
+1. [danser-go](https://github.com/Wieku/danser-go): a CLI visualisation tool for osu!standard maps.
+2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools): a collection of libraries and scripts for manipulating the osu! .db files.
+3. [osu-replay-to-map](https://github.com/spawn18/osu-replay-to-map): a program written in Python, that creates maps based on replay.
+4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app): An application to convert replay files to video.
+5. [ordr-client](https://github.com/MasterIO02/ordr-client) &amp; [ordr-server](https://github.com/MasterIO02/ordr-server): a free and easy-to-use API / [website](https://ordr.issou.best/) that allows you to render osu! videos of replays using danser.</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::MarkdownText</enum>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QClickedLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>GuiWidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>QLabeledSlider</class>
+   <extends>QSlider</extends>
+   <header>superqt</header>
+  </customwidget>
+  <customwidget>
+   <class>QLabeledDoubleSlider</class>
+   <extends>QSlider</extends>
+   <header>superqt</header>
+  </customwidget>
+  <customwidget>
+   <class>QLabeledRangeSlider</class>
+   <extends>QSlider</extends>
+   <header>superqt</header>
+  </customwidget>
+  <customwidget>
+   <class>QClickedLabel</class>
+   <extends>QLabel</extends>
+   <header>GuiWidgets</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>mainTabWidget</tabstop>
+  <tabstop>danserModeComboBox</tabstop>
+  <tabstop>osuSelectButton</tabstop>
+  <tabstop>osrPathLineEdit</tabstop>
+  <tabstop>osuPathLineEdit</tabstop>
+  <tabstop>skinsComboBox</tabstop>
+  <tabstop>osrSelectButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>forceLongTrailCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>longTrailDensitySpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>forceLongTrailCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>longTrailLengthSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resultsScreenShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>resultsScreenUseLocalTimeZoneCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>90</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resultsScreenShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>resultsScreenTimeSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>116</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>115</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modsShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>modsHideInReplaysCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modsShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>modsFoldInReplaysCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scoreBoardShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>scoreBoardHideOthersCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scoreBoardShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>scoreBoardShowAvatarsCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hitErrorMeterShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>hitErrorMeterShowUnstableRateCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DTNCCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>HTCheckBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HTCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>DTNCCheckBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SDPFCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>NFCheckBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NFCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>SDPFCheckBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>110</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customizeBeatmapAttributesCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>beatmapAttributesGroupBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cursorsInMirrorCollageCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cursorsInMirrorCollageSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cursorsInTagModeCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cursorsInTagModeSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>quickStartCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>skipIntroCheckBox</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>119</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="useSkinOrBeatmapColorsButtonGroup"/>
+ </buttongroups>
+</ui>

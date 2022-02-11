@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>SpaceSkyNet</author>
+ <class>debugModeWindow</class>
+ <widget class="QWidget" name="debugModeWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>351</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Debug Mode Window</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="currentDanserExecArgmentsVerticalLayout">
+     <item>
+      <widget class="QLabel" name="currentDanserExecArgmentsLabel">
+       <property name="text">
+        <string notr="true">Current Danser Execute Argments:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="currentDanserExecArgmentsLineEdit">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="recordingOutputNameVerticalLayout">
+     <item>
+      <widget class="QLabel" name="recordingOutputNameLabel">
+       <property name="text">
+        <string notr="true">Recording Output File Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="recordingOutputNameLineEdit">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="fullLogVerticalLayout">
+     <item>
+      <widget class="QLabel" name="fullLogLabel">
+       <property name="text">
+        <string notr="true">Full Log:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="fullLogPlainTextEdit">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
