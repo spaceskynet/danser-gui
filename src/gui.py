@@ -134,7 +134,7 @@ class DanserUiMainWindow(Ui_MainWindow):
 
         self.recordingEncoderComboBox.activated[int].connect(self.encoderConfigGroupBoxEnabled)
 
-        self.danserModeComboBox.activated[str].connect(self.generalSettingEnabled)
+        self.danserModeComboBox.activated[str].connect(lambda section:(self.generalSettingEnabled(section, MainWindow)))
         self.skinsComboBoxInit()
         self.osuSelectButton.clicked.connect(lambda: (self.osuSelectButtonClicked(MainWindow)))
         self.osrSelectButton.clicked.connect(lambda: (self.osrSelectButtonClicked(MainWindow)))
@@ -191,8 +191,8 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.timingRangeSlider.setMaximum(songs_length)
         self.timingRangeSlider.setValue((0, songs_length))
         
-    def checkWidgetsIsEnabled(self):
-        self.generalSettingEnabled(self.danserModeComboBox.currentText())
+    def checkWidgetsIsEnabled(self, MainWindow):
+        self.generalSettingEnabled(self.danserModeComboBox.currentText(), MainWindow)
         self.recordingGroupBox.setEnabled(self.isRecordCheckBox.isEnabled() and self.isRecordCheckBox.isChecked())
         self.encoderConfigGroupBoxEnabled(self.recordingEncoderComboBox.currentIndex())
 
@@ -211,7 +211,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.cursorsInTagModeSpinBox.setEnabled(self.cursorsInTagModeCheckBox.isChecked())
         self.skipIntroCheckBox.setChecked(self.quickStartCheckBox.isChecked())
 
-    def checkSongsDBIsExists(self):
+    def checkSongsDBIsExists(self, MainWindow):
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
         if songs_db_mode == 'osu!':
             exist = isfile(join(songs_db_path, 'osu!.sqlite3.db'))
@@ -219,6 +219,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             exist = isfile(join(songs_db_path, 'danser.db'))
         if not exist:
             customError(QCoreApplication.translate("MainWindow", u"Please update songs db at first!", None))
+            self.songsDBUpdateEvent(MainWindow)
         return exist
 
     def checkWidgetsValueIsValid(self):
@@ -424,7 +425,7 @@ class DanserUiMainWindow(Ui_MainWindow):
     def encoderConfigGroupBoxEnabled(self, index):
         self.encoderConfigGroupBox.setEnabled(index + 1 == self.recordingEncoderComboBox.count())
     
-    def generalSettingEnabled(self, section):
+    def generalSettingEnabled(self, section, MainWindow):
         if section != 'replay':
             self.osuSelectButton.setEnabled(True)
             self.osuPathLineEdit.setEnabled(True)
@@ -467,7 +468,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             lastest_replay_path = get_latest_replay(osu_root_path)
             if lastest_replay_path:
                 self.osrPathLineEdit.setText(abspath(lastest_replay_path))
-                if not self.checkSongsDBIsExists(): return
+                if not self.checkSongsDBIsExists(MainWindow): return
                 beatmap = find_beatmap_by_replay(lastest_replay_path, songs_db_path, songs_db_mode)
                 self.setBeatmap(beatmap)
             else:
@@ -507,7 +508,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         osu_file_path, osu_file_type = QFileDialog.getOpenFileName(MainWindow, QCoreApplication.translate("MainWindow", u"Choose osu beatmap file", None), self.gui_config.General.OsuSongsDir, "osu beatmap file(*.osu)")
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
         if not osu_file_path: return
-        if not self.checkSongsDBIsExists(): return
+        if not self.checkSongsDBIsExists(MainWindow): return
         beatmap = find_beatmap_by_mapfile(osu_file_path, songs_db_path, songs_db_mode)
         self.setBeatmap(beatmap)
     
@@ -521,7 +522,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         if osr_file_path:
             logging.info(f"[GUI] Chosen osr file: {osr_file_path}")
             self.osrPathLineEdit.setText(abspath(osr_file_path))
-            if not self.checkSongsDBIsExists(): return
+            if not self.checkSongsDBIsExists(MainWindow): return
             beatmap = find_beatmap_by_replay(osr_file_path, songs_db_path, songs_db_mode)
             self.setBeatmap(beatmap)
         else:
@@ -641,7 +642,7 @@ class DanserMainWindow(QMainWindow):
         logging.info("[GUI] Current settings is updated to: {}".format(self.dansergui_settings.no_api_config()))
 
         self.setMainWindowByConfig()
-        self.MainWindow.checkWidgetsIsEnabled()
+        self.MainWindow.checkWidgetsIsEnabled(self)
 
         self.setFocus()
         # self.setWindowTitle("Danser GUI")
