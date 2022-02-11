@@ -26,6 +26,7 @@
 4. 如果要使用 osu! 默认皮肤作为备用皮肤，请下载 [deault_fallback](https://cdn.jsdelivr.net/gh/spaceskynet/git-cloud@master/osu!/Skins/default_fallback.osk) 皮肤并解压到你的 `Skins` 文件夹。
 5. 该程序仍处于测试阶段，如果您想获得更多信息，可以使用 `-d` 或 `-debug` 标志进入 `debug` 模式。
 6. 本程序只是配置了 danser 的部分常用设置，如果要编辑更多设置，请直接编辑 danser 的 json 配置文件。
+7. `Knockout` 模式仍然在完善中。
 
 ## Credits
 

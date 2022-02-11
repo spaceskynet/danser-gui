@@ -68,7 +68,6 @@ class DanserGUIConfig(object):
 
         # Recording
         encoder = config.Recording.Encoder
-        resolution = f"{config.Recording.FrameWidth}x{config.Recording.FrameHeight}"
         frame_scale = config.Recording.FrameHeight / config.Recording.FrameWidth
         danser_config.Recording.FrameWidth = config.Recording.FrameWidth if config.Recording.FrameWidth <= 1920 else 1920
         danser_config.Recording.FrameHeight = config.Recording.FrameHeight if config.Recording.FrameWidth <= 1920 else int(1920 * frame_scale)
@@ -94,7 +93,7 @@ class DanserGUIConfig(object):
         elif encoder == 'intel':
             danser_config.Recording.Encoder = "h264_qsv"
             # -global_quality was 31 before and looked okay-ish on 1080p but very bad on 720p
-            if resolution == "1920x1080" or resolution == "3840x2160":
+            if config.Recording.FrameWidth >= 1920:
                 danser_config.Recording.EncoderOptions = "-global_quality 28 -g 450"
             else:
                 danser_config.Recording.EncoderOptions = "-global_quality 25 -g 450"
