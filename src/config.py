@@ -235,5 +235,5 @@ class DanserConfig(object):
             config_path = self.config_path
         # logging.info(f"[DANSER][CONFIG] Danser Config is: {self.config.toDict()}")
         with open(config_path, 'w', encoding='utf-8') as f:
-            json.dump(self.config.toDict(), f)
+            json.dump(self.config.toDict(), f, ensure_ascii = False) # Skin name always contains unicode char.
         logging.info(f"[DANSER][CONFIG] Danser Config is written to: {config_path}")

@@ -23,7 +23,7 @@
 1. 如果您还没有 danser，可以按照[此设置指南](https://github.com/Wieku/danser-go/wiki/Setup-Guide)进行安装！（只需进行步骤 1 和 2）。
 2. 如果您想使用`录制模式`，请确保`ffmpeg`已安装或放入了 danser 文件夹。您可以在[这里](https://github.com/BtbN/FFmpeg-Builds/releases/)找到 ffmpeg，并且您可以按照[FFMPEG 安装指南](https://github.com/Wieku/danser-go/wiki/FFmpeg)来安装 ffmpeg。
 3. 如果您已经有 osu! 本体，谱面数据库模式最好选择 `osu!` 模式，如果你只有 `Skins` 和 `Songs` 目录，请选择 `danser` 模式。
-4. 如果要使用 osu! 默认皮肤作为备用皮肤，请下载 [deault_fallback](https://cdn.jsdelivr.net/gh/spaceskynet/git-cloud@master/osu!/Skins/default_fallback.osk) 皮肤并解压到你的 `Skins` 文件夹。
+4. 如果要使用 osu! 默认皮肤作为备用皮肤，请下载 [deault_fallback](https://github.com/spaceskynet/git-cloud/blob/master/osu!/Skins/default_fallback.osk) 皮肤并解压到你的 `Skins` 文件夹。
 5. 该程序仍处于测试阶段，如果您想获得更多信息，可以使用 `-d` 或 `-debug` 标志进入 `debug` 模式。
 6. 本程序只是配置了 danser 的部分常用设置，如果要编辑更多设置，请直接编辑 danser 的 json 配置文件。
 7. `Knockout` 模式仍然在完善中。

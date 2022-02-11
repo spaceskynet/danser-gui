@@ -233,14 +233,14 @@ class DanserUiMainWindow(Ui_MainWindow):
             return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"danser Path", None)))
         if not self.graphicsWidth.text() or not self.graphicsHeight.text():
             return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Graphics Resolution", None)))
-           
+        
+        if not self.osuPathLineEdit.text():
+                return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Beatmap(.osu) path", None)))   
+        
         if danser_mode == 'replay':
             if not self.osrPathLineEdit.text():
                 return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Replay(.osr) path", None)))
-        else:
-            if not self.osuPathLineEdit.text():
-                return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Beatmap(.osu) path", None)))
-
+            
         is_record = self.isRecordCheckBox.isChecked() and danser_mode != 'play'
         if is_record:
             if not self.outputPathLineEdit.text():
