@@ -18,6 +18,10 @@ src/dansergui.res.qrc
 upx
 upx.exe
 
+# unused model
+src/utils/osrparser/enums.py
+src/utils/osrparser/replay.py
+
 # PYTHON
 
 # pipenv

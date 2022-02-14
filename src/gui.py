@@ -401,6 +401,9 @@ class DanserUiMainWindow(Ui_MainWindow):
 
     def startDanserByArgumentsEventFinished(self):
         logging.info("[GUI] startDanserByArgumentsEvent Finished")
+        if self.danserExecByArgsThread.is_record:
+            self.progressDialog.close()
+            customInfo(QCoreApplication.translate("MainWindow", u"rendering complete!", None))
         self.startLogo.setEnabled(True)
 
     def syncGuiConfigWithMainWindow(self, MainWindow):

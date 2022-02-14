@@ -3,3 +3,4 @@ munch
 PyQt5>=5.15.6
 superqt
 toml
+osrparse
