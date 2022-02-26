@@ -760,7 +760,16 @@ class DanserMainWindow(QMainWindow):
         else:
             self.gui_config.Knockout.HideMods = modes_string
 
+    def updateConfigByDefault(self):
+        config, default_config = self.gui_config, self.dansergui_settings.default_config
+        if config.Knockout is None: 
+            config.Knockout = default_config.Knockout
+        if config.Playfield.QuickStart is None:
+            config.Playfield.QuickStart = default_config.Playfield.QuickStart
+            config.Playfield.SkipIntro = default_config.Playfield.SkipIntro
+
     def setMainWindowByConfig(self):
+        self.updateConfigByDefault()
         MainWindow, config = self.MainWindow, self.gui_config
 
         # Settings

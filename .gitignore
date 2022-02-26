@@ -4,8 +4,10 @@ danser-go-win/
 danser-go-linux/
 .vscode/
 video/
+Videos/
 src/logs/
 src/video/
+src/Videos/
 src/default.settings.toml
 src/settings.toml
 src/settings-win.toml

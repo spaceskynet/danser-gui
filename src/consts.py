@@ -56,7 +56,7 @@ FrameHeight = 1080
 FPS = 120
 Encoder = 'cpu'
 MotionBlur = false
-OutputPath = 'video'
+OutputPath = 'Videos'
 OutputName = '{Player} - {Artist}[{Creator}] - {MapTitle}[{Difficulty}].mp4'
 
 [Recording.EncoderConfig]
@@ -165,6 +165,6 @@ InGameBGDim = 80
 BreakBGDim = 50
 BGParallax = false
 ShowDanserLogo = true
-QuickStart = true
-SkipIntro = true'''
+QuickStart = false
+SkipIntro = false'''
 

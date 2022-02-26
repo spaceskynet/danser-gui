@@ -17,6 +17,7 @@ def decode_config_file(toml_path):
 class DanserGUIConfig(object):
     def __init__(self, config_path = ''):
         self.config_path = config_path if isfile(config_path) else consts.config_path
+        self.default_config = Munch.fromDict(toml.loads(consts.default_settings_toml))
         self.read()
         self.danser_config = DanserConfig(join(self.config.General.DanserRootDir, consts.danser_config_path))
 
@@ -30,7 +31,7 @@ class DanserGUIConfig(object):
     def read(self, config_path = ''):
         if not isfile(config_path):
             config_path = self.config_path
-        self.config = Munch.fromDict(toml.loads(decode_config_file(config_path)))
+        self.config = DefaultMunch.fromDict(toml.loads(decode_config_file(config_path)))
         logging.info(f"[GUI][CONFIG] GUI Config is read from: {config_path}")
 
     def write(self, config_path = ''):
