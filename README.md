@@ -26,7 +26,7 @@ Read [WIKI (unfinished)](https://github.com/spaceskynet/danser-gui/wiki) for mor
 4. If you want to use osu! default skin as the fallback skin, please download the [default_fallback](https://github.com/spaceskynet/git-cloud/blob/master/osu!/Skins/default_fallback.osk) skin and extract it to your `Skins` folder.
 5. This program is still in beta, if you want to get more information, you can enter `debug` mode with the `-d` or `-debug` flag.
 6. This program just configure a few settings in danser, if you want edit more settings, please edit the danser json settings file directly.
-7. `Knockout` mode is still in the process of being perfected.
+7. `Knockout` mode is ~~still in the process of being perfected~~ basically works.
 
 ## Credits
 
@@ -36,6 +36,6 @@ This program (Danser GUI) is mainly created by [@SpaceSkyNet](https://github.com
 
 1. [danser-go](https://github.com/Wieku/danser-go): a CLI visualisation tool for osu!standard maps.
 2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools): a collection of libraries and scripts for manipulating the osu! .db files.
-3. [osu-replay-to-map](https://github.com/spawn18/osu-replay-to-map): a program written in Python, that creates maps based on replay.
+3. [osu-replay-parser](https://github.com/kszlim/osu-replay-parser): a library written in Python, which is a parser for osr (osu! replays) file format.
 4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app): An application to convert replay files to video.
 5. [ordr-client](https://github.com/MasterIO02/ordr-client) & [ordr-server](https://github.com/MasterIO02/ordr-server): a free and easy-to-use API / [website](https://ordr.issou.best/) that allows you to render osu! videos of replays using danser.

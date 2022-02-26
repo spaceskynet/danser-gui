@@ -1032,6 +1032,731 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="knockoutSettinigs">
+             <attribute name="title">
+              <string>Knockout</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_34">
+              <item row="0" column="0" rowspan="2">
+               <widget class="QGroupBox" name="knockoutGeneralGroupBox">
+                <property name="title">
+                 <string>General</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <layout class="QFormLayout" name="knockoutModeFormLayout">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="knockoutModeLabel">
+                     <property name="text">
+                      <string>Knockout Mode:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="knockoutModeComboBox">
+                     <property name="toolTip">
+                      <string>Knockout mode. More info.</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>ComboBreak</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>MaxCombo</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>XReplays</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>OneVsOne</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>SSOrQuit</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="spinBoxHorizontalLayout">
+                   <item>
+                    <layout class="QFormLayout" name="maxPlayersFormLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="maxPlayersLabel">
+                       <property name="text">
+                        <string>Max Players:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QSpinBox" name="maxPlayersSpinBox">
+                       <property name="minimum">
+                        <number>1</number>
+                       </property>
+                       <property name="maximum">
+                        <number>50</number>
+                       </property>
+                       <property name="singleStep">
+                        <number>1</number>
+                       </property>
+                       <property name="value">
+                        <number>50</number>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QFormLayout" name="bubbleMinimumComboFormLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="bubbleMinimumComboLabel">
+                       <property name="toolTip">
+                        <string>Minimum combo before combo break to show a bubble in XReplays mode</string>
+                       </property>
+                       <property name="text">
+                        <string>Bubble Minimum Combo:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QSpinBox" name="bubbleMinimumComboSpinBox">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="sortHorizontalLayout">
+                   <item>
+                    <layout class="QFormLayout" name="sortByFormLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="sortByLabel">
+                       <property name="text">
+                        <string>Sort By:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QComboBox" name="sortByComboBox">
+                       <item>
+                        <property name="text">
+                         <string notr="true">Score</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string notr="true">PP</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QCheckBox" name="liveSortCheckBox">
+                     <property name="text">
+                      <string>Live Sort</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QGridLayout" name="knockoutCursorSizeGridLayout">
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="knockoutCursorSizeLabel">
+                     <property name="toolTip">
+                      <string>Minimum cursor size (when all players are alive)
+Maximum cursor size (when there is only 1 player left)</string>
+                     </property>
+                     <property name="text">
+                      <string>Cursor Size:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2" rowspan="2">
+                    <widget class="QLabeledDoubleRangeSlider" name="knockoutCursorSizeSlider">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="checkBoxHorizontalLayout">
+                   <item>
+                    <widget class="QCheckBox" name="revivePlayersAtEndCheckBox">
+                     <property name="toolTip">
+                      <string>Whether knocked out players should appear on map end.</string>
+                     </property>
+                     <property name="text">
+                      <string>Revive Players At End</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QCheckBox" name="HideOverlayOnBreaksCheckBox">
+                     <property name="text">
+                      <string>Hide Overlay On Breaks</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="addDanserCheckBox">
+                   <property name="text">
+                    <string>Add Danser</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QFormLayout" name="danserNameFormLayout">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="danserNameLabel">
+                     <property name="text">
+                      <string>Danser Name:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="danserNameLineEdit"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="openKnockoutReplaysFolderPushButton">
+                   <property name="text">
+                    <string>open knockout replays folder</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QGroupBox" name="excludeModsGroupBox">
+                <property name="toolTip">
+                 <string>Exclude plays which contain one of the mods set here</string>
+                </property>
+                <property name="title">
+                 <string>Exclude Mods</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_33">
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="excludeModsGridLayout">
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="excludeModsHDCheckBox">
+                     <property name="text">
+                      <string notr="true">HD</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="excludeModsEZCheckBox">
+                     <property name="text">
+                      <string notr="true">EZ</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="2">
+                    <widget class="QCheckBox" name="excludeModsV2CheckBox">
+                     <property name="text">
+                      <string notr="true">V2</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QCheckBox" name="excludeModsHTCheckBox">
+                     <property name="text">
+                      <string notr="true">HT</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QCheckBox" name="excludeModsPFCheckBox">
+                     <property name="text">
+                      <string notr="true">PF</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QCheckBox" name="excludeModsNCCheckBox">
+                     <property name="text">
+                      <string notr="true">NC</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QCheckBox" name="excludeModsRXCheckBox">
+                     <property name="text">
+                      <string notr="true">RX</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QCheckBox" name="excludeModsSDCheckBox">
+                     <property name="text">
+                      <string notr="true">SD</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="excludeModsDTCheckBox">
+                     <property name="text">
+                      <string notr="true">DT</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QCheckBox" name="excludeModsATCheckBox">
+                     <property name="text">
+                      <string notr="true">AT</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QCheckBox" name="excludeModsFLCheckBox">
+                     <property name="text">
+                      <string notr="true">FL</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QCheckBox" name="excludeModsHRCheckBox">
+                     <property name="text">
+                      <string notr="true">HR</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <widget class="QCheckBox" name="excludeModsAPCheckBox">
+                     <property name="text">
+                      <string notr="true">AP</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QCheckBox" name="excludeModsNFCheckBox">
+                     <property name="text">
+                      <string notr="true">NF</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QCheckBox" name="excludeModsTDCheckBox">
+                     <property name="text">
+                      <string notr="true">TD</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QCheckBox" name="excludeModsSOCheckBox">
+                     <property name="text">
+                      <string notr="true">SO</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QGroupBox" name="hideModsGroupBox">
+                <property name="toolTip">
+                 <string>Hide specific mods from being displayed in overlay (like NF)</string>
+                </property>
+                <property name="title">
+                 <string>Hide Mods</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_32">
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="hideModsGridLayout">
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="hideModsHDCheckBox">
+                     <property name="text">
+                      <string notr="true">HD</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="hideModsEZCheckBox">
+                     <property name="text">
+                      <string notr="true">EZ</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="2">
+                    <widget class="QCheckBox" name="hideModsV2CheckBox">
+                     <property name="text">
+                      <string notr="true">V2</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QCheckBox" name="hideModsHTCheckBox">
+                     <property name="text">
+                      <string notr="true">HT</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QCheckBox" name="hideModsPFCheckBox">
+                     <property name="text">
+                      <string notr="true">PF</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QCheckBox" name="hideModsNCCheckBox">
+                     <property name="text">
+                      <string notr="true">NC</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QCheckBox" name="hideModsRXCheckBox">
+                     <property name="text">
+                      <string notr="true">RX</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QCheckBox" name="hideModsSDCheckBox">
+                     <property name="text">
+                      <string notr="true">SD</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="hideModsDTCheckBox">
+                     <property name="text">
+                      <string notr="true">DT</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QCheckBox" name="hideModsATCheckBox">
+                     <property name="text">
+                      <string notr="true">AT</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QCheckBox" name="hideModsFLCheckBox">
+                     <property name="text">
+                      <string notr="true">FL</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QCheckBox" name="hideModsHRCheckBox">
+                     <property name="text">
+                      <string notr="true">HR</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <widget class="QCheckBox" name="hideModsAPCheckBox">
+                     <property name="text">
+                      <string notr="true">AP</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QCheckBox" name="hideModsNFCheckBox">
+                     <property name="text">
+                      <string notr="true">NF</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QCheckBox" name="hideModsTDCheckBox">
+                     <property name="text">
+                      <string notr="true">TD</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QCheckBox" name="hideModsSOCheckBox">
+                     <property name="text">
+                      <string notr="true">SO</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="2">
+               <widget class="QGroupBox" name="experimentalFeaturesGroupBox">
+                <property name="title">
+                 <string>Experimental Features</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item>
+                  <widget class="QCheckBox" name="modifyOsrMD5CheckBox">
+                   <property name="toolTip">
+                    <string>Change the Beatmap MD5 of the *.osr file in the replays folder to the MD5 of the currently selected beatmap, which is convenient for making a comparison video of the same song with different difficulties.</string>
+                   </property>
+                   <property name="text">
+                    <string>Modify the Beatmap MD5 of *.osr Files</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="addDateAfterPlayerNamecheckBox">
+                   <property name="toolTip">
+                    <string>add the date after the player's username, which is convenient for making comparison videos of players in different periods.</string>
+                   </property>
+                   <property name="text">
+                    <string>Add Date After Player Name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QFormLayout" name="dateFormatFormLayout">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="dateFormatLabel">
+                     <property name="text">
+                      <string>Date Format:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="dateFormatComboBox">
+                     <item>
+                      <property name="text">
+                       <string>YYYY-mm-dd</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>mm-dd-YYYY</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>dd-mm-YYYY</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
             <widget class="QWidget" name="recordingSettings">
              <attribute name="title">
               <string>Recording</string>
@@ -2396,7 +3121,7 @@
                   <item>
                    <widget class="QLabel" name="danserGuiDescriptionLlabel">
                     <property name="text">
-                     <string>**[Danser Gui](https://github.com/spaceskynet/danser-gui) - A Gui Application made for [DANSER](https://github.com/Wieku/danser-go)**</string>
+                     <string>About Title</string>
                     </property>
                     <property name="textFormat">
                      <enum>Qt::MarkdownText</enum>
@@ -2414,15 +3139,7 @@
                 <item row="1" column="0" colspan="3">
                  <widget class="QLabel" name="aboutMainMarkdownLabel">
                   <property name="text">
-                   <string>This program (Danser GUI) is mainly created by [@SpaceSkyNet](https://github.com/spaceskynet), which is licensed under the [MIT License](https://github.com/spaceskynet/danser-gui/blob/master/LICENSE).
-
-**Thanks to these projects:**
-
-1. [danser-go](https://github.com/Wieku/danser-go): a CLI visualisation tool for osu!standard maps.
-2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools): a collection of libraries and scripts for manipulating the osu! .db files.
-3. [osu-replay-to-map](https://github.com/spawn18/osu-replay-to-map): a program written in Python, that creates maps based on replay.
-4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app): An application to convert replay files to video.
-5. [ordr-client](https://github.com/MasterIO02/ordr-client) &amp; [ordr-server](https://github.com/MasterIO02/ordr-server): a free and easy-to-use API / [website](https://ordr.issou.best/) that allows you to render osu! videos of replays using danser.</string>
+                   <string>About Description</string>
                   </property>
                   <property name="textFormat">
                    <enum>Qt::MarkdownText</enum>
@@ -2476,6 +3193,11 @@
    <extends>QLabel</extends>
    <header>GuiWidgets</header>
   </customwidget>
+  <customwidget>
+   <class>QLabeledDoubleRangeSlider</class>
+   <extends>QSlider</extends>
+   <header>superqt</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mainTabWidget</tabstop>
@@ -2495,12 +3217,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>315</x>
+     <y>186</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>436</x>
+     <y>212</y>
     </hint>
    </hints>
   </connection>
@@ -2511,12 +3233,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>315</x>
+     <y>186</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>430</x>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
@@ -2527,12 +3249,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>66</x>
-     <y>99</y>
+     <x>93</x>
+     <y>201</y>
     </hint>
     <hint type="destinationlabel">
-     <x>90</x>
-     <y>99</y>
+     <x>117</x>
+     <y>223</y>
     </hint>
    </hints>
   </connection>
@@ -2543,12 +3265,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>116</x>
-     <y>99</y>
+     <x>143</x>
+     <y>201</y>
     </hint>
     <hint type="destinationlabel">
-     <x>115</x>
-     <y>99</y>
+     <x>175</x>
+     <y>249</y>
     </hint>
    </hints>
   </connection>
@@ -2559,12 +3281,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>318</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>318</x>
+     <y>228</y>
     </hint>
    </hints>
   </connection>
@@ -2575,12 +3297,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>318</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>318</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -2591,12 +3313,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>477</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>477</x>
+     <y>228</y>
     </hint>
    </hints>
   </connection>
@@ -2607,12 +3329,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>477</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>477</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -2623,12 +3345,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>654</x>
+     <y>313</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>654</x>
+     <y>340</y>
     </hint>
    </hints>
   </connection>
@@ -2639,12 +3361,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>102</x>
-     <y>108</y>
+     <x>134</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>108</y>
+     <x>220</x>
+     <y>320</y>
     </hint>
    </hints>
   </connection>
@@ -2655,12 +3377,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>108</y>
+     <x>220</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
-     <x>101</x>
-     <y>108</y>
+     <x>134</x>
+     <y>320</y>
     </hint>
    </hints>
   </connection>
@@ -2671,12 +3393,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>88</x>
-     <y>108</y>
+     <x>124</x>
+     <y>276</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>108</y>
+     <x>220</x>
+     <y>276</y>
     </hint>
    </hints>
   </connection>
@@ -2687,12 +3409,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>108</y>
+     <x>220</x>
+     <y>276</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>108</y>
+     <x>134</x>
+     <y>276</y>
     </hint>
    </hints>
   </connection>
@@ -2703,12 +3425,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>108</y>
+     <x>156</x>
+     <y>231</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>108</y>
+     <x>351</x>
+     <y>297</y>
     </hint>
    </hints>
   </connection>
@@ -2719,12 +3441,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>535</x>
+     <y>130</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>646</x>
+     <y>133</y>
     </hint>
    </hints>
   </connection>
@@ -2735,12 +3457,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>99</y>
+     <x>535</x>
+     <y>162</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>99</y>
+     <x>646</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -2751,12 +3473,44 @@
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>119</y>
+     <x>129</x>
+     <y>241</y>
     </hint>
     <hint type="destinationlabel">
-     <x>105</x>
-     <y>119</y>
+     <x>131</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addDanserCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>danserNameLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>275</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>154</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addDateAfterPlayerNamecheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dateFormatComboBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>282</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>546</x>
+     <y>304</y>
     </hint>
    </hints>
   </connection>

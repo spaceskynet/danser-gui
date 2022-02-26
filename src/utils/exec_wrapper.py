@@ -4,6 +4,7 @@ from os import curdir, chdir
 from PyQt5.QtCore import QProcess, QThread, pyqtSignal
 from os.path import join, abspath
 from utils.osudbparser import create_db
+from utils.osrparser import add_date_after_user_name, modify_replay_beatmap_hash
 import re
 import logging
 import traceback
@@ -49,7 +50,25 @@ class SongsDBUpdateThread(QThread):
             self.p.finished.connect(lambda: (logging.info("[GUI][SongsDBUpdateThread][danser] Finshed!")))
             self.p.waitForStarted() 
             self.p.waitForFinished(-1)
-            
+
+@logged(logging.getLogger(__name__))
+@traced("run")
+class ReplayModifyThread(QThread):
+    def __init__(self, root_path=None, beatmap_hash=None, date_format_index=None, parent=None):
+        super(ReplayModifyThread, self).__init__(parent)
+        self.init(root_path, beatmap_hash, date_format_index)
+
+    def init(self, root_path=None, beatmap_hash=None, date_format_index=None):
+        self.root_path = root_path
+        self.beatmap_hash = beatmap_hash
+        self.date_format_index = date_format_index
+
+    def run(self):
+        if self.beatmap_hash != None:
+            modify_replay_beatmap_hash(self.root_path, self.beatmap_hash)
+        if self.date_format_index != None:
+            add_date_after_user_name(self.root_path, self.date_format_index)
+
 @logged(logging.getLogger(__name__))
 @traced("run", "setProgressDialog")
 class DanserExecByArgsThread(QThread):

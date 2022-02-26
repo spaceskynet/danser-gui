@@ -12,7 +12,6 @@ def decode_config_file(toml_path):
         content = content[3:]
     return content.decode('utf8')
 
-
 @logged(logging.getLogger(__name__))
 @traced
 class DanserGUIConfig(object):
@@ -65,6 +64,20 @@ class DanserGUIConfig(object):
         danser_config.Graphics.FPSCap = config.Graphics.FPSCap
         danser_config.Graphics.ShowFPS = config.Graphics.ShowFPS
 
+        # Knockout
+        danser_config.Knockout.Mode = config.Knockout.Mode
+        danser_config.Knockout.MaxPlayers = config.Knockout.MaxPlayers
+        danser_config.Knockout.BubbleMinimumCombo = config.Knockout.BubbleMinimumCombo
+        danser_config.Knockout.RevivePlayersAtEnd = config.Knockout.RevivePlayersAtEnd
+        danser_config.Knockout.LiveSort = config.Knockout.LiveSort
+        danser_config.Knockout.SortBy = config.Knockout.SortBy
+        danser_config.Knockout.HideOverlayOnBreaks = config.Knockout.HideOverlayOnBreaks
+        danser_config.Knockout.AddDanser = config.Knockout.AddDanser
+        danser_config.Knockout.DanserName = config.Knockout.DanserName
+        danser_config.Knockout.MinCursorSize = config.Knockout.MinCursorSize * danser_config.Cursor.CursorSize
+        danser_config.Knockout.MaxCursorSize = config.Knockout.MaxCursorSize * danser_config.Cursor.CursorSize
+        danser_config.Knockout.ExcludeMods = config.Knockout.ExcludeMods
+        danser_config.Knockout.HideMods = config.Knockout.HideMods
 
         # Recording
         encoder = config.Recording.Encoder

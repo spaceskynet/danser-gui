@@ -12,8 +12,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from GuiWidgets import QClickedLineEdit, QClickedLabel
-from superqt import QLabeledSlider, QLabeledDoubleSlider, QLabeledRangeSlider
-
+from superqt import QLabeledSlider, QLabeledDoubleSlider, QLabeledRangeSlider, QLabeledDoubleRangeSlider
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -774,6 +773,476 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addWidget(self.beatmapCustomizeGroupBox)
 
         self.settingsTabWidget.addTab(self.beatmapSettings, "")
+        self.knockoutSettinigs = QWidget()
+        self.knockoutSettinigs.setObjectName(u"knockoutSettinigs")
+        self.gridLayout_34 = QGridLayout(self.knockoutSettinigs)
+        self.gridLayout_34.setObjectName(u"gridLayout_34")
+        self.knockoutGeneralGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.knockoutGeneralGroupBox.setObjectName(u"knockoutGeneralGroupBox")
+        self.verticalLayout_3 = QVBoxLayout(self.knockoutGeneralGroupBox)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.knockoutModeFormLayout = QFormLayout()
+        self.knockoutModeFormLayout.setObjectName(u"knockoutModeFormLayout")
+        self.knockoutModeLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.knockoutModeLabel.setObjectName(u"knockoutModeLabel")
+
+        self.knockoutModeFormLayout.setWidget(0, QFormLayout.LabelRole, self.knockoutModeLabel)
+
+        self.knockoutModeComboBox = QComboBox(self.knockoutGeneralGroupBox)
+        self.knockoutModeComboBox.addItem("")
+        self.knockoutModeComboBox.addItem("")
+        self.knockoutModeComboBox.addItem("")
+        self.knockoutModeComboBox.addItem("")
+        self.knockoutModeComboBox.addItem("")
+        self.knockoutModeComboBox.setObjectName(u"knockoutModeComboBox")
+
+        self.knockoutModeFormLayout.setWidget(0, QFormLayout.FieldRole, self.knockoutModeComboBox)
+
+
+        self.verticalLayout_3.addLayout(self.knockoutModeFormLayout)
+
+        self.spinBoxHorizontalLayout = QHBoxLayout()
+        self.spinBoxHorizontalLayout.setObjectName(u"spinBoxHorizontalLayout")
+        self.maxPlayersFormLayout = QFormLayout()
+        self.maxPlayersFormLayout.setObjectName(u"maxPlayersFormLayout")
+        self.maxPlayersLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.maxPlayersLabel.setObjectName(u"maxPlayersLabel")
+
+        self.maxPlayersFormLayout.setWidget(0, QFormLayout.LabelRole, self.maxPlayersLabel)
+
+        self.maxPlayersSpinBox = QSpinBox(self.knockoutGeneralGroupBox)
+        self.maxPlayersSpinBox.setObjectName(u"maxPlayersSpinBox")
+        self.maxPlayersSpinBox.setMinimum(1)
+        self.maxPlayersSpinBox.setMaximum(50)
+        self.maxPlayersSpinBox.setSingleStep(1)
+        self.maxPlayersSpinBox.setValue(50)
+
+        self.maxPlayersFormLayout.setWidget(0, QFormLayout.FieldRole, self.maxPlayersSpinBox)
+
+
+        self.spinBoxHorizontalLayout.addLayout(self.maxPlayersFormLayout)
+
+        self.bubbleMinimumComboFormLayout = QFormLayout()
+        self.bubbleMinimumComboFormLayout.setObjectName(u"bubbleMinimumComboFormLayout")
+        self.bubbleMinimumComboLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.bubbleMinimumComboLabel.setObjectName(u"bubbleMinimumComboLabel")
+
+        self.bubbleMinimumComboFormLayout.setWidget(0, QFormLayout.LabelRole, self.bubbleMinimumComboLabel)
+
+        self.bubbleMinimumComboSpinBox = QSpinBox(self.knockoutGeneralGroupBox)
+        self.bubbleMinimumComboSpinBox.setObjectName(u"bubbleMinimumComboSpinBox")
+        self.bubbleMinimumComboSpinBox.setMaximum(10000)
+
+        self.bubbleMinimumComboFormLayout.setWidget(0, QFormLayout.FieldRole, self.bubbleMinimumComboSpinBox)
+
+
+        self.spinBoxHorizontalLayout.addLayout(self.bubbleMinimumComboFormLayout)
+
+
+        self.verticalLayout_3.addLayout(self.spinBoxHorizontalLayout)
+
+        self.sortHorizontalLayout = QHBoxLayout()
+        self.sortHorizontalLayout.setObjectName(u"sortHorizontalLayout")
+        self.sortByFormLayout = QFormLayout()
+        self.sortByFormLayout.setObjectName(u"sortByFormLayout")
+        self.sortByLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.sortByLabel.setObjectName(u"sortByLabel")
+
+        self.sortByFormLayout.setWidget(0, QFormLayout.LabelRole, self.sortByLabel)
+
+        self.sortByComboBox = QComboBox(self.knockoutGeneralGroupBox)
+        self.sortByComboBox.addItem(u"Score")
+        self.sortByComboBox.addItem(u"PP")
+        self.sortByComboBox.setObjectName(u"sortByComboBox")
+
+        self.sortByFormLayout.setWidget(0, QFormLayout.FieldRole, self.sortByComboBox)
+
+
+        self.sortHorizontalLayout.addLayout(self.sortByFormLayout)
+
+        self.liveSortCheckBox = QCheckBox(self.knockoutGeneralGroupBox)
+        self.liveSortCheckBox.setObjectName(u"liveSortCheckBox")
+
+        self.sortHorizontalLayout.addWidget(self.liveSortCheckBox)
+
+
+        self.verticalLayout_3.addLayout(self.sortHorizontalLayout)
+
+        self.knockoutCursorSizeGridLayout = QGridLayout()
+        self.knockoutCursorSizeGridLayout.setObjectName(u"knockoutCursorSizeGridLayout")
+        self.knockoutCursorSizeLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.knockoutCursorSizeLabel.setObjectName(u"knockoutCursorSizeLabel")
+
+        self.knockoutCursorSizeGridLayout.addWidget(self.knockoutCursorSizeLabel, 1, 1, 1, 1)
+
+        self.knockoutCursorSizeSlider = QLabeledDoubleRangeSlider(self.knockoutGeneralGroupBox)
+        self.knockoutCursorSizeSlider.setObjectName(u"knockoutCursorSizeSlider")
+        self.knockoutCursorSizeSlider.setOrientation(Qt.Horizontal)
+
+        self.knockoutCursorSizeGridLayout.addWidget(self.knockoutCursorSizeSlider, 0, 2, 2, 1)
+
+
+        self.verticalLayout_3.addLayout(self.knockoutCursorSizeGridLayout)
+
+        self.checkBoxHorizontalLayout = QHBoxLayout()
+        self.checkBoxHorizontalLayout.setObjectName(u"checkBoxHorizontalLayout")
+        self.revivePlayersAtEndCheckBox = QCheckBox(self.knockoutGeneralGroupBox)
+        self.revivePlayersAtEndCheckBox.setObjectName(u"revivePlayersAtEndCheckBox")
+
+        self.checkBoxHorizontalLayout.addWidget(self.revivePlayersAtEndCheckBox)
+
+        self.HideOverlayOnBreaksCheckBox = QCheckBox(self.knockoutGeneralGroupBox)
+        self.HideOverlayOnBreaksCheckBox.setObjectName(u"HideOverlayOnBreaksCheckBox")
+
+        self.checkBoxHorizontalLayout.addWidget(self.HideOverlayOnBreaksCheckBox)
+
+
+        self.verticalLayout_3.addLayout(self.checkBoxHorizontalLayout)
+
+        self.addDanserCheckBox = QCheckBox(self.knockoutGeneralGroupBox)
+        self.addDanserCheckBox.setObjectName(u"addDanserCheckBox")
+
+        self.verticalLayout_3.addWidget(self.addDanserCheckBox)
+
+        self.danserNameFormLayout = QFormLayout()
+        self.danserNameFormLayout.setObjectName(u"danserNameFormLayout")
+        self.danserNameLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.danserNameLabel.setObjectName(u"danserNameLabel")
+
+        self.danserNameFormLayout.setWidget(0, QFormLayout.LabelRole, self.danserNameLabel)
+
+        self.danserNameLineEdit = QLineEdit(self.knockoutGeneralGroupBox)
+        self.danserNameLineEdit.setObjectName(u"danserNameLineEdit")
+
+        self.danserNameFormLayout.setWidget(0, QFormLayout.FieldRole, self.danserNameLineEdit)
+
+
+        self.verticalLayout_3.addLayout(self.danserNameFormLayout)
+
+        self.openKnockoutReplaysFolderPushButton = QPushButton(self.knockoutGeneralGroupBox)
+        self.openKnockoutReplaysFolderPushButton.setObjectName(u"openKnockoutReplaysFolderPushButton")
+
+        self.verticalLayout_3.addWidget(self.openKnockoutReplaysFolderPushButton)
+
+
+        self.gridLayout_34.addWidget(self.knockoutGeneralGroupBox, 0, 0, 2, 1)
+
+        self.excludeModsGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.excludeModsGroupBox.setObjectName(u"excludeModsGroupBox")
+        self.gridLayout_33 = QGridLayout(self.excludeModsGroupBox)
+        self.gridLayout_33.setObjectName(u"gridLayout_33")
+        self.excludeModsGridLayout = QGridLayout()
+        self.excludeModsGridLayout.setObjectName(u"excludeModsGridLayout")
+        self.excludeModsHDCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsHDCheckBox.setObjectName(u"excludeModsHDCheckBox")
+        self.excludeModsHDCheckBox.setText(u"HD")
+        self.excludeModsHDCheckBox.setChecked(False)
+        self.excludeModsHDCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsHDCheckBox, 1, 0, 1, 1)
+
+        self.excludeModsEZCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsEZCheckBox.setObjectName(u"excludeModsEZCheckBox")
+        self.excludeModsEZCheckBox.setText(u"EZ")
+        self.excludeModsEZCheckBox.setChecked(False)
+        self.excludeModsEZCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsEZCheckBox, 3, 0, 1, 1)
+
+        self.excludeModsV2CheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsV2CheckBox.setObjectName(u"excludeModsV2CheckBox")
+        self.excludeModsV2CheckBox.setText(u"V2")
+        self.excludeModsV2CheckBox.setChecked(False)
+        self.excludeModsV2CheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsV2CheckBox, 3, 2, 1, 1)
+
+        self.excludeModsHTCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsHTCheckBox.setObjectName(u"excludeModsHTCheckBox")
+        self.excludeModsHTCheckBox.setText(u"HT")
+        self.excludeModsHTCheckBox.setChecked(False)
+        self.excludeModsHTCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsHTCheckBox, 2, 2, 1, 1)
+
+        self.excludeModsPFCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsPFCheckBox.setObjectName(u"excludeModsPFCheckBox")
+        self.excludeModsPFCheckBox.setText(u"PF")
+        self.excludeModsPFCheckBox.setChecked(False)
+        self.excludeModsPFCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsPFCheckBox, 0, 1, 1, 1)
+
+        self.excludeModsNCCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsNCCheckBox.setObjectName(u"excludeModsNCCheckBox")
+        self.excludeModsNCCheckBox.setText(u"NC")
+        self.excludeModsNCCheckBox.setChecked(False)
+        self.excludeModsNCCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsNCCheckBox, 2, 1, 1, 1)
+
+        self.excludeModsRXCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsRXCheckBox.setObjectName(u"excludeModsRXCheckBox")
+        self.excludeModsRXCheckBox.setText(u"RX")
+        self.excludeModsRXCheckBox.setChecked(False)
+        self.excludeModsRXCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsRXCheckBox, 4, 1, 1, 1)
+
+        self.excludeModsSDCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsSDCheckBox.setObjectName(u"excludeModsSDCheckBox")
+        self.excludeModsSDCheckBox.setText(u"SD")
+        self.excludeModsSDCheckBox.setChecked(False)
+        self.excludeModsSDCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsSDCheckBox, 0, 0, 1, 1)
+
+        self.excludeModsDTCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsDTCheckBox.setObjectName(u"excludeModsDTCheckBox")
+        self.excludeModsDTCheckBox.setText(u"DT")
+        self.excludeModsDTCheckBox.setChecked(False)
+        self.excludeModsDTCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsDTCheckBox, 2, 0, 1, 1)
+
+        self.excludeModsATCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsATCheckBox.setObjectName(u"excludeModsATCheckBox")
+        self.excludeModsATCheckBox.setText(u"AT")
+        self.excludeModsATCheckBox.setChecked(False)
+        self.excludeModsATCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsATCheckBox, 4, 0, 1, 1)
+
+        self.excludeModsFLCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsFLCheckBox.setObjectName(u"excludeModsFLCheckBox")
+        self.excludeModsFLCheckBox.setText(u"FL")
+        self.excludeModsFLCheckBox.setChecked(False)
+        self.excludeModsFLCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsFLCheckBox, 1, 1, 1, 1)
+
+        self.excludeModsHRCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsHRCheckBox.setObjectName(u"excludeModsHRCheckBox")
+        self.excludeModsHRCheckBox.setText(u"HR")
+        self.excludeModsHRCheckBox.setChecked(False)
+        self.excludeModsHRCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsHRCheckBox, 3, 1, 1, 1)
+
+        self.excludeModsAPCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsAPCheckBox.setObjectName(u"excludeModsAPCheckBox")
+        self.excludeModsAPCheckBox.setText(u"AP")
+        self.excludeModsAPCheckBox.setChecked(False)
+        self.excludeModsAPCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsAPCheckBox, 4, 2, 1, 1)
+
+        self.excludeModsNFCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsNFCheckBox.setObjectName(u"excludeModsNFCheckBox")
+        self.excludeModsNFCheckBox.setText(u"NF")
+        self.excludeModsNFCheckBox.setChecked(False)
+        self.excludeModsNFCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsNFCheckBox, 0, 2, 1, 1)
+
+        self.excludeModsTDCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsTDCheckBox.setObjectName(u"excludeModsTDCheckBox")
+        self.excludeModsTDCheckBox.setText(u"TD")
+        self.excludeModsTDCheckBox.setChecked(False)
+        self.excludeModsTDCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsTDCheckBox, 5, 0, 1, 1)
+
+        self.excludeModsSOCheckBox = QCheckBox(self.excludeModsGroupBox)
+        self.excludeModsSOCheckBox.setObjectName(u"excludeModsSOCheckBox")
+        self.excludeModsSOCheckBox.setText(u"SO")
+        self.excludeModsSOCheckBox.setChecked(False)
+        self.excludeModsSOCheckBox.setTristate(False)
+
+        self.excludeModsGridLayout.addWidget(self.excludeModsSOCheckBox, 5, 1, 1, 1)
+
+
+        self.gridLayout_33.addLayout(self.excludeModsGridLayout, 0, 0, 1, 1)
+
+
+        self.gridLayout_34.addWidget(self.excludeModsGroupBox, 0, 1, 1, 1)
+
+        self.hideModsGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.hideModsGroupBox.setObjectName(u"hideModsGroupBox")
+        self.gridLayout_32 = QGridLayout(self.hideModsGroupBox)
+        self.gridLayout_32.setObjectName(u"gridLayout_32")
+        self.hideModsGridLayout = QGridLayout()
+        self.hideModsGridLayout.setObjectName(u"hideModsGridLayout")
+        self.hideModsHDCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsHDCheckBox.setObjectName(u"hideModsHDCheckBox")
+        self.hideModsHDCheckBox.setText(u"HD")
+        self.hideModsHDCheckBox.setChecked(False)
+        self.hideModsHDCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsHDCheckBox, 1, 0, 1, 1)
+
+        self.hideModsEZCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsEZCheckBox.setObjectName(u"hideModsEZCheckBox")
+        self.hideModsEZCheckBox.setText(u"EZ")
+        self.hideModsEZCheckBox.setChecked(False)
+        self.hideModsEZCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsEZCheckBox, 3, 0, 1, 1)
+
+        self.hideModsV2CheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsV2CheckBox.setObjectName(u"hideModsV2CheckBox")
+        self.hideModsV2CheckBox.setText(u"V2")
+        self.hideModsV2CheckBox.setChecked(False)
+        self.hideModsV2CheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsV2CheckBox, 3, 2, 1, 1)
+
+        self.hideModsHTCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsHTCheckBox.setObjectName(u"hideModsHTCheckBox")
+        self.hideModsHTCheckBox.setText(u"HT")
+        self.hideModsHTCheckBox.setChecked(False)
+        self.hideModsHTCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsHTCheckBox, 2, 2, 1, 1)
+
+        self.hideModsPFCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsPFCheckBox.setObjectName(u"hideModsPFCheckBox")
+        self.hideModsPFCheckBox.setText(u"PF")
+        self.hideModsPFCheckBox.setChecked(False)
+        self.hideModsPFCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsPFCheckBox, 0, 1, 1, 1)
+
+        self.hideModsNCCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsNCCheckBox.setObjectName(u"hideModsNCCheckBox")
+        self.hideModsNCCheckBox.setText(u"NC")
+        self.hideModsNCCheckBox.setChecked(False)
+        self.hideModsNCCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsNCCheckBox, 2, 1, 1, 1)
+
+        self.hideModsRXCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsRXCheckBox.setObjectName(u"hideModsRXCheckBox")
+        self.hideModsRXCheckBox.setText(u"RX")
+        self.hideModsRXCheckBox.setChecked(False)
+        self.hideModsRXCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsRXCheckBox, 4, 1, 1, 1)
+
+        self.hideModsSDCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsSDCheckBox.setObjectName(u"hideModsSDCheckBox")
+        self.hideModsSDCheckBox.setText(u"SD")
+        self.hideModsSDCheckBox.setChecked(False)
+        self.hideModsSDCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsSDCheckBox, 0, 0, 1, 1)
+
+        self.hideModsDTCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsDTCheckBox.setObjectName(u"hideModsDTCheckBox")
+        self.hideModsDTCheckBox.setText(u"DT")
+        self.hideModsDTCheckBox.setChecked(False)
+        self.hideModsDTCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsDTCheckBox, 2, 0, 1, 1)
+
+        self.hideModsATCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsATCheckBox.setObjectName(u"hideModsATCheckBox")
+        self.hideModsATCheckBox.setText(u"AT")
+        self.hideModsATCheckBox.setChecked(False)
+        self.hideModsATCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsATCheckBox, 4, 0, 1, 1)
+
+        self.hideModsFLCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsFLCheckBox.setObjectName(u"hideModsFLCheckBox")
+        self.hideModsFLCheckBox.setText(u"FL")
+        self.hideModsFLCheckBox.setChecked(False)
+        self.hideModsFLCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsFLCheckBox, 1, 1, 1, 1)
+
+        self.hideModsHRCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsHRCheckBox.setObjectName(u"hideModsHRCheckBox")
+        self.hideModsHRCheckBox.setText(u"HR")
+        self.hideModsHRCheckBox.setChecked(False)
+        self.hideModsHRCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsHRCheckBox, 3, 1, 1, 1)
+
+        self.hideModsAPCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsAPCheckBox.setObjectName(u"hideModsAPCheckBox")
+        self.hideModsAPCheckBox.setText(u"AP")
+        self.hideModsAPCheckBox.setChecked(False)
+        self.hideModsAPCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsAPCheckBox, 4, 2, 1, 1)
+
+        self.hideModsNFCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsNFCheckBox.setObjectName(u"hideModsNFCheckBox")
+        self.hideModsNFCheckBox.setText(u"NF")
+        self.hideModsNFCheckBox.setChecked(False)
+        self.hideModsNFCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsNFCheckBox, 0, 2, 1, 1)
+
+        self.hideModsTDCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsTDCheckBox.setObjectName(u"hideModsTDCheckBox")
+        self.hideModsTDCheckBox.setText(u"TD")
+        self.hideModsTDCheckBox.setChecked(False)
+        self.hideModsTDCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsTDCheckBox, 5, 0, 1, 1)
+
+        self.hideModsSOCheckBox = QCheckBox(self.hideModsGroupBox)
+        self.hideModsSOCheckBox.setObjectName(u"hideModsSOCheckBox")
+        self.hideModsSOCheckBox.setText(u"SO")
+        self.hideModsSOCheckBox.setChecked(False)
+        self.hideModsSOCheckBox.setTristate(False)
+
+        self.hideModsGridLayout.addWidget(self.hideModsSOCheckBox, 5, 1, 1, 1)
+
+
+        self.gridLayout_32.addLayout(self.hideModsGridLayout, 0, 0, 1, 1)
+
+
+        self.gridLayout_34.addWidget(self.hideModsGroupBox, 0, 2, 1, 1)
+
+        self.experimentalFeaturesGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.experimentalFeaturesGroupBox.setObjectName(u"experimentalFeaturesGroupBox")
+        self.verticalLayout_7 = QVBoxLayout(self.experimentalFeaturesGroupBox)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.modifyOsrMD5CheckBox = QCheckBox(self.experimentalFeaturesGroupBox)
+        self.modifyOsrMD5CheckBox.setObjectName(u"modifyOsrMD5CheckBox")
+
+        self.verticalLayout_7.addWidget(self.modifyOsrMD5CheckBox)
+
+        self.addDateAfterPlayerNamecheckBox = QCheckBox(self.experimentalFeaturesGroupBox)
+        self.addDateAfterPlayerNamecheckBox.setObjectName(u"addDateAfterPlayerNamecheckBox")
+
+        self.verticalLayout_7.addWidget(self.addDateAfterPlayerNamecheckBox)
+
+        self.dateFormatFormLayout = QFormLayout()
+        self.dateFormatFormLayout.setObjectName(u"dateFormatFormLayout")
+        self.dateFormatLabel = QLabel(self.experimentalFeaturesGroupBox)
+        self.dateFormatLabel.setObjectName(u"dateFormatLabel")
+
+        self.dateFormatFormLayout.setWidget(0, QFormLayout.LabelRole, self.dateFormatLabel)
+
+        self.dateFormatComboBox = QComboBox(self.experimentalFeaturesGroupBox)
+        self.dateFormatComboBox.addItem("")
+        self.dateFormatComboBox.addItem("")
+        self.dateFormatComboBox.addItem("")
+        self.dateFormatComboBox.setObjectName(u"dateFormatComboBox")
+
+        self.dateFormatFormLayout.setWidget(0, QFormLayout.FieldRole, self.dateFormatComboBox)
+
+
+        self.verticalLayout_7.addLayout(self.dateFormatFormLayout)
+
+
+        self.gridLayout_34.addWidget(self.experimentalFeaturesGroupBox, 1, 1, 1, 2)
+
+        self.settingsTabWidget.addTab(self.knockoutSettinigs, "")
         self.recordingSettings = QWidget()
         self.recordingSettings.setObjectName(u"recordingSettings")
         self.gridLayout_9 = QGridLayout(self.recordingSettings)
@@ -1828,6 +2297,8 @@ class Ui_MainWindow(object):
         self.cursorsInMirrorCollageCheckBox.clicked.connect(self.cursorsInMirrorCollageSpinBox.setEnabled)
         self.cursorsInTagModeCheckBox.clicked.connect(self.cursorsInTagModeSpinBox.setEnabled)
         self.quickStartCheckBox.clicked.connect(self.skipIntroCheckBox.setChecked)
+        self.addDanserCheckBox.clicked.connect(self.danserNameLineEdit.setEnabled)
+        self.addDateAfterPlayerNamecheckBox.clicked.connect(self.dateFormatComboBox.setEnabled)
 
         self.mainTabWidget.setCurrentIndex(0)
         self.settingsTabWidget.setCurrentIndex(0)
@@ -1909,6 +2380,61 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.beatmapModsGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Mods", None))
         self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.beatmapSettings), QCoreApplication.translate("MainWindow", u"Beatmap", None))
+        self.knockoutGeneralGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"General", None))
+        self.knockoutModeLabel.setText(QCoreApplication.translate("MainWindow", u"Knockout Mode:", None))
+        self.knockoutModeComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"ComboBreak", None))
+        self.knockoutModeComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"MaxCombo", None))
+        self.knockoutModeComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"XReplays", None))
+        self.knockoutModeComboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"OneVsOne", None))
+        self.knockoutModeComboBox.setItemText(4, QCoreApplication.translate("MainWindow", u"SSOrQuit", None))
+
+#if QT_CONFIG(tooltip)
+        self.knockoutModeComboBox.setToolTip(QCoreApplication.translate("MainWindow", u"Knockout mode. More info.", None))
+#endif // QT_CONFIG(tooltip)
+        self.maxPlayersLabel.setText(QCoreApplication.translate("MainWindow", u"Max Players:", None))
+#if QT_CONFIG(tooltip)
+        self.bubbleMinimumComboLabel.setToolTip(QCoreApplication.translate("MainWindow", u"Minimum combo before combo break to show a bubble in XReplays mode", None))
+#endif // QT_CONFIG(tooltip)
+        self.bubbleMinimumComboLabel.setText(QCoreApplication.translate("MainWindow", u"Bubble Minimum Combo:", None))
+        self.sortByLabel.setText(QCoreApplication.translate("MainWindow", u"Sort By:", None))
+
+        self.liveSortCheckBox.setText(QCoreApplication.translate("MainWindow", u"Live Sort", None))
+#if QT_CONFIG(tooltip)
+        self.knockoutCursorSizeLabel.setToolTip(QCoreApplication.translate("MainWindow", u"Minimum cursor size (when all players are alive)\n"
+"Maximum cursor size (when there is only 1 player left)", None))
+#endif // QT_CONFIG(tooltip)
+        self.knockoutCursorSizeLabel.setText(QCoreApplication.translate("MainWindow", u"Cursor Size:", None))
+#if QT_CONFIG(tooltip)
+        self.revivePlayersAtEndCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"Whether knocked out players should appear on map end.", None))
+#endif // QT_CONFIG(tooltip)
+        self.revivePlayersAtEndCheckBox.setText(QCoreApplication.translate("MainWindow", u"Revive Players At End", None))
+        self.HideOverlayOnBreaksCheckBox.setText(QCoreApplication.translate("MainWindow", u"Hide Overlay On Breaks", None))
+        self.addDanserCheckBox.setText(QCoreApplication.translate("MainWindow", u"Add Danser", None))
+        self.danserNameLabel.setText(QCoreApplication.translate("MainWindow", u"Danser Name:", None))
+        self.openKnockoutReplaysFolderPushButton.setText(QCoreApplication.translate("MainWindow", u"open knockout replays folder", None))
+#if QT_CONFIG(tooltip)
+        self.excludeModsGroupBox.setToolTip(QCoreApplication.translate("MainWindow", u"Exclude plays which contain one of the mods set here", None))
+#endif // QT_CONFIG(tooltip)
+        self.excludeModsGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Exclude Mods", None))
+#if QT_CONFIG(tooltip)
+        self.hideModsGroupBox.setToolTip(QCoreApplication.translate("MainWindow", u"Hide specific mods from being displayed in overlay (like NF)", None))
+#endif // QT_CONFIG(tooltip)
+        self.hideModsGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Hide Mods", None))
+        self.experimentalFeaturesGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Experimental Features", None))
+#if QT_CONFIG(tooltip)
+        self.modifyOsrMD5CheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"Change the Beatmap MD5 of the *.osr file in the replays folder to the MD5 of the currently selected beatmap, which is convenient for making a comparison video of the same song with different difficulties.", None))
+#endif // QT_CONFIG(tooltip)
+        self.modifyOsrMD5CheckBox.setText(QCoreApplication.translate("MainWindow", u"Modify the Beatmap MD5 of *.osr Files", None))
+#if QT_CONFIG(tooltip)
+        self.addDateAfterPlayerNamecheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"add the date after the player's username, which is convenient for making comparison videos of players in different periods.", None))
+#endif // QT_CONFIG(tooltip)
+        self.addDateAfterPlayerNamecheckBox.setText(QCoreApplication.translate("MainWindow", u"Add Date After Player Name", None))
+        self.dateFormatLabel.setText(QCoreApplication.translate("MainWindow", u"Date Format:", None))
+        self.dateFormatComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"YYYY-mm-dd", None))
+        self.dateFormatComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"mm-dd-YYYY", None))
+        self.dateFormatComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"dd-mm-YYYY", None))
+
+        self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.knockoutSettinigs), QCoreApplication.translate("MainWindow", u"Knockout", None))
         self.recordingGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Recording", None))
         self.recordingResolutionLabel.setText(QCoreApplication.translate("MainWindow", u"Resolution:", None))
         self.recordingFPSLabel.setText(QCoreApplication.translate("MainWindow", u"FPS:", None))
@@ -2044,16 +2570,8 @@ class Ui_MainWindow(object):
         self.inGameBGDmabel.setText(QCoreApplication.translate("MainWindow", u"In Game:", None))
         self.breakBGDimLabel.setText(QCoreApplication.translate("MainWindow", u"Break:", None))
         self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.otherSettings), QCoreApplication.translate("MainWindow", u"Other", None))
-        self.danserGuiDescriptionLlabel.setText(QCoreApplication.translate("MainWindow", u"**[Danser Gui](https://github.com/spaceskynet/danser-gui) - A Gui Application made for [DANSER](https://github.com/Wieku/danser-go)**", None))
-        self.aboutMainMarkdownLabel.setText(QCoreApplication.translate("MainWindow", u"This program (Danser GUI) is mainly created by [@SpaceSkyNet](https://github.com/spaceskynet), which is licensed under the [MIT License](https://github.com/spaceskynet/danser-gui/blob/master/LICENSE).\n"
-"\n"
-"**Thanks to these projects:**\n"
-"\n"
-"1. [danser-go](https://github.com/Wieku/danser-go): a CLI visualisation tool for osu!standard maps.\n"
-"2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools): a collection of libraries and scripts for manipulating the osu! .db files.\n"
-"3. [osu-replay-to-map](https://github.com/spawn18/osu-replay-to-map): a program written in Python, that creates maps based on replay.\n"
-"4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app): An application to convert replay files to video.\n"
-"5. [ordr-client](https://github.com/MasterIO02/ordr-client) & [ordr-server](https://github.com/MasterIO02/ordr-server): a free and easy-to-use API / [website](https://ordr.issou.best/) that allows you to render osu! videos of replays using danser.", None))
+        self.danserGuiDescriptionLlabel.setText(QCoreApplication.translate("MainWindow", u"About Title", None))
+        self.aboutMainMarkdownLabel.setText(QCoreApplication.translate("MainWindow", u"About Description", None))
         self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.aboutPage), QCoreApplication.translate("MainWindow", u"About", None))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.settingsTab), QCoreApplication.translate("MainWindow", u"Settings", None))
     # retranslateUi

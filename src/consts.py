@@ -34,6 +34,22 @@ MSAA = 0
 FPSCap = 0
 ShowFPS = true
 
+[Knockout]
+Mode = 0
+ExcludeMods = "EZHT"
+HideMods = ""
+MaxPlayers = 50
+BubbleMinimumCombo = 200
+RevivePlayersAtEnd = false
+LiveSort = true
+SortBy = "Score"
+HideOverlayOnBreaks = false
+MinCursorSize = 0.5
+MaxCursorSize = 2
+AddDanser = false
+DanserName = "danser-gui"
+DateFormat = 0
+
 [Recording]
 FrameWidth = 1920
 FrameHeight = 1080
@@ -148,5 +164,7 @@ IntroBGDim = 0
 InGameBGDim = 80
 BreakBGDim = 50
 BGParallax = false
-ShowDanserLogo = true'''
+ShowDanserLogo = true
+QuickStart = true
+SkipIntro = true'''
 

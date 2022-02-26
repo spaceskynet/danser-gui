@@ -26,7 +26,7 @@
 4. 如果要使用 osu! 默认皮肤作为备用皮肤，请下载 [default_fallback](https://github.com/spaceskynet/git-cloud/blob/master/osu!/Skins/default_fallback.osk) 皮肤并解压到你的 `Skins` 文件夹。
 5. 该程序仍处于测试阶段，如果您想获得更多信息，可以使用 `-d` 或 `-debug` 标志进入 `debug` 模式。
 6. 本程序只是配置了 danser 的部分常用设置，如果要编辑更多设置，请直接编辑 danser 的 json 配置文件。
-7. `Knockout` 模式仍然在完善中。
+7. `Knockout` 模式~~仍然在完善中~~差不多能用了。
 
 ## Credits
 
@@ -36,6 +36,6 @@
 
 1. [danser-go](https://github.com/Wieku/danser-go)：osu!standard 地图的 CLI 可视化工具。
 2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools)：用于操作 osu! 的 .db 数据库文件的脚本集合。
-3. [osu-replay-to-map](https://github.com/spawn18/osu-replay-to-map)：一个用 Python 编写的基于回放创建谱面的程序。
+3. [osu-replay-parser](https://github.com/kszlim/osu-replay-parser)：一个用 Python 编写的库，用来解析 osu 回放文件（*.osr）。
 4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app)：将回放文件转换为视频的程序。
 5. [ordr-client](https://github.com/MasterIO02/ordr-client) & [ordr-server](https://github.com/MasterIO02/ordr-server)：一个免费且易于使用的采用 danser 来渲染 osu! 回放并导出为视频的 API / [网站](https://ordr.issou.best/)。

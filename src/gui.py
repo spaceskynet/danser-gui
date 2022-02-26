@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import consts
-import logging, sys, traceback, platform
+import logging, sys, traceback, platform, os
 import danserGuiRes
 from autologging import traced, logged
 from autologging import TRACE
@@ -12,7 +12,7 @@ from os.path import dirname, join, abspath, splitext, isfile
 from utils.skin import get_skins
 from utils.osrparser import get_latest_replay
 from utils.beatmap import (find_beatmap_by_mapfile, find_beatmap_by_replay, parse_replay_file)
-from utils.exec_wrapper import SongsDBUpdateThread, DanserExecByArgsThread
+from utils.exec_wrapper import SongsDBUpdateThread, DanserExecByArgsThread, ReplayModifyThread
 from utils.exception_handling import isEmptyWarning, customWarning, customError, customInfo
 
 class ProgressDialog(QDialog):
@@ -124,7 +124,13 @@ class DanserUiMainWindow(Ui_MainWindow):
         
         self.danserExecByArgsThread = DanserExecByArgsThread(self.progressDialog)
         self.danserExecByArgsThread.started.connect(self.startDanserByArgumentsEventStarted)
-        self.danserExecByArgsThread.finished.connect(self.startDanserByArgumentsEventFinished) 
+        self.danserExecByArgsThread.finished.connect(self.startDanserByArgumentsEventFinished)
+
+        self.replayModifyThread = ReplayModifyThread()
+        self.replayModifyThread.started.connect(self.replayModifyEventStarted)
+        self.replayModifyThread.finished.connect(self.replayModifyEventFinished)
+
+        self.openKnockoutReplaysFolderPushButton.clicked.connect(self.openKnockoutReplaysFolder)
 
         self.graphicsWidth.setValidator(QIntValidator(self.graphicsWidth))
         self.graphicsHeight.setValidator(QIntValidator(self.graphicsHeight))
@@ -148,6 +154,9 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.outputPathLineEdit.clicked.connect(lambda: (self.outputPathLineEditClicked(MainWindow)))
         self.songsDBUpdatePushButton.clicked.connect(lambda: (self.songsDBUpdateEvent(MainWindow)))
 
+        self.modifyOsrMD5CheckBox.clicked.connect(self.replayModifyWarningEvent)
+        self.addDateAfterPlayerNamecheckBox.clicked.connect(self.replayModifyWarningEvent)
+
         self.leftKeyPushButton.clicked.connect(lambda: (self.bindKeyEvent(self.leftKeyPushButton)))
         self.rightKeyPushButton.clicked.connect(lambda: (self.bindKeyEvent(self.rightKeyPushButton)))
         self.restartKeyPushButton.clicked.connect(lambda: (self.bindKeyEvent(self.restartKeyPushButton)))
@@ -169,12 +178,17 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.danserGuiLogo.setScaledContents(True)
 
     def rewriteClassesInit(self):
-        self.cursorSizeSlider.setMinimum(0.5)
+        self.cursorSizeSlider.setMinimum(0.1)
         self.cursorSizeSlider.setMaximum(2)
         self.cursorSizeSlider.setSingleStep(0.01)
         self.cursorSizeSlider.setPageStep(0.5)
         self.cursorSizeSlider.setValue(1)
-        self.cursorSizeSlider.setTickInterval(0.5)
+        self.cursorSizeSlider.setTickInterval(0.1)
+
+        self.knockoutCursorSizeSlider.setMinimum(0.1)
+        self.knockoutCursorSizeSlider.setMaximum(2)
+        self.knockoutCursorSizeSlider.setSingleStep(0.01)
+        self.knockoutCursorSizeSlider.setPageStep(0.5)
 
         self.CSHorizontalSlider.setSingleStep(0.01)
         self.ARHorizontalSlider.setSingleStep(0.01)
@@ -210,6 +224,9 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.cursorsInMirrorCollageSpinBox.setEnabled(self.cursorsInMirrorCollageCheckBox.isChecked())
         self.cursorsInTagModeSpinBox.setEnabled(self.cursorsInTagModeCheckBox.isChecked())
         self.skipIntroCheckBox.setChecked(self.quickStartCheckBox.isChecked())
+
+        self.danserNameLineEdit.setEnabled(self.addDanserCheckBox.isChecked())
+        self.dateFormatComboBox.setEnabled(self.addDateAfterPlayerNamecheckBox.isChecked())
 
     def checkSongsDBIsExists(self, MainWindow):
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
@@ -349,7 +366,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             arguments.append(f"-tag={self.cursorsInTagModeSpinBox.value()}")
 
         # Beatmap Mods
-        if danser_mode != 'replay':
+        if danser_mode != 'replay' and danser_mode != 'knockout':
             mods_combination = ""
             if self.SDPFCheckBox.checkState() == Qt.PartiallyChecked: mods_combination += "SD"
             if self.SDPFCheckBox.checkState() == Qt.Checked: mods_combination += "PF"
@@ -378,12 +395,17 @@ class DanserUiMainWindow(Ui_MainWindow):
 
     def startDanserByArgumentsEvent(self, MainWindow):
         passed, warning_widget = self.checkWidgetsValueIsValid()
-        if not passed:
-            return 
+        if not passed: return 
         arguments, is_record = self.generateArgumentsByGuiConfig(MainWindow)
         root_path = self.gui_config.General.DanserRootDir
         self.danserExecByArgsThread.init(root_path, arguments, is_record)
-        self.danserExecByArgsThread.start()
+        is_knockout = self.danserModeComboBox.currentText() == 'knockout'
+        is_modify_beatmap_hash = self.modifyOsrMD5CheckBox.isChecked()
+        is_add_date = self.addDateAfterPlayerNamecheckBox.isChecked()
+        if is_knockout and (is_modify_beatmap_hash or is_add_date):
+            self.replayModifyEvent(MainWindow, is_modify_beatmap_hash, is_add_date)
+        else:
+            self.danserExecByArgsThread.start()
         if is_record:
             self.progressDialog.setDefault()
             self.danserExecByArgsThread.setProgressValue.connect(self.setProgressDialogValue)
@@ -405,6 +427,40 @@ class DanserUiMainWindow(Ui_MainWindow):
             self.progressDialog.close()
             customInfo(QCoreApplication.translate("MainWindow", u"rendering complete!", None))
         self.startLogo.setEnabled(True)
+
+    def replayModifyWarningEvent(self, checked):
+        if not checked: return
+        customWarning(QCoreApplication.translate("MainWindow", u"please note that the operation is irreversible, this will modify all osr files in the replays directory! Remember to backup osr files at first!", None))
+
+    def openKnockoutReplaysFolder(self, checked):
+        if not self.danserPathLineEdit.text():
+            isEmptyWarning(QCoreApplication.translate("MainWindow", u"danser Path", None))
+            return
+        danser_replays_path = join(self.danserPathLineEdit.text(), 'replays')
+        os.startfile(danser_replays_path)
+
+    def replayModifyEvent(self, MainWindow, is_modify_beatmap_hash, is_add_date):
+        root_path = self.gui_config.General.DanserRootDir
+        beatmap_hash, date_format_index = None, None
+        if is_modify_beatmap_hash:
+            songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
+            if not self.checkSongsDBIsExists(MainWindow): return
+            beatmap = find_beatmap_by_mapfile(self.osuPathLineEdit.text(), songs_db_path, songs_db_mode)
+            beatmap_hash = beatmap.MD5
+        if is_add_date:
+            date_format_index = self.dateFormatComboBox.currentIndex()
+        self.replayModifyThread.init(root_path, beatmap_hash, date_format_index)
+        self.replayModifyThread.start()
+
+    def replayModifyEventStarted(self):
+        logging.info("[GUI] replayModifyEvent Started")
+        self.startLogo.setDisabled(True)
+
+    def replayModifyEventFinished(self):
+        logging.info("[GUI] replayModifyEvent Finished")
+        customInfo(QCoreApplication.translate("MainWindow", u"replay files is completely modified!", None))        
+        self.startLogo.setEnabled(True)
+        self.danserExecByArgsThread.start()
 
     def syncGuiConfigWithMainWindow(self, MainWindow):
         MainWindow.setConfigByMainWindow()
@@ -462,6 +518,17 @@ class DanserUiMainWindow(Ui_MainWindow):
         else:
             self.customizeBeatmapAttributesCheckBox.setEnabled(True)
             self.beatmapAttributesGroupBox.setEnabled(self.customizeBeatmapAttributesCheckBox.isChecked())
+
+        if section != 'knockout':
+            self.knockoutGeneralGroupBox.setEnabled(False)
+            self.excludeModsGroupBox.setEnabled(False)
+            self.hideModsGroupBox.setEnabled(False)
+            self.experimentalFeaturesGroupBox.setEnabled(False)
+        else:
+            self.knockoutGeneralGroupBox.setEnabled(True)
+            self.excludeModsGroupBox.setEnabled(True)
+            self.hideModsGroupBox.setEnabled(True)
+            self.experimentalFeaturesGroupBox.setEnabled(True)
 
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
         if section == 'replay':
@@ -672,6 +739,27 @@ class DanserMainWindow(QMainWindow):
         self.closed.emit()
         return super().closeEvent(a0)
 
+    def splitModesToSetMainWindow(self, MainWindow, choice):
+        modes = ["SD","PF","NF","HD","FL","DT","NC","HT","EZ","HR","V2","AT","RX","AP","TD","SO",]
+        modes_string = self.gui_config.Knockout.ExcludeMods if choice == 'exclude' else self.gui_config.Knockout.HideMods
+        modes_string = modes_string[:len(modes_string) // 2 * 2] # ignore odd length string
+        for i in range(0, len(modes_string), 2):
+            mode = modes_string[i : i + 2]
+            if mode in modes:
+                eval(f"MainWindow.{choice}Mods{mode}CheckBox.setChecked(True)")
+
+    def mergeModesToSetConfig(self, MainWindow, choice):
+        modes = ["SD","PF","NF","HD","FL","DT","NC","HT","EZ","HR","V2","AT","RX","AP","TD","SO",]
+        modes_string = ""
+        for mode in modes:
+            is_checked = eval(f"MainWindow.{choice}Mods{mode}CheckBox.isChecked()")
+            if is_checked:
+                modes_string += mode
+        if choice == 'exclude':
+            self.gui_config.Knockout.ExcludeMods = modes_string
+        else:
+            self.gui_config.Knockout.HideMods = modes_string
+
     def setMainWindowByConfig(self):
         MainWindow, config = self.MainWindow, self.gui_config
 
@@ -704,6 +792,22 @@ class DanserMainWindow(QMainWindow):
         MainWindow.musicVolumeSlider.setValue(config.Audio.MusicVolume)
         MainWindow.hitSoundVolumeSlider.setValue(config.Audio.HitSoundVolume)
 
+        ## Knockout
+        MainWindow.knockoutModeComboBox.setCurrentIndex(config.Knockout.Mode)
+        MainWindow.maxPlayersSpinBox.setValue(config.Knockout.MaxPlayers)
+        MainWindow.bubbleMinimumComboSpinBox.setValue(config.Knockout.BubbleMinimumCombo)
+        MainWindow.revivePlayersAtEndCheckBox.setChecked(config.Knockout.RevivePlayersAtEnd)
+        MainWindow.liveSortCheckBox.setChecked(config.Knockout.LiveSort)
+        MainWindow.sortByComboBox.setCurrentIndex(abs(MainWindow.sortByComboBox.findText(config.Knockout.SortBy)))
+        MainWindow.HideOverlayOnBreaksCheckBox.setChecked(config.Knockout.HideOverlayOnBreaks)
+        MainWindow.addDanserCheckBox.setChecked(config.Knockout.AddDanser)
+        MainWindow.danserNameLineEdit.setText(config.Knockout.DanserName)
+        MainWindow.dateFormatComboBox.setCurrentIndex(config.Knockout.DateFormat)
+        MinCursorSize, MaxCursorSize = min(config.Knockout.MinCursorSize, config.Knockout.MaxCursorSize), max(config.Knockout.MinCursorSize, config.Knockout.MaxCursorSize)
+        MainWindow.knockoutCursorSizeSlider.setValue((MinCursorSize, MaxCursorSize))
+        self.splitModesToSetMainWindow(MainWindow, "exclude")
+        self.splitModesToSetMainWindow(MainWindow, "hide")
+        
         ## Recording
         MainWindow.recordingWidth.setText(str(config.Recording.FrameWidth))
         MainWindow.recordingHeight.setText(str(config.Recording.FrameHeight))
@@ -790,6 +894,8 @@ class DanserMainWindow(QMainWindow):
         MainWindow.introBGDimSlider.setValue(config.Playfield.IntroBGDim)
         MainWindow.inGameBGDimSlider.setValue(config.Playfield.InGameBGDim)
         MainWindow.breakBGDimSlider.setValue(config.Playfield.BreakBGDim)
+        MainWindow.quickStartCheckBox.setChecked(config.Playfield.QuickStart)
+        MainWindow.skipIntroCheckBox.setChecked(config.Playfield.QuickStart or config.Playfield.SkipIntro)
         
 
     def setConfigByMainWindow(self):
@@ -820,6 +926,21 @@ class DanserMainWindow(QMainWindow):
         config.Audio.GlobalVolume = MainWindow.globalVolumeSlider.value()
         config.Audio.MusicVolume = MainWindow.musicVolumeSlider.value()
         config.Audio.HitSoundVolume = MainWindow.hitSoundVolumeSlider.value()
+
+        ## Knockout
+        config.Knockout.Mode = MainWindow.knockoutModeComboBox.currentIndex()
+        config.Knockout.MaxPlayers = MainWindow.maxPlayersSpinBox.value()
+        config.Knockout.BubbleMinimumCombo = MainWindow.bubbleMinimumComboSpinBox.value()
+        config.Knockout.RevivePlayersAtEnd = MainWindow.revivePlayersAtEndCheckBox.isChecked()
+        config.Knockout.LiveSort = MainWindow.liveSortCheckBox.isChecked()
+        config.Knockout.SortBy = MainWindow.sortByComboBox.currentText()
+        config.Knockout.HideOverlayOnBreaks = MainWindow.HideOverlayOnBreaksCheckBox.isChecked()
+        config.Knockout.AddDanser = MainWindow.addDanserCheckBox.isChecked()
+        config.Knockout.DanserName = MainWindow.danserNameLineEdit.text()
+        config.Knockout.DateFormat = MainWindow.dateFormatComboBox.currentIndex()
+        config.Knockout.MinCursorSize, config.Knockout.MaxCursorSize = map(lambda x: round(x, 2), MainWindow.knockoutCursorSizeSlider.value())
+        self.mergeModesToSetConfig(MainWindow, "exclude")
+        self.mergeModesToSetConfig(MainWindow, "hide")
 
         ## Recording
         config.Recording.FrameWidth = int(MainWindow.recordingWidth.text() if MainWindow.recordingWidth.text() else 1920)
@@ -904,6 +1025,8 @@ class DanserMainWindow(QMainWindow):
         config.Playfield.IntroBGDim = MainWindow.introBGDimSlider.value()
         config.Playfield.InGameBGDim = MainWindow.inGameBGDimSlider.value()
         config.Playfield.BreakBGDim = MainWindow.breakBGDimSlider.value()
+        config.Playfield.QuickStart = MainWindow.quickStartCheckBox.isChecked()
+        config.Playfield.SkipIntro = config.Playfield.QuickStart or MainWindow.skipIntroCheckBox.isChecked()
 
     def resizeEvent(self, event):
         height = self.width() * 9 // 16

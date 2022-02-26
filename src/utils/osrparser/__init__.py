@@ -3,7 +3,7 @@ import glob
 from osrparse import Replay
 from os.path import getctime, join
 
-def parse_replay_file_from_path(replay_path):
+def parse_replay_file(replay_path):
 	return Replay.from_path(replay_path)
 
 def get_latest_replay(osu_root_path):
@@ -11,3 +11,22 @@ def get_latest_replay(osu_root_path):
     if not replays_list:
         return None
     return max(replays_list, key=getctime)
+
+def modify_replay_beatmap_hash(danser_root_path, beatmap_hash):
+    replays_list = [f for f in glob.glob(join(danser_root_path, "replays", "*.osr"))]
+    for replay_file in replays_list:
+        replay = Replay.from_path(replay_file)
+        replay.beatmap_hash = beatmap_hash
+        replay.write_path(replay_file)
+
+def add_date_after_user_name(danser_root_path, date_format_index):
+    date_format = ["%Y-%m-%d", "%m-%d-%Y", "%d-%m-%Y",]
+    replays_list = [f for f in glob.glob(join(danser_root_path, "replays", "*.osr"))]
+    for replay_file in replays_list:
+        replay = Replay.from_path(replay_file)
+        date = replay.timestamp.astimezone(tz=None).strftime(date_format[date_format_index])
+        is_modified = len(replay.username) > 11 and replay.username[-11:] == f' {date}'
+        if is_modified: continue
+        replay.username = f"{replay.username} {date}"
+        print(replay.username)
+        replay.write_path(replay_file)
