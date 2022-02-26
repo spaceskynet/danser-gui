@@ -15,6 +15,7 @@
 2. 根据您的系统架构下载正确的文件。
 3. 将其提取并放在您想要的位置。
 4. 在 Windows 中运行 `DanserGUI.exe` 或在 Linux 终端中运行 `./DanserGUI`。
+5. 更改配置然后点击 `Danser GUI` 的图标开始 `Danser` 之旅！
 
 阅读 [WIKI（未完成）](https://github.com/spaceskynet/danser-gui/wiki)了解更多信息。
 
@@ -27,6 +28,31 @@
 5. 该程序仍处于测试阶段，如果您想获得更多信息，可以使用 `-d` 或 `-debug` 标志进入 `debug` 模式。
 6. 本程序只是配置了 danser 的部分常用设置，如果要编辑更多设置，请直接编辑 danser 的 json 配置文件。
 7. `Knockout` 模式~~仍然在完善中~~差不多能用了。
+
+## 界面预览
+
+<details>
+<summary>界面预览</summary>
+
+![fig1](assets/fig1.png)
+
+![fig2](assets/fig2.png)
+
+![fig3](assets/fig3.png)
+
+![fig4](assets/fig4.png)
+
+![fig5](assets/fig5.png)
+
+![fig6](assets/fig6.png)
+
+![fig7](assets/fig7.png)
+
+![fig8](assets/fig8.png)
+
+![fig9](assets/fig9.png)
+
+</details>
 
 ## Credits
 

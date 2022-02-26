@@ -15,6 +15,7 @@
 2. Download the right file base on your system arch.
 3. Extract it and put it where you want.
 4. Run `DanserGUI.exe` in Windows or `./DanserGUI` in Linux Terminal.
+5. Change the configuration and click the `Danser GUI` icon to start!
 
 Read [WIKI (unfinished)](https://github.com/spaceskynet/danser-gui/wiki) for more information.
 
@@ -27,6 +28,31 @@ Read [WIKI (unfinished)](https://github.com/spaceskynet/danser-gui/wiki) for mor
 5. This program is still in beta, if you want to get more information, you can enter `debug` mode with the `-d` or `-debug` flag.
 6. This program just configure a few settings in danser, if you want edit more settings, please edit the danser json settings file directly.
 7. `Knockout` mode is ~~still in the process of being perfected~~ basically works.
+
+## Interface Preview
+
+<details>
+<summary>Interface Preview</summary>
+
+![fig1](assets/fig1.png)
+
+![fig2](assets/fig2.png)
+
+![fig3](assets/fig3.png)
+
+![fig4](assets/fig4.png)
+
+![fig5](assets/fig5.png)
+
+![fig6](assets/fig6.png)
+
+![fig7](assets/fig7.png)
+
+![fig8](assets/fig8.png)
+
+![fig9](assets/fig9.png)
+
+</details>
 
 ## Credits
 
