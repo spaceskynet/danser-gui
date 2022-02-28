@@ -437,7 +437,10 @@ class DanserUiMainWindow(Ui_MainWindow):
             isEmptyWarning(QCoreApplication.translate("MainWindow", u"danser Path", None))
             return
         danser_replays_path = join(self.danserPathLineEdit.text(), 'replays')
-        os.startfile(danser_replays_path)
+        if platform.system()  == 'Windows':
+            os.startfile(danser_replays_path)
+        else:
+            os.system(f"xdg-open {danser_replays_path}")
 
     def replayModifyEvent(self, MainWindow, is_modify_beatmap_hash, is_add_date):
         root_path = self.gui_config.General.DanserRootDir
@@ -553,7 +556,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             return
 
         osu_file_path = abspath(join(self.gui_config.General.OsuSongsDir, beatmap.FolderName, beatmap.MapFile))
-        logging.info(f"[GUI] Chosen osr file: {osu_file_path}")
+        logging.info(f"[GUI] Chosen osu file: {osu_file_path}")
 
         self.osuPathLineEdit.setText(osu_file_path)
 
