@@ -11,7 +11,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from GuiWidgets import QClickedLineEdit, QClickedLabel
+from ui.widgets import QClickedLineEdit, QClickedLabel
 from superqt import QLabeledSlider, QLabeledDoubleSlider, QLabeledRangeSlider, QLabeledDoubleRangeSlider
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

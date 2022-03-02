@@ -3,7 +3,7 @@ import logging
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QCoreApplication, QSize
-import danserGuiRes
+import ui.danserGuiRes as danserGuiRes
 
 def isEmptyWarning(text):
     customWarning("{} {}".format(text, QCoreApplication.translate('MainWindow', u'is Empty!', None)))

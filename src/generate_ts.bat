@@ -1,3 +1,3 @@
 @echo off
-pylupdate5 .\ui_setupMainWindow.py .\ui_bindKeyDialog.py .\ui_MainWindow.py .\gui.py .\utils\exception_handling.py .\setup.py -ts .\langs\en-US.ts
-pylupdate5 .\ui_setupMainWindow.py .\ui_bindKeyDialog.py .\ui_MainWindow.py .\gui.py .\utils\exception_handling.py .\setup.py -ts .\langs\zh-CN.ts
+pylupdate5 .\ui\setupMainWindow.py .\ui\bindKeyDialog.py .\ui\MainWindow.py .\ui\gui.py .\utils\exception_handling.py .\utils\setup.py -ts .\langs\en-US.ts
+pylupdate5 .\ui\setupMainWindow.py .\ui\bindKeyDialog.py .\ui\MainWindow.py .\ui\gui.py .\utils\exception_handling.py .\utils\setup.py -ts .\langs\zh-CN.ts

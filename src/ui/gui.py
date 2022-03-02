@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import consts
 import logging, sys, traceback, platform, os
-import danserGuiRes
+import ui.danserGuiRes as danserGuiRes
 from autologging import traced, logged
 from autologging import TRACE
-from ui_bindKeyDialog import *
-from ui_MainWindow import Ui_MainWindow
-from ui_DebugModeWindow import Ui_debugModeWindow
-from config import DanserGUIConfig
+from ui.bindKeyDialog import *
+from ui.MainWindow import Ui_MainWindow
+from ui.debugModeWindow import Ui_debugModeWindow
+from utils.config import DanserGUIConfig
 from os.path import dirname, join, abspath, splitext, isfile
 from utils.skin import get_skins
 from utils.osrparser import get_latest_replay

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import os, sys, platform
 import PyQt5
-from gui import *
-from setup import setupMainWindow
+from ui.gui import *
+from utils.setup import setupMainWindow
 from consts import LogPath, config_path
 
 def checkSetup(App, exec_path, debug):

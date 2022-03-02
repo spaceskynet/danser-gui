@@ -35,6 +35,7 @@ class SongsDBUpdateThread(QThread):
 
     def run(self):
         songs_db_mode, root_path = self.songs_db_mode, self.root_path
+
         if songs_db_mode == 'osu!':
             try:
                 create_db(join(root_path, 'osu!.db'), join(consts.root_path, 'osu!.sqlite3.db'))
@@ -42,14 +43,14 @@ class SongsDBUpdateThread(QThread):
                 logging.info(f"[GUI][SongsDBUpdateThread][osu!] {traceback.format_exc()}")
             logging.info("[GUI][SongsDBUpdateThread][osu!] Finshed!")
 
-        else:
-            self.p = QProcess()
-            self.p.start(join(root_path, consts.danser_exec_file_name), ["-md5=0"])
-            self.p.readyReadStandardOutput.connect(lambda: (logging.info(f"[DANSER][STDOUT] {self.readProcessAllStandardOutput()}")))
-            self.p.readyReadStandardError.connect(lambda: (logging.info(f"[DANSER][STDERR] {self.readProcessAllStandardError()}")))
-            self.p.finished.connect(lambda: (logging.info("[GUI][SongsDBUpdateThread][danser] Finshed!")))
-            self.p.waitForStarted() 
-            self.p.waitForFinished(-1)
+        # after osu! database updated, danser database must be updated.
+        self.p = QProcess()
+        self.p.start(join(root_path, consts.danser_exec_file_name), ["-md5=0"])
+        self.p.readyReadStandardOutput.connect(lambda: (logging.info(f"[DANSER][STDOUT] {self.readProcessAllStandardOutput()}")))
+        self.p.readyReadStandardError.connect(lambda: (logging.info(f"[DANSER][STDERR] {self.readProcessAllStandardError()}")))
+        self.p.finished.connect(lambda: (logging.info("[GUI][SongsDBUpdateThread][danser] Finshed!")))
+        self.p.waitForStarted() 
+        self.p.waitForFinished(-1)
 
 @logged(logging.getLogger(__name__))
 @traced("run")

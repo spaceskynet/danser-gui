@@ -3,10 +3,8 @@ danser-go/
 danser-go-win/
 danser-go-linux/
 .vscode/
-video/
 Videos/
 src/logs/
-src/video/
 src/Videos/
 src/default.settings.toml
 src/settings.toml
@@ -14,7 +12,6 @@ src/settings-win.toml
 src/settings-linux.toml
 src/test.py
 src/osu!.sqlite3.db
-src/danser-gui.ico
 src/danser-gui.png
 src/dansergui.res.qrc
 upx

@@ -3,9 +3,9 @@ import sys, toml
 import consts
 from munch import Munch
 from os.path import join, abspath, exists
-from ui_setupMainWindow import *
+from ui.setupMainWindow import *
 from utils.exception_handling import customInfo, isEmptyWarning
-import danserGuiRes
+import ui.danserGuiRes as danserGuiRes
 
 class setupUiMainWindow(Ui_setupMainWindow):
     def __init__(self, setupMainWindow):

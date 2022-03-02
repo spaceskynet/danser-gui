@@ -11,7 +11,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from GuiWidgets import QClickedLineEdit
+from ui.widgets import QClickedLineEdit
 
 class Ui_setupMainWindow(object):
     def setupUi(self, setupMainWindow):
