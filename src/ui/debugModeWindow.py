@@ -8,9 +8,8 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QObject, pyqtSignal, QSize, QMetaObject
+from PyQt5.QtWidgets import QPlainTextEdit, QWidget, QVBoxLayout, QLabel, QLineEdit
 import logging
 
 class QTextEditLogger(logging.Handler, QObject):
@@ -40,22 +39,22 @@ class Ui_debugModeWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.currentDanserExecArgmentsVerticalLayout = QVBoxLayout()
-        self.currentDanserExecArgmentsVerticalLayout.setObjectName(u"currentDanserExecArgmentsVerticalLayout")
-        self.currentDanserExecArgmentsLabel = QLabel(debugModeWindow)
-        self.currentDanserExecArgmentsLabel.setObjectName(u"currentDanserExecArgmentsLabel")
-        self.currentDanserExecArgmentsLabel.setText(u"Current Danser Execute Argments:")
+        self.currentDanserExecArgumentsVerticalLayout = QVBoxLayout()
+        self.currentDanserExecArgumentsVerticalLayout.setObjectName(u"currentDanserExecArgumentsVerticalLayout")
+        self.currentDanserExecArgumentsLabel = QLabel(debugModeWindow)
+        self.currentDanserExecArgumentsLabel.setObjectName(u"currentDanserExecArgumentsLabel")
+        self.currentDanserExecArgumentsLabel.setText(u"Current Danser Execute Arguments:")
 
-        self.currentDanserExecArgmentsVerticalLayout.addWidget(self.currentDanserExecArgmentsLabel)
+        self.currentDanserExecArgumentsVerticalLayout.addWidget(self.currentDanserExecArgumentsLabel)
 
-        self.currentDanserExecArgmentsLineEdit = QLineEdit(debugModeWindow)
-        self.currentDanserExecArgmentsLineEdit.setObjectName(u"currentDanserExecArgmentsLineEdit")
-        self.currentDanserExecArgmentsLineEdit.setReadOnly(True)
+        self.currentDanserExecArgumentsLineEdit = QLineEdit(debugModeWindow)
+        self.currentDanserExecArgumentsLineEdit.setObjectName(u"currentDanserExecArgumentsLineEdit")
+        self.currentDanserExecArgumentsLineEdit.setReadOnly(True)
 
-        self.currentDanserExecArgmentsVerticalLayout.addWidget(self.currentDanserExecArgmentsLineEdit)
+        self.currentDanserExecArgumentsVerticalLayout.addWidget(self.currentDanserExecArgumentsLineEdit)
 
 
-        self.verticalLayout.addLayout(self.currentDanserExecArgmentsVerticalLayout)
+        self.verticalLayout.addLayout(self.currentDanserExecArgumentsVerticalLayout)
 
         self.recordingOutputNameVerticalLayout = QVBoxLayout()
         self.recordingOutputNameVerticalLayout.setObjectName(u"recordingOutputNameVerticalLayout")

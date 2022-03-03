@@ -4,7 +4,8 @@ import logging, sys, traceback, platform, os
 import ui.danserGuiRes as danserGuiRes
 from autologging import traced, logged
 from autologging import TRACE
-from ui.bindKeyDialog import *
+from ui import *
+from ui.bindKeyDialog import Ui_bindKeyDialog
 from ui.MainWindow import Ui_MainWindow
 from ui.debugModeWindow import Ui_debugModeWindow
 from utils.config import DanserGUIConfig
@@ -136,7 +137,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.graphicsHeight.setValidator(QIntValidator(self.graphicsHeight))
         self.recordingWidth.setValidator(QIntValidator(self.recordingWidth))
         self.recordingHeight.setValidator(QIntValidator(self.recordingHeight))
-        self.outputNameLineEdit.setValidator(QRegExpValidator(QRegExp("^[\w\-\[\]\(\)\{\}. ]+$"))) # ?
+        self.outputNameLineEdit.setValidator(QRegExpValidator(QRegExp("^[^\/:*?""<>|]+$"))) # ?
 
         self.recordingEncoderComboBox.activated[int].connect(self.encoderConfigGroupBoxEnabled)
 
@@ -252,7 +253,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Graphics Resolution", None)))
         
         if not self.osuPathLineEdit.text():
-                return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Beatmap(.osu) path", None)))   
+            return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Beatmap(.osu) path", None)))
         
         if danser_mode == 'replay':
             if not self.osrPathLineEdit.text():
@@ -309,7 +310,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             # {Player} - {Artist}[{Creator}] - {MapTitle}[Difficulty].mp4
             game_mode_map = ['std', 'taiko', 'ctb', 'mania']
             replace_map = {
-                            '{Player}': self.usernameLineEdit.text() if danser_mode != 'replay' else replay.player_name,
+                            '{Player}': self.usernameLineEdit.text() if danser_mode != 'replay' else replay.username,
                             '{Artist}': beatmap.Artist,
                             '{ArtistUnicode}': beatmap.ArtistUnicode,
                             '{MapTitle}': beatmap.MapTitle,
@@ -390,12 +391,12 @@ class DanserUiMainWindow(Ui_MainWindow):
             arguments.append('-replay'), arguments.append(f'{replay_path}')
 
         logging.info(f"[GUI] Danser execute arguments: {arguments}")
-        if MainWindow.debug: MainWindow.danserUiDebugModeWindow.currentDanserExecArgmentsLineEdit.setText(str(arguments))
+        if MainWindow.debug: MainWindow.danserUiDebugModeWindow.currentDanserExecArgumentsLineEdit.setText(str(arguments))
         return arguments, isRecord
 
     def startDanserByArgumentsEvent(self, MainWindow):
         passed, warning_widget = self.checkWidgetsValueIsValid()
-        if not passed: return 
+        if not passed: return
         arguments, is_record = self.generateArgumentsByGuiConfig(MainWindow)
         root_path = self.gui_config.General.DanserRootDir
         self.danserExecByArgsThread.init(root_path, arguments, is_record)
@@ -543,17 +544,18 @@ class DanserUiMainWindow(Ui_MainWindow):
                 self.osrPathLineEdit.setText(abspath(lastest_replay_path))
                 if not self.checkSongsDBIsExists(MainWindow): return
                 beatmap = find_beatmap_by_replay(lastest_replay_path, songs_db_path, songs_db_mode)
-                self.setBeatmap(beatmap)
+                if not self.setBeatmap(beatmap):
+                    self.osuPathLineEdit.setText("")
             else:
                 customWarning(QCoreApplication.translate("MainWindow", u"no recent replay, please pick a replay yourself!", None))
     
     def setBeatmap(self, beatmap):
         if not beatmap:
             customWarning(QCoreApplication.translate("MainWindow", u"no such beatmap, maybe you need update db or download beatmap from internet or place the beatmap file in the right songs folder!", None))
-            return
+            return False
         if beatmap.GameMode != 0:
             customWarning(QCoreApplication.translate("MainWindow", u"danser only support std map!", None))
-            return
+            return False
 
         osu_file_path = abspath(join(self.gui_config.General.OsuSongsDir, beatmap.FolderName, beatmap.MapFile))
         logging.info(f"[GUI] Chosen osu file: {osu_file_path}")
@@ -568,6 +570,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.ARHorizontalSlider.setValue(beatmap.AR)
         self.HPHorizontalSlider.setValue(beatmap.HP)
         self.ODHorizontalSlider.setValue(beatmap.OD)
+        return True
 
     def skinsComboBoxInit(self):
         osu_skins_path, skin_name = self.gui_config.General.OsuSkinsDir, self.gui_config.Skin.CurrentSkin
@@ -583,7 +586,8 @@ class DanserUiMainWindow(Ui_MainWindow):
         if not osu_file_path: return
         if not self.checkSongsDBIsExists(MainWindow): return
         beatmap = find_beatmap_by_mapfile(osu_file_path, songs_db_path, songs_db_mode)
-        self.setBeatmap(beatmap)
+        if not self.setBeatmap(beatmap):
+            pass
     
     def osrSelectButtonClicked(self, MainWindow):
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
@@ -597,7 +601,8 @@ class DanserUiMainWindow(Ui_MainWindow):
             self.osrPathLineEdit.setText(abspath(osr_file_path))
             if not self.checkSongsDBIsExists(MainWindow): return
             beatmap = find_beatmap_by_replay(osr_file_path, songs_db_path, songs_db_mode)
-            self.setBeatmap(beatmap)
+            if not self.setBeatmap(beatmap):
+                self.osuPathLineEdit.setText("")
         else:
             pass
 

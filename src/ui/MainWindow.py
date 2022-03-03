@@ -8,9 +8,10 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QSize, Qt, QCoreApplication, QMetaObject
+from PyQt5.QtGui import QCursor
+from PyQt5.QtWidgets import (QWidget, QGridLayout, QTabWidget, QHBoxLayout, QVBoxLayout, QFormLayout, 
+                             QLabel, QCheckBox, QPushButton, QGroupBox, QLineEdit, QSlider, QComboBox, QSpinBox, QDoubleSpinBox, QAbstractSpinBox, QRadioButton, QButtonGroup, QSizePolicy)
 from ui.widgets import QClickedLineEdit, QClickedLabel
 from superqt import QLabeledSlider, QLabeledDoubleSlider, QLabeledRangeSlider, QLabeledDoubleRangeSlider
 class Ui_MainWindow(object):
@@ -48,8 +49,8 @@ class Ui_MainWindow(object):
 
         self.generalSettingVerticalLayout = QVBoxLayout()
         self.generalSettingVerticalLayout.setObjectName(u"generalSettingVerticalLayout")
-        self.danserModeAndisRecordHorizontalLayout = QHBoxLayout()
-        self.danserModeAndisRecordHorizontalLayout.setObjectName(u"danserModeAndisRecordHorizontalLayout")
+        self.danserModeAndIsRecordHorizontalLayout = QHBoxLayout()
+        self.danserModeAndIsRecordHorizontalLayout.setObjectName(u"danserModeAndIsRecordHorizontalLayout")
         self.danserModeFormLayout = QFormLayout()
         self.danserModeFormLayout.setObjectName(u"danserModeFormLayout")
         self.danserModeLabel = QLabel(self.generalTab)
@@ -67,15 +68,15 @@ class Ui_MainWindow(object):
         self.danserModeFormLayout.setWidget(0, QFormLayout.FieldRole, self.danserModeComboBox)
 
 
-        self.danserModeAndisRecordHorizontalLayout.addLayout(self.danserModeFormLayout)
+        self.danserModeAndIsRecordHorizontalLayout.addLayout(self.danserModeFormLayout)
 
         self.isRecordCheckBox = QCheckBox(self.generalTab)
         self.isRecordCheckBox.setObjectName(u"isRecordCheckBox")
 
-        self.danserModeAndisRecordHorizontalLayout.addWidget(self.isRecordCheckBox)
+        self.danserModeAndIsRecordHorizontalLayout.addWidget(self.isRecordCheckBox)
 
 
-        self.generalSettingVerticalLayout.addLayout(self.danserModeAndisRecordHorizontalLayout)
+        self.generalSettingVerticalLayout.addLayout(self.danserModeAndIsRecordHorizontalLayout)
 
         self.osrSelectButton = QPushButton(self.generalTab)
         self.osrSelectButton.setObjectName(u"osrSelectButton")
@@ -773,11 +774,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addWidget(self.beatmapCustomizeGroupBox)
 
         self.settingsTabWidget.addTab(self.beatmapSettings, "")
-        self.knockoutSettinigs = QWidget()
-        self.knockoutSettinigs.setObjectName(u"knockoutSettinigs")
-        self.gridLayout_34 = QGridLayout(self.knockoutSettinigs)
+        self.knockoutSettings = QWidget()
+        self.knockoutSettings.setObjectName(u"knockoutSettings")
+        self.gridLayout_34 = QGridLayout(self.knockoutSettings)
         self.gridLayout_34.setObjectName(u"gridLayout_34")
-        self.knockoutGeneralGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.knockoutGeneralGroupBox = QGroupBox(self.knockoutSettings)
         self.knockoutGeneralGroupBox.setObjectName(u"knockoutGeneralGroupBox")
         self.verticalLayout_3 = QVBoxLayout(self.knockoutGeneralGroupBox)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -927,7 +928,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_34.addWidget(self.knockoutGeneralGroupBox, 0, 0, 2, 1)
 
-        self.excludeModsGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.excludeModsGroupBox = QGroupBox(self.knockoutSettings)
         self.excludeModsGroupBox.setObjectName(u"excludeModsGroupBox")
         self.gridLayout_33 = QGridLayout(self.excludeModsGroupBox)
         self.gridLayout_33.setObjectName(u"gridLayout_33")
@@ -1067,7 +1068,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_34.addWidget(self.excludeModsGroupBox, 0, 1, 1, 1)
 
-        self.hideModsGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.hideModsGroupBox = QGroupBox(self.knockoutSettings)
         self.hideModsGroupBox.setObjectName(u"hideModsGroupBox")
         self.gridLayout_32 = QGridLayout(self.hideModsGroupBox)
         self.gridLayout_32.setObjectName(u"gridLayout_32")
@@ -1207,7 +1208,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_34.addWidget(self.hideModsGroupBox, 0, 2, 1, 1)
 
-        self.experimentalFeaturesGroupBox = QGroupBox(self.knockoutSettinigs)
+        self.experimentalFeaturesGroupBox = QGroupBox(self.knockoutSettings)
         self.experimentalFeaturesGroupBox.setObjectName(u"experimentalFeaturesGroupBox")
         self.verticalLayout_7 = QVBoxLayout(self.experimentalFeaturesGroupBox)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
@@ -1242,7 +1243,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_34.addWidget(self.experimentalFeaturesGroupBox, 1, 1, 1, 2)
 
-        self.settingsTabWidget.addTab(self.knockoutSettinigs, "")
+        self.settingsTabWidget.addTab(self.knockoutSettings, "")
         self.recordingSettings = QWidget()
         self.recordingSettings.setObjectName(u"recordingSettings")
         self.gridLayout_9 = QGridLayout(self.recordingSettings)
@@ -2147,10 +2148,10 @@ class Ui_MainWindow(object):
 
         self.inGameBGDimFormLayout = QFormLayout()
         self.inGameBGDimFormLayout.setObjectName(u"inGameBGDimFormLayout")
-        self.inGameBGDmabel = QLabel(self.backgroundDimGroupBox)
-        self.inGameBGDmabel.setObjectName(u"inGameBGDmabel")
+        self.inGameBGDimLabel = QLabel(self.backgroundDimGroupBox)
+        self.inGameBGDimLabel.setObjectName(u"inGameBGDimLabel")
 
-        self.inGameBGDimFormLayout.setWidget(0, QFormLayout.LabelRole, self.inGameBGDmabel)
+        self.inGameBGDimFormLayout.setWidget(0, QFormLayout.LabelRole, self.inGameBGDimLabel)
 
         self.inGameBGDimSlider = QLabeledSlider(self.backgroundDimGroupBox)
         self.inGameBGDimSlider.setObjectName(u"inGameBGDimSlider")
@@ -2234,12 +2235,12 @@ class Ui_MainWindow(object):
 
         self.danserGuiHorizontalLayout.addWidget(self.danserGuiLogo)
 
-        self.danserGuiDescriptionLlabel = QLabel(self.aboutPage)
-        self.danserGuiDescriptionLlabel.setObjectName(u"danserGuiDescriptionLlabel")
-        self.danserGuiDescriptionLlabel.setTextFormat(Qt.MarkdownText)
-        self.danserGuiDescriptionLlabel.setOpenExternalLinks(True)
+        self.danserGuiDescriptionLabel = QLabel(self.aboutPage)
+        self.danserGuiDescriptionLabel.setObjectName(u"danserGuiDescriptionLabel")
+        self.danserGuiDescriptionLabel.setTextFormat(Qt.MarkdownText)
+        self.danserGuiDescriptionLabel.setOpenExternalLinks(True)
 
-        self.danserGuiHorizontalLayout.addWidget(self.danserGuiDescriptionLlabel)
+        self.danserGuiHorizontalLayout.addWidget(self.danserGuiDescriptionLabel)
 
 
         self.aboutPageGridLayout.addLayout(self.danserGuiHorizontalLayout, 0, 1, 1, 1)
@@ -2434,7 +2435,7 @@ class Ui_MainWindow(object):
         self.dateFormatComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"mm-dd-YYYY", None))
         self.dateFormatComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"dd-mm-YYYY", None))
 
-        self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.knockoutSettinigs), QCoreApplication.translate("MainWindow", u"Knockout", None))
+        self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.knockoutSettings), QCoreApplication.translate("MainWindow", u"Knockout", None))
         self.recordingGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Recording", None))
         self.recordingResolutionLabel.setText(QCoreApplication.translate("MainWindow", u"Resolution:", None))
         self.recordingFPSLabel.setText(QCoreApplication.translate("MainWindow", u"FPS:", None))
@@ -2567,10 +2568,10 @@ class Ui_MainWindow(object):
         self.quickStartCheckBox.setText(QCoreApplication.translate("MainWindow", u"Quick Start", None))
         self.backgroundDimGroupBox.setTitle(QCoreApplication.translate("MainWindow", u" Background dim", None))
         self.introBGDimLabel.setText(QCoreApplication.translate("MainWindow", u"Intro:", None))
-        self.inGameBGDmabel.setText(QCoreApplication.translate("MainWindow", u"In Game:", None))
+        self.inGameBGDimLabel.setText(QCoreApplication.translate("MainWindow", u"In Game:", None))
         self.breakBGDimLabel.setText(QCoreApplication.translate("MainWindow", u"Break:", None))
         self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.otherSettings), QCoreApplication.translate("MainWindow", u"Other", None))
-        self.danserGuiDescriptionLlabel.setText(QCoreApplication.translate("MainWindow", u"About Title", None))
+        self.danserGuiDescriptionLabel.setText(QCoreApplication.translate("MainWindow", u"About Title", None))
         self.aboutMainMarkdownLabel.setText(QCoreApplication.translate("MainWindow", u"About Description", None))
         self.settingsTabWidget.setTabText(self.settingsTabWidget.indexOf(self.aboutPage), QCoreApplication.translate("MainWindow", u"About", None))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.settingsTab), QCoreApplication.translate("MainWindow", u"Settings", None))

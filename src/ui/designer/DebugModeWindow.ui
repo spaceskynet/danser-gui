@@ -16,16 +16,16 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="currentDanserExecArgmentsVerticalLayout">
+    <layout class="QVBoxLayout" name="currentDanserExecArgumentsVerticalLayout">
      <item>
-      <widget class="QLabel" name="currentDanserExecArgmentsLabel">
+      <widget class="QLabel" name="currentDanserExecArgumentsLabel">
        <property name="text">
         <string notr="true">Current Danser Execute Argments:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="currentDanserExecArgmentsLineEdit">
+      <widget class="QLineEdit" name="currentDanserExecArgumentsLineEdit">
        <property name="readOnly">
         <bool>true</bool>
        </property>

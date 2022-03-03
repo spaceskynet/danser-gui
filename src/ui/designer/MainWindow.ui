@@ -84,7 +84,7 @@
           <item>
            <layout class="QVBoxLayout" name="generalSettingVerticalLayout">
             <item>
-             <layout class="QHBoxLayout" name="danserModeAndisRecordHorizontalLayout">
+             <layout class="QHBoxLayout" name="danserModeAndIsRecordHorizontalLayout">
               <item>
                <layout class="QFormLayout" name="danserModeFormLayout">
                 <item row="0" column="0">
@@ -1032,7 +1032,7 @@
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="knockoutSettinigs">
+            <widget class="QWidget" name="knockoutSettings">
              <attribute name="title">
               <string>Knockout</string>
              </attribute>
@@ -2989,7 +2989,7 @@ Maximum cursor size (when there is only 1 player left)</string>
                         <item>
                          <layout class="QFormLayout" name="inGameBGDimFormLayout">
                           <item row="0" column="0">
-                           <widget class="QLabel" name="inGameBGDmabel">
+                           <widget class="QLabel" name="inGameBGDimLabel">
                             <property name="text">
                              <string>In Game:</string>
                             </property>
@@ -3119,7 +3119,7 @@ Maximum cursor size (when there is only 1 player left)</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="danserGuiDescriptionLlabel">
+                   <widget class="QLabel" name="danserGuiDescriptionLabel">
                     <property name="text">
                      <string>About Title</string>
                     </property>
@@ -3171,7 +3171,7 @@ Maximum cursor size (when there is only 1 player left)</string>
   <customwidget>
    <class>QClickedLineEdit</class>
    <extends>QLineEdit</extends>
-   <header>GuiWidgets</header>
+   <header>ui.widgets</header>
   </customwidget>
   <customwidget>
    <class>QLabeledSlider</class>
@@ -3191,7 +3191,7 @@ Maximum cursor size (when there is only 1 player left)</string>
   <customwidget>
    <class>QClickedLabel</class>
    <extends>QLabel</extends>
-   <header>GuiWidgets</header>
+   <header>ui.widgets</header>
   </customwidget>
   <customwidget>
    <class>QLabeledDoubleRangeSlider</class>
