@@ -1256,32 +1256,32 @@ class Ui_MainWindow(object):
         self.recordingGridLayout.setObjectName(u"recordingGridLayout")
         self.recordingGeneralVerticalLayout = QVBoxLayout()
         self.recordingGeneralVerticalLayout.setObjectName(u"recordingGeneralVerticalLayout")
-        self.recordingResolutionVorizontalLayout = QHBoxLayout()
-        self.recordingResolutionVorizontalLayout.setSpacing(6)
-        self.recordingResolutionVorizontalLayout.setObjectName(u"recordingResolutionVorizontalLayout")
+        self.recordingResolutionHorizontalLayout = QHBoxLayout()
+        self.recordingResolutionHorizontalLayout.setSpacing(6)
+        self.recordingResolutionHorizontalLayout.setObjectName(u"recordingResolutionHorizontalLayout")
         self.recordingResolutionLabel = QLabel(self.recordingGroupBox)
         self.recordingResolutionLabel.setObjectName(u"recordingResolutionLabel")
 
-        self.recordingResolutionVorizontalLayout.addWidget(self.recordingResolutionLabel)
+        self.recordingResolutionHorizontalLayout.addWidget(self.recordingResolutionLabel)
 
         self.recordingWidth = QLineEdit(self.recordingGroupBox)
         self.recordingWidth.setObjectName(u"recordingWidth")
 
-        self.recordingResolutionVorizontalLayout.addWidget(self.recordingWidth)
+        self.recordingResolutionHorizontalLayout.addWidget(self.recordingWidth)
 
         self.recordingResolutionMiddleX = QLabel(self.recordingGroupBox)
         self.recordingResolutionMiddleX.setObjectName(u"recordingResolutionMiddleX")
         self.recordingResolutionMiddleX.setText(u"x")
 
-        self.recordingResolutionVorizontalLayout.addWidget(self.recordingResolutionMiddleX)
+        self.recordingResolutionHorizontalLayout.addWidget(self.recordingResolutionMiddleX)
 
         self.recordingHeight = QLineEdit(self.recordingGroupBox)
         self.recordingHeight.setObjectName(u"recordingHeight")
 
-        self.recordingResolutionVorizontalLayout.addWidget(self.recordingHeight)
+        self.recordingResolutionHorizontalLayout.addWidget(self.recordingHeight)
 
 
-        self.recordingGeneralVerticalLayout.addLayout(self.recordingResolutionVorizontalLayout)
+        self.recordingGeneralVerticalLayout.addLayout(self.recordingResolutionHorizontalLayout)
 
         self.recordingFPSHorizontalLayout = QHBoxLayout()
         self.recordingFPSHorizontalLayout.setObjectName(u"recordingFPSHorizontalLayout")

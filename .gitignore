@@ -14,6 +14,8 @@ src/test.py
 src/osu!.sqlite3.db
 src/danser-gui.png
 src/dansergui.res.qrc
+build.bat
+build.sh
 upx
 upx.exe
 

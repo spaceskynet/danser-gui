@@ -7,9 +7,11 @@ class QClickedLineEdit(QLineEdit):
     def mouseReleaseEvent(self, QMouseEvent):
         if QMouseEvent.button() == Qt.LeftButton:
             self.clicked.emit()
+        return super().mouseReleaseEvent(QMouseEvent)
 
 class QClickedLabel(QLabel):
     clicked = pyqtSignal()
     def mouseReleaseEvent(self, QMouseEvent):
         if QMouseEvent.button() == Qt.LeftButton:
             self.clicked.emit()
+        return super().mouseReleaseEvent(QMouseEvent)

@@ -586,12 +586,12 @@
     <message>
         <location filename="../ui/gui.py" line="630"/>
         <source>Choose danser root folder</source>
-        <translation>选择 danser 根目录</translation>
+        <translation>选择 Danser 根目录</translation>
     </message>
     <message>
         <location filename="../ui/gui.py" line="639"/>
         <source>Choose danser record video output folder</source>
-        <translation>选择 danser 录制视频输出目录</translation>
+        <translation>选择 Danser 录制视频输出目录</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.py" line="2333"/>
@@ -631,7 +631,7 @@
     <message>
         <location filename="../ui/MainWindow.py" line="2538"/>
         <source>Sliders and circles will bounce to the rhythm of the music</source>
-        <translation>note 和 滑条会随着音乐的节奏弹跳</translation>
+        <translation>note 和滑条会随着音乐的节奏弹跳</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.py" line="2542"/>
@@ -781,7 +781,7 @@
     <message>
         <location filename="../ui/gui.py" line="272"/>
         <source>end time must greater than 12</source>
-        <translation>结束时间必须大于 12 s，请勿选择谱面长度小于 12s 的谱面（否则 danser 会崩溃）。</translation>
+        <translation>结束时间必须大于 12s，请勿选择谱面长度小于 12s 的谱面（否则 Danser 会崩溃）。</translation>
     </message>
     <message>
         <location filename="../ui/gui.py" line="548"/>
@@ -796,7 +796,7 @@
     <message>
         <location filename="../ui/gui.py" line="555"/>
         <source>danser only support std map!</source>
-        <translation>danser 只支持 osu! std 模式的谱面！</translation>
+        <translation>Danser 只支持 osu! std 模式的谱面！</translation>
     </message>
     <message>
         <location filename="../utils/exception_handling.py" line="12"/>
@@ -1016,7 +1016,7 @@ Maximum cursor size (when there is only 1 player left)</source>
     <message>
         <location filename="../ui/MainWindow.py" line="2425"/>
         <source>Change the Beatmap MD5 of the *.osr file in the replays folder to the MD5 of the currently selected beatmap, which is convenient for making a comparison video of the same song with different difficulties.</source>
-        <translation>将 replays 文件夹中 *.osr 文件的谱面 MD5 修改为当前选中谱面的MD5，方便制作同一歌曲不同难度的对比视频。</translation>
+        <translation>将 replays 文件夹中 *.osr 文件的谱面 MD5 修改为当前选中谱面的 MD5，方便制作同一歌曲不同难度的对比视频。</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.py" line="2427"/>
@@ -1079,7 +1079,7 @@ Maximum cursor size (when there is only 1 player left)</source>
     <message>
         <location filename="../ui/gui.py" line="433"/>
         <source>please note that the operation is irreversible, this will modify all osr files in the replays directory! Remember to backup osr files at first!</source>
-        <translation type="unfinished">请注意这个操作是不可逆的，这会修改 replays 目录下的所有 osr 文件！ 记得先备份 osr 文件！</translation>
+        <translation>请注意这个操作是不可逆的，这会修改 replays 目录下的所有 osr 文件！ 记得先备份 osr 文件！</translation>
     </message>
     <message>
         <location filename="../ui/gui.py" line="464"/>
@@ -1185,7 +1185,7 @@ Maximum cursor size (when there is only 1 player left)</source>
     <message>
         <location filename="../utils/setup.py" line="86"/>
         <source>Choose danser root folder</source>
-        <translation>选择 danser 根目录</translation>
+        <translation>选择 Danser 根目录</translation>
     </message>
     <message>
         <location filename="../utils/setup.py" line="101"/>

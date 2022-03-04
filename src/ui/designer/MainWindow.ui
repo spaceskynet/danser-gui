@@ -1773,7 +1773,7 @@ Maximum cursor size (when there is only 1 player left)</string>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="recordingGeneralVerticalLayout">
                      <item>
-                      <layout class="QHBoxLayout" name="recordingResolutionVorizontalLayout">
+                      <layout class="QHBoxLayout" name="recordingResolutionHorizontalLayout">
                        <property name="spacing">
                         <number>6</number>
                        </property>

@@ -641,7 +641,7 @@
     <message>
         <location filename="../ui/MainWindow.py" line="2546"/>
         <source>Makes the sliders and circles rainbow! Enabling this will override &quot;Use skin combo colors&quot; and &quot;Use beatmap combo colors&quot;</source>
-        <translation>Makes the sliders and circles rainbow! Enabling this will override &amp;quot;Use skin combo colors&amp;quot; and &amp;quot;Use beatmap combo colors&amp;quot;</translation>
+        <translation>Makes the sliders and circles rainbow! Enabling this will override &quot;Use skin combo colors&quot; and &quot;Use beatmap combo colors&quot;</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.py" line="2550"/>
@@ -796,7 +796,7 @@
     <message>
         <location filename="../ui/gui.py" line="555"/>
         <source>danser only support std map!</source>
-        <translation>danser only support osu! standard maps!</translation>
+        <translation>Danser only support osu! standard maps!</translation>
     </message>
     <message>
         <location filename="../utils/exception_handling.py" line="12"/>
@@ -821,7 +821,7 @@
     <message>
         <location filename="../ui/MainWindow.py" line="2316"/>
         <source>Click it and start task!</source>
-        <translation>Click it and start danser task!</translation>
+        <translation>Click it and start Danser task!</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.py" line="2365"/>
