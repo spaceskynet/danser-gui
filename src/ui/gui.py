@@ -550,14 +550,16 @@ class DanserUiMainWindow(Ui_MainWindow):
                 customWarning(QCoreApplication.translate("MainWindow", u"no recent replay, please pick a replay yourself!", None))
     
     def setBeatmap(self, beatmap):
-        if not beatmap:
+        if beatmap:
+            osu_file_path = abspath(join(self.gui_config.General.OsuSongsDir, beatmap.FolderName, beatmap.MapFile))
+
+        if not beatmap or not isfile(osu_file_path):
             customWarning(QCoreApplication.translate("MainWindow", u"no such beatmap, maybe you need update db or download beatmap from internet or place the beatmap file in the right songs folder!", None))
             return False
         if beatmap.GameMode != 0:
             customWarning(QCoreApplication.translate("MainWindow", u"danser only support std map!", None))
             return False
 
-        osu_file_path = abspath(join(self.gui_config.General.OsuSongsDir, beatmap.FolderName, beatmap.MapFile))
         logging.info(f"[GUI] Chosen osu file: {osu_file_path}")
 
         self.osuPathLineEdit.setText(osu_file_path)

@@ -4,6 +4,7 @@ import sqlite3
 import sys
 import os
 from utils.osudbparser import buffer
+import traceback
 import logging
 from autologging import traced, logged
 
@@ -51,7 +52,7 @@ def create_db(osu_db_path, osu_sqlite3_db_path):
             beatmap_id INTEGER,
             beatmap_set_id INTEGER,
             thread_id INTEGER,
-            grade_stadard INTEGER,
+            grade_standard INTEGER,
             grade_taiko INTEGER,
             grade_ctb INTEGER,
             grade_mania INTEGER,
