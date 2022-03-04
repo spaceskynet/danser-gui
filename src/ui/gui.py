@@ -651,25 +651,19 @@ class DanserUiMainWindow(Ui_MainWindow):
     
     def songsDBUpdateEvent(self, MainWindow):
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
-        if songs_db_mode == 'osu!':
-            self.syncGuiConfigWithMainWindow(MainWindow)
-            root_path = self.gui_config.General.OsuRootDir
-        else:
-            self.syncDanserConfigWithGuiConfig(MainWindow)
-            root_path = self.gui_config.General.DanserRootDir
-        self.songsDBUpdateThread.init(songs_db_mode, root_path)
-        # self.songsDBUpdateEventStarted()
+        self.syncDanserConfigWithGuiConfig(MainWindow)
+        osu_root_path = self.gui_config.General.OsuRootDir if songs_db_mode == 'osu!' else None
+        danser_root_path = self.gui_config.General.DanserRootDir
+        self.songsDBUpdateThread.init(songs_db_mode, osu_root_path, danser_root_path)
         self.songsDBUpdateThread.start()
 
     def songsDBUpdateEventStarted(self):
         logging.info("[GUI] songsDBUpdateEvent Started")
-        # self.songsDBGridLayout.setEnabled(False)
         self.songsDBModeComboBox.setDisabled(True)
         self.songsDBUpdatePushButton.setDisabled(True)
 
     def songsDBUpdateEventFinished(self):
         logging.info("[GUI] songsDBUpdateEvent Finished")
-        # self.songsDBGridLayout.setEnabled(True)
         self.songsDBModeComboBox.setEnabled(True)
         self.songsDBUpdatePushButton.setEnabled(True)
         customInfo(QCoreApplication.translate("MainWindow", u"songs db is updated successfully!", None))
@@ -725,7 +719,6 @@ class DanserMainWindow(QMainWindow):
         self.MainWindow.checkWidgetsIsEnabled(self)
 
         self.setFocus()
-        # self.setWindowTitle("Danser GUI")
 
         windows_width, windows_height = 704, 396
         linux_width, linux_height = 848, 477 

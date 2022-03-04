@@ -13,15 +13,15 @@ from autologging import traced, logged
 @logged(logging.getLogger(__name__))
 @traced
 class SongsDBUpdateThread(QThread):
-    def __init__(self, songs_db_mode=None, root_path=None, parent=None):
+    def __init__(self, songs_db_mode=None, osu_root_path=None, danser_root_path=None, parent=None):
         super(SongsDBUpdateThread, self).__init__(parent)
-        self.songs_db_mode = songs_db_mode
-        self.root_path = root_path
+        self.init(songs_db_mode, osu_root_path, danser_root_path)
         self.working = True
 
-    def init(self, songs_db_mode=None, root_path=None):
+    def init(self, songs_db_mode=None, osu_root_path=None, danser_root_path=None):
         self.songs_db_mode = songs_db_mode
-        self.root_path = root_path
+        self.osu_root_path = osu_root_path
+        self.danser_root_path = danser_root_path
 
     def __del__(self):
         self.working = False
@@ -34,18 +34,18 @@ class SongsDBUpdateThread(QThread):
         return bytes(self.p.readAllStandardError()).decode()
 
     def run(self):
-        songs_db_mode, root_path = self.songs_db_mode, self.root_path
+        songs_db_mode, osu_root_path, danser_root_path = self.songs_db_mode, self.osu_root_path, self.danser_root_path
 
         if songs_db_mode == 'osu!':
             try:
-                create_db(join(root_path, 'osu!.db'), join(consts.root_path, 'osu!.sqlite3.db'))
+                create_db(join(osu_root_path, 'osu!.db'), join(consts.root_path, 'osu!.sqlite3.db'))
             except Exception as e:
                 logging.info(f"[GUI][SongsDBUpdateThread][osu!] {traceback.format_exc()}")
             logging.info("[GUI][SongsDBUpdateThread][osu!] Finshed!")
 
         # after osu! database updated, danser database must be updated.
         self.p = QProcess()
-        self.p.start(join(root_path, consts.danser_exec_file_name), ["-md5=0"])
+        self.p.start(join(danser_root_path, consts.danser_exec_file_name), ["-md5=0"])
         self.p.readyReadStandardOutput.connect(lambda: (logging.info(f"[DANSER][STDOUT] {self.readProcessAllStandardOutput()}")))
         self.p.readyReadStandardError.connect(lambda: (logging.info(f"[DANSER][STDERR] {self.readProcessAllStandardError()}")))
         self.p.finished.connect(lambda: (logging.info("[GUI][SongsDBUpdateThread][danser] Finshed!")))
