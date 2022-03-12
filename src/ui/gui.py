@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import consts
-import logging, sys, traceback, platform, os
+import logging, sys, traceback, os
 import ui.danserGuiRes as danserGuiRes
 from autologging import traced, logged
 from autologging import TRACE
@@ -112,6 +112,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         super().__init__()
         self.setupUi(MainWindow)
         self.gui_config = MainWindow.gui_config
+        self.dansergui_settings = MainWindow.dansergui_settings
         self.rewriteClassesInit()
 
         self.trans = QTranslator(MainWindow)
@@ -243,6 +244,9 @@ class DanserUiMainWindow(Ui_MainWindow):
     def checkWidgetsValueIsValid(self):
         danser_mode = self.danserModeComboBox.currentText()
 
+        if not self.dansergui_settings.danser_config:
+            return (False, customWarning(QCoreApplication.translate("MainWindow", u"cant find danser settings!", None)))
+
         if not self.songsPathLineEdit.text():
             return (False, isEmptyWarning(QCoreApplication.translate("MainWindow", u"Songs Path", None)))
         if not self.skinsPathLineEdit.text():
@@ -273,6 +277,17 @@ class DanserUiMainWindow(Ui_MainWindow):
             return (False, customWarning(QCoreApplication.translate("MainWindow", u"end time must greater than 12", None)))
 
         return (True, None)
+
+    def checkFFmpegIsExists(self):
+        danser_root_path = self.gui_config.General.DanserRootDir
+        ffmpeg_file = f"ffmpeg{consts.executable_file_suffix}"
+        # find ffmpeg in danser folder
+        if isfile(join(danser_root_path, ffmpeg_file)): return (True, None)
+        # find ffmpeg in PATH
+        env_paths = consts.env_paths
+        for env_path in env_paths:
+            if isfile(join(env_path, ffmpeg_file)): return (True, None)
+        return (False, customWarning(QCoreApplication.translate("MainWindow", u"cant find ffmpeg, please download it first!", None)))
 
     def bindKeyEvent(self, bindPushButton):
         bind_key_window = BindKeyWindow()
@@ -398,6 +413,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         passed, warning_widget = self.checkWidgetsValueIsValid()
         if not passed: return
         arguments, is_record = self.generateArgumentsByGuiConfig(MainWindow)
+        if is_record and not self.checkFFmpegIsExists()[0]: return
         root_path = self.gui_config.General.DanserRootDir
         self.danserExecByArgsThread.init(root_path, arguments, is_record)
         is_knockout = self.danserModeComboBox.currentText() == 'knockout'
@@ -438,10 +454,12 @@ class DanserUiMainWindow(Ui_MainWindow):
             isEmptyWarning(QCoreApplication.translate("MainWindow", u"danser Path", None))
             return
         danser_replays_path = join(self.danserPathLineEdit.text(), 'replays')
-        if platform.system()  == 'Windows':
+        if consts.running_system == 'Windows':
             os.startfile(danser_replays_path)
-        else:
+        elif consts.running_system == 'Linux':
             os.system(f"xdg-open {danser_replays_path}")
+        else: # maybe danser can be used in MacOS
+            os.system(f"open {danser_replays_path}")
 
     def replayModifyEvent(self, MainWindow, is_modify_beatmap_hash, is_add_date):
         root_path = self.gui_config.General.DanserRootDir
@@ -637,7 +655,8 @@ class DanserUiMainWindow(Ui_MainWindow):
         danser_path = QFileDialog.getExistingDirectory(MainWindow, QCoreApplication.translate("MainWindow", u"Choose danser root folder", None), start_path)
         if danser_path:
             self.danserPathLineEdit.setText(abspath(danser_path))
-            MainWindow.dansergui_settings.danser_config.__init__(abspath(join(danser_path, consts.danser_config_path)))
+            self.syncGuiConfigWithMainWindow(MainWindow)
+            MainWindow.dansergui_settings.initDanserConfig()
         else:
             pass
 
@@ -723,7 +742,7 @@ class DanserMainWindow(QMainWindow):
         windows_width, windows_height = 704, 396
         linux_width, linux_height = 848, 477 
 
-        if platform.system() == 'Windows':
+        if consts.running_system == 'Windows':
             self.default_width, self.default_height = windows_width, windows_height
         else:
             self.default_width, self.default_height = linux_width, linux_height

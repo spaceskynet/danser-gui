@@ -1,18 +1,23 @@
+from http.server import executable
 import os
 import platform
 
 __dir__, abspath, join = os.path.dirname(__file__), os.path.abspath, os.path.join
+running_system = platform.system()
+executable_file_suffix = ".exe" if running_system == 'Windows' else ""
+env_paths = os.environ["PATH"].split(';' if running_system == 'Windows' else ":")
 root_path = abspath('.')
 res_root_path = __dir__
 config_path = join(root_path, 'settings.toml')
 danser_config_path = join('settings', 'default.json')
 danser_api_path = join('settings', 'api.txt')
-danser_exec_file_name = 'danser.exe' if platform.system() == 'Windows' else 'danser'
+danser_exec_file_name = f'danser{executable_file_suffix}'
 langs_path = join(res_root_path, 'langs')
 
 
 class LogPath:
 	app = "app.log"
+	setup = "setup.log"
 
 default_settings_toml = '''[General]
 OsuRootDir = ''

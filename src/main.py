@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import os, sys, platform
+import os, sys
 import PyQt5
+import consts
 from ui.gui import *
 from utils.setup import setupMainWindow
-from consts import LogPath, config_path
 
 def checkSetup(App, exec_path, debug):
-    if not isfile(config_path):
+    if not isfile(consts.config_path):
         setup_window = setupMainWindow()
         setup_window.accepted.connect(lambda: (launchMainWindow(App, exec_path, debug)))
     else:
@@ -22,7 +22,8 @@ def main(exec_path = "."):
     if not os.path.isdir(os.path.join(exec_path, "logs")):
         os.mkdir(os.path.join(exec_path, "logs"))
 
-    LogPath.app = os.path.join(exec_path, "logs", LogPath.app)
+    consts.LogPath.app = os.path.join(exec_path, "logs", consts.LogPath.app)
+    consts.LogPath.setup = os.path.join(exec_path, "logs", consts.LogPath.setup)
 
     qt_path = os.path.dirname(PyQt5.__file__)
     pluginpath = os.path.join(qt_path, "Qt/plugins")
@@ -34,7 +35,7 @@ def main(exec_path = "."):
 
     App = QApplication(sys.argv)
     
-    if platform.system() == 'Windows':
+    if consts.running_system == 'Windows':
         font = QFont("Microsoft YaHei", 9)
         App.setFont(font)
     

@@ -19,7 +19,7 @@ class DanserGUIConfig(object):
         self.config_path = config_path if isfile(config_path) else consts.config_path
         self.default_config = Munch.fromDict(toml.loads(consts.default_settings_toml))
         self.read()
-        self.danser_config = DanserConfig(join(self.config.General.DanserRootDir, consts.danser_config_path))
+        self.initDanserConfig()
 
     def no_api_config(self):
         osu_api = self.config.General.OsuApi
@@ -27,6 +27,14 @@ class DanserGUIConfig(object):
         config_dict = self.config.toDict()
         self.config.General.OsuApi = osu_api
         return config_dict
+
+    def initDanserConfig(self):
+        danser_config_path = join(self.config.General.DanserRootDir, consts.danser_config_path)
+        if isfile(danser_config_path):
+            self.danser_config = DanserConfig(danser_config_path)
+        else:
+            self.danser_config = None
+            logging.warning(f"[GUI][CONFIG] Danser Config can't be found in: {danser_config_path}")
 
     def read(self, config_path = ''):
         if not isfile(config_path):

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-import sys, toml
+import sys, toml, logging, traceback
 import consts
+from autologging import TRACE
 from munch import Munch
 from os.path import join, abspath, exists
 from ui.setupMainWindow import *
-from utils.exception_handling import customInfo, isEmptyWarning
+from utils.exception_handling import customInfo, isEmptyWarning, customError
+from utils.exec_wrapper import SongsDBUpdateThread
 import ui.danserGuiRes as danserGuiRes
 
 class setupUiMainWindow(Ui_setupMainWindow):
@@ -16,6 +18,10 @@ class setupUiMainWindow(Ui_setupMainWindow):
         self.trans = QTranslator(setupMainWindow)
         self.setLanguage(setupMainWindow)
 
+        self.songsDBUpdateThread = SongsDBUpdateThread()
+        self.songsDBUpdateThread.started.connect(self.songsDBUpdateEventStarted)
+        self.songsDBUpdateThread.finished.connect(lambda: (self.songsDBUpdateEventFinished(setupMainWindow)))
+
         self.languageComboBox.activated.connect(lambda: (self.languageComboBoxChanged(setupMainWindow)))
         self.songsDBModeComboBox.activated[str].connect(self.songsDBModeComboBoxChanged)
         self.osuRootPathLineEdit.clicked.connect(lambda: (self.osuRootPathLineEditClicked(setupMainWindow)))
@@ -23,7 +29,7 @@ class setupUiMainWindow(Ui_setupMainWindow):
         self.skinsPathLineEdit.clicked.connect(lambda: (self.skinsPathLineEditClicked(setupMainWindow)))
         self.danserPathLineEdit.clicked.connect(lambda: (self.danserPathLineEditClicked(setupMainWindow)))
 
-        self.buttonBox.accepted.connect(lambda: (self.setupSettings(setupMainWindow)))
+        self.buttonBox.accepted.connect(self.setupSettings)
         self.buttonBox.rejected.connect(setupMainWindow.close)
 
     def setLanguage(self, setupMainWindow):
@@ -104,8 +110,26 @@ class setupUiMainWindow(Ui_setupMainWindow):
         if not self.danserPathLineEdit.text():
             return (False, isEmptyWarning(QCoreApplication.translate("setupMainWindow", u"danser Path", None)))
         return True, None
+ 
+    def songsDBUpdateEvent(self): # generate danser default.json
+        songs_db_mode = "danser"
+        osu_root_path = None
+        danser_root_path = self.config.General.DanserRootDir
+        self.songsDBUpdateThread.init(songs_db_mode, osu_root_path, danser_root_path)
+        self.songsDBUpdateThread.start()
 
-    def setupSettings(self, setupMainWindow):
+    def songsDBUpdateEventStarted(self):
+        logging.info("[GUI] songsDBUpdateEvent Started")
+        self.songsDBModeComboBox.setDisabled(True)
+
+    def songsDBUpdateEventFinished(self, setupMainWindow):
+        logging.info("[GUI] songsDBUpdateEvent Finished")
+        self.songsDBModeComboBox.setEnabled(True)
+        customInfo(QCoreApplication.translate("setupMainWindow", u"Please update songs db at first!", None))
+        setupMainWindow.accepted.emit()
+        setupMainWindow.close()
+
+    def setupSettings(self):
         if not self.checkWidgetsIsValid()[0]: return
         config = self.config
         config.General.Language = self.languageComboBox.currentIndex()
@@ -116,20 +140,28 @@ class setupUiMainWindow(Ui_setupMainWindow):
         config.General.SongsDBMode = self.songsDBModeComboBox.currentText()
 
         self.writeConfigFile()
-        customInfo(QCoreApplication.translate("setupMainWindow", u"Please update songs db at first!", None))
-        setupMainWindow.accepted.emit()
-        setupMainWindow.close()
+        self.songsDBUpdateEvent()
 
 class setupMainWindow(QMainWindow):
     accepted = pyqtSignal()
     def __init__(self):
         super().__init__()
+        self.old_hook = sys.excepthook
+        sys.excepthook = self.catch_exceptions
+        logging.basicConfig(level=TRACE, filename=consts.LogPath.setup, filemode="w", format="%(asctime)s:%(levelname)s:%(name)s:%(funcName)s:%(message)s")
+
         self.config = Munch.fromDict(toml.loads(consts.default_settings_toml))
         self.UiMainWindow = setupUiMainWindow(self)
         gui_icon = QIcon()
         gui_icon.addFile(u":/assets/danser-gui.ico", QSize(), QIcon.Normal, QIcon.Off)
         self.setWindowIcon(gui_icon)
         self.show()
+
+    def catch_exceptions(self, ty, value, traceback_object):
+        traceback_format = traceback.format_exception(ty, value, traceback_object)
+        traceback_string = "".join(traceback_format)
+        customError(traceback_string)
+        self.old_hook(ty, value, traceback_object)
 
 if __name__ == '__main__':
     QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
