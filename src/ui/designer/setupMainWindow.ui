@@ -38,18 +38,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="languageComboBox">
-        <item>
-         <property name="text">
-          <string>English</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Chinese(Simplified)</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="languageComboBox"/>
       </item>
      </layout>
     </item>
@@ -164,7 +153,7 @@
   <customwidget>
    <class>QClickedLineEdit</class>
    <extends>QLineEdit</extends>
-   <header>GuiWidgets</header>
+   <header>ui.widgets</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -9,7 +9,9 @@ from ui.bindKeyDialog import Ui_bindKeyDialog
 from ui.MainWindow import Ui_MainWindow
 from ui.debugModeWindow import Ui_debugModeWindow
 from utils.config import DanserGUIConfig
-from os.path import dirname, join, abspath, splitext, isfile
+from os.path import dirname, join, abspath, splitext, isfile, exists
+from utils.setup import copytree
+from utils.i18n import TranslationLoader
 from utils.skin import get_skins
 from utils.osrparser import get_latest_replay
 from utils.beatmap import (find_beatmap_by_mapfile, find_beatmap_by_replay, parse_replay_file)
@@ -87,7 +89,7 @@ class BindKeyWindow(QDialog):
 
     def keyPressEvent(self, event: QKeyEvent):
         if event.key() != Qt.Key_Escape:
-            self.Dialog.inputKeyPushButton.setText(event.text())
+            self.Dialog.inputKeyPushButton.setText(event.text().upper())
             return super().keyPressEvent(event)
 
 class DanserDebugModeMainWindow(QMainWindow):
@@ -116,7 +118,13 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.rewriteClassesInit()
 
         self.trans = QTranslator(MainWindow)
-        self.setLanguage(MainWindow)
+        self.transLoader = TranslationLoader()
+        # add langs item
+        if len(self.transLoader.valid_langs_name_list) == 0:
+            copytree(consts.res_langs_path, consts.exec_langs_path)
+            self.transLoader.__init__()
+        self.languageComboBox.addItems(self.transLoader.valid_langs_name_list)
+        self.languageComboBox.activated.connect(lambda: (self.languageComboBoxChanged(MainWindow)))
 
         self.songsDBUpdateThread = SongsDBUpdateThread()
         self.songsDBUpdateThread.started.connect(self.songsDBUpdateEventStarted)
@@ -142,7 +150,7 @@ class DanserUiMainWindow(Ui_MainWindow):
 
         self.recordingEncoderComboBox.activated[int].connect(self.encoderConfigGroupBoxEnabled)
 
-        self.danserModeComboBox.activated[str].connect(lambda section:(self.generalSettingEnabled(section, MainWindow)))
+        self.danserModeComboBox.activated[str].connect(lambda section:(self.danserModeSettingCheck(section, MainWindow)))
         self.skinsComboBoxInit()
         self.osuSelectButton.clicked.connect(lambda: (self.osuSelectButtonClicked(MainWindow)))
         self.osrSelectButton.clicked.connect(lambda: (self.osrSelectButtonClicked(MainWindow)))
@@ -150,6 +158,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.osrPathLineEdit.clicked.connect(lambda: (self.osrSelectButtonClicked(MainWindow)))
         self.isRecordCheckBox.clicked.connect(self.recordingGroupBox.setEnabled)
 
+        self.osuRootPathLineEdit.clicked.connect(lambda: (self.osuRootPathLineEditClicked(MainWindow)))
         self.songsPathLineEdit.clicked.connect(lambda: (self.songsPathLineEditClicked(MainWindow)))
         self.skinsPathLineEdit.clicked.connect(lambda: (self.skinsPathLineEditClicked(MainWindow)))
         self.danserPathLineEdit.clicked.connect(lambda: (self.danserPathLineEditClicked(MainWindow)))
@@ -165,8 +174,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.smokeKeyPushButton.clicked.connect(lambda: (self.bindKeyEvent(self.smokeKeyPushButton)))
 
         self.songsDBModeComboBox.activated.connect(lambda: (self.songsDBModeComboBoxChanged(MainWindow)))
-        self.languageComboBox.activated.connect(lambda: (self.languageComboBoxChanged(MainWindow)))
-
+        
         self.mainTabWidget.currentChanged.connect(lambda: (self.syncGuiConfigWithMainWindow(MainWindow)))
         self.settingsTabWidget.currentChanged.connect(lambda: (self.syncGuiConfigWithMainWindow(MainWindow)))
 
@@ -207,8 +215,9 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.timingRangeSlider.setMaximum(songs_length)
         self.timingRangeSlider.setValue((0, songs_length))
         
-    def checkWidgetsIsEnabled(self, MainWindow):
-        self.generalSettingEnabled(self.danserModeComboBox.currentText(), MainWindow)
+    def setWidgetsStatus(self, MainWindow):
+        self.danserModeSettingCheck(self.danserModeComboBox.currentText(), MainWindow)
+        self.songsDBModeSettingCheck()
         self.recordingGroupBox.setEnabled(self.isRecordCheckBox.isEnabled() and self.isRecordCheckBox.isChecked())
         self.encoderConfigGroupBoxEnabled(self.recordingEncoderComboBox.currentIndex())
 
@@ -506,7 +515,11 @@ class DanserUiMainWindow(Ui_MainWindow):
     def encoderConfigGroupBoxEnabled(self, index):
         self.encoderConfigGroupBox.setEnabled(index + 1 == self.recordingEncoderComboBox.count())
     
-    def generalSettingEnabled(self, section, MainWindow):
+    def songsDBModeSettingCheck(self):
+        section = self.songsDBModeComboBox.currentText()
+        self.osuRootPathLineEdit.setEnabled(section == 'osu!')
+        
+    def danserModeSettingCheck(self, section, MainWindow):
         if section != 'replay':
             self.osuSelectButton.setEnabled(True)
             self.osuPathLineEdit.setEnabled(True)
@@ -626,6 +639,18 @@ class DanserUiMainWindow(Ui_MainWindow):
         else:
             pass
 
+    def osuRootPathLineEditClicked(self, MainWindow):
+        start_path = consts.root_path
+        osu_root_path = QFileDialog.getExistingDirectory(MainWindow, QCoreApplication.translate("MainWindow", u"Choose osu root folder", None), start_path)
+        if osu_root_path:
+            self.osuRootPathLineEdit.setText(abspath(osu_root_path))
+            songs_path = abspath(join(osu_root_path, 'Songs'))
+            skins_path = abspath(join(osu_root_path, 'Skins'))
+            if exists(songs_path): self.songsPathLineEdit.setText(songs_path)
+            if exists(skins_path): self.skinsPathLineEdit.setText(skins_path)
+        else:
+            pass
+
     def songsPathLineEditClicked(self, MainWindow):
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
         if songs_db_mode == 'osu!':
@@ -670,6 +695,9 @@ class DanserUiMainWindow(Ui_MainWindow):
     
     def songsDBUpdateEvent(self, MainWindow):
         songs_db_mode, songs_db_path = self.getSongsDBModeAndPath()
+        if songs_db_mode == 'osu!' and not self.osuRootPathLineEdit.text():
+            return isEmptyWarning(QCoreApplication.translate("MainWindow", u"osu Root Path", None))
+            
         self.syncDanserConfigWithGuiConfig(MainWindow)
         osu_root_path = self.gui_config.General.OsuRootDir if songs_db_mode == 'osu!' else None
         danser_root_path = self.gui_config.General.DanserRootDir
@@ -689,19 +717,23 @@ class DanserUiMainWindow(Ui_MainWindow):
 
     def songsDBModeComboBoxChanged(self, MainWindow):
         self.gui_config.General.SongsDBMode = self.songsDBModeComboBox.currentText()
+        self.songsDBModeSettingCheck()
         self.songsDBUpdateEvent(MainWindow)
     
     def setLanguage(self, MainWindow):
-        if self.gui_config.General.Language == 0:
-            self.trans.load(join(consts.langs_path, 'en-US'))
+        text, index = self.languageComboBox.currentText(), self.languageComboBox.currentIndex()
+        trans_path = self.transLoader.getSelectedLanguagePath(index)
+        logging.info(f"[GUI] Language changed to {text}, *.qm file in: {trans_path}")
+        if isfile(trans_path):
+            self.trans.load(trans_path)
         else:
-            self.trans.load(join(consts.langs_path, 'zh-CN'))
-        _app = QApplication.instance()
+            self.trans.load(self.transLoader.getDefaultLanguagePath())
+        _app = MainWindow.App.instance()
         _app.installTranslator(self.trans)
         self.retranslateUi(MainWindow)
 
     def languageComboBoxChanged(self, MainWindow):
-        self.gui_config.General.Language = self.languageComboBox.currentIndex()
+        self.syncGuiConfigWithMainWindow(MainWindow)
         self.setLanguage(MainWindow)
 
 class DanserMainWindow(QMainWindow):
@@ -735,7 +767,9 @@ class DanserMainWindow(QMainWindow):
         logging.info("[GUI] Current settings is updated to: {}".format(self.dansergui_settings.no_api_config()))
 
         self.setMainWindowByConfig()
-        self.MainWindow.checkWidgetsIsEnabled(self)
+        self.MainWindow.setLanguage(self)
+        self.MainWindow.setWidgetsStatus(self)
+
 
         self.setFocus()
 
@@ -789,6 +823,8 @@ class DanserMainWindow(QMainWindow):
         if config.Playfield.QuickStart is None:
             config.Playfield.QuickStart = default_config.Playfield.QuickStart
             config.Playfield.SkipIntro = default_config.Playfield.SkipIntro
+        if type(config.General.Language) == int:
+            config.General.Language = 'zh-CN' if config.General.Language == 1 else 'en-US'
 
     def setMainWindowByConfig(self):
         self.updateConfigByDefault()
@@ -801,13 +837,14 @@ class DanserMainWindow(QMainWindow):
             MainWindow.songsDBModeComboBox.setCurrentIndex(0)
         else:
             MainWindow.songsDBModeComboBox.setCurrentIndex(1)
+        MainWindow.osuRootPathLineEdit.setText(abspath(config.General.OsuRootDir))
         MainWindow.songsPathLineEdit.setText(abspath(config.General.OsuSongsDir))
         MainWindow.skinsPathLineEdit.setText(abspath(config.General.OsuSkinsDir))
         MainWindow.danserPathLineEdit.setText(abspath(config.General.DanserRootDir))
         MainWindow.danserModeComboBox.setCurrentIndex(abs(MainWindow.danserModeComboBox.findText(config.General.DanserMode))) # if toml is modified to be invalid
         MainWindow.isRecordCheckBox.setChecked(config.General.IsRecord)
         MainWindow.osuApiLineEdit.setText(config.General.OsuApi)
-        MainWindow.languageComboBox.setCurrentIndex(config.General.Language)
+        MainWindow.languageComboBox.setCurrentIndex(MainWindow.transLoader.getSelectedLanguageIndex(config.General.Language))
         
         ## Graphics
         MainWindow.graphicsWidth.setText(str(config.Graphics.Width))
@@ -936,13 +973,14 @@ class DanserMainWindow(QMainWindow):
         ## General
         config.Gameplay.PlayUsername = MainWindow.usernameLineEdit.text()
         config.General.SongsDBMode = MainWindow.songsDBModeComboBox.currentText()
+        config.General.OsuRootDir = MainWindow.osuRootPathLineEdit.text()
         config.General.OsuSongsDir = MainWindow.songsPathLineEdit.text()
         config.General.OsuSkinsDir = MainWindow.skinsPathLineEdit.text()
         config.General.DanserRootDir = MainWindow.danserPathLineEdit.text()
         config.General.DanserMode = MainWindow.danserModeComboBox.currentText()
         config.General.IsRecord = MainWindow.isRecordCheckBox.isChecked()
         config.General.OsuApi = MainWindow.osuApiLineEdit.text()
-        config.General.Language = MainWindow.languageComboBox.currentIndex()
+        config.General.Language = MainWindow.transLoader.getSelectedLanguageTag(MainWindow.languageComboBox.currentIndex())
 
         ## Graphics
         config.Graphics.Width = int(MainWindow.graphicsWidth.text() if MainWindow.graphicsWidth.text() else 1920)

@@ -56,12 +56,12 @@
 
 ## Credits
 
-这个程序（Danser GUI）主要由 [@SpaceSkyNet](https://github.com/spaceskynet) 编写，许可为 [MIT License](https://github.com/spaceskynet/danser-gui/blob/master/LICENSE)。
+这个程序（Danser GUI）主要由 [@SpaceSkyNet](https://github.com/spaceskynet) 编写，许可为 [MIT License](https://github.com/spaceskynet/danser-gui/blob/master/LICENSE)。如果您支持这个项目，您可以通过单击[此页面](https://github.com/spaceskynet/danser-gui/)右上角的星号给个star！
 
 **感谢这些项目：**
 
 1. [danser-go](https://github.com/Wieku/danser-go)：osu!standard 地图的 CLI 可视化工具。
-2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools)：用于操作 osu! 的 .db 数据库文件的脚本集合。
+2. [osu-db-tools](https://github.com/jaasonw/osu-db-tools)：用于操作 osu! 的 .db 数据库文件的脚本集合。
 3. [osu-replay-parser](https://github.com/kszlim/osu-replay-parser)：一个用 Python 编写的库，用来解析 osu 回放文件（*.osr）。
 4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app)：将回放文件转换为视频的程序。
 5. [ordr-client](https://github.com/MasterIO02/ordr-client) & [ordr-server](https://github.com/MasterIO02/ordr-server)：一个免费且易于使用的采用 danser 来渲染 osu! 回放并导出为视频的 API / [网站](https://ordr.issou.best/)。

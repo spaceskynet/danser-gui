@@ -1,13 +1,26 @@
 #!/usr/bin/env python3
-import sys, toml, logging, traceback
+import os, sys, shutil, toml, logging, traceback
 import consts
 from autologging import TRACE
 from munch import Munch
-from os.path import join, abspath, exists
+from os.path import join, abspath, exists, isdir, isfile
 from ui.setupMainWindow import *
+from utils.i18n import TranslationLoader
 from utils.exception_handling import customInfo, isEmptyWarning, customError
 from utils.exec_wrapper import SongsDBUpdateThread
 import ui.danserGuiRes as danserGuiRes
+
+def copytree(src, dst, symlinks = False, ignore = None):
+    if abspath(src) == abspath(dst): return
+    if not exists(dst): os.makedirs(dst)
+    for item in os.listdir(src):
+        s = join(src, item)
+        d = join(dst, item)
+        if isdir(s):
+            copytree(s, d, symlinks, ignore)
+        else:
+            if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
+                shutil.copy2(s, d)
 
 class setupUiMainWindow(Ui_setupMainWindow):
     def __init__(self, setupMainWindow):
@@ -16,13 +29,15 @@ class setupUiMainWindow(Ui_setupMainWindow):
         self.setupUi(setupMainWindow)
 
         self.trans = QTranslator(setupMainWindow)
+        self.transLoader = TranslationLoader(is_setup=True)
+        self.languageComboBox.addItems(self.transLoader.valid_langs_name_list)
+        self.languageComboBox.activated.connect(lambda: (self.languageComboBoxChanged(setupMainWindow)))
         self.setLanguage(setupMainWindow)
 
         self.songsDBUpdateThread = SongsDBUpdateThread()
         self.songsDBUpdateThread.started.connect(self.songsDBUpdateEventStarted)
         self.songsDBUpdateThread.finished.connect(lambda: (self.songsDBUpdateEventFinished(setupMainWindow)))
 
-        self.languageComboBox.activated.connect(lambda: (self.languageComboBoxChanged(setupMainWindow)))
         self.songsDBModeComboBox.activated[str].connect(self.songsDBModeComboBoxChanged)
         self.osuRootPathLineEdit.clicked.connect(lambda: (self.osuRootPathLineEditClicked(setupMainWindow)))
         self.songsPathLineEdit.clicked.connect(lambda: (self.songsPathLineEditClicked(setupMainWindow)))
@@ -33,16 +48,18 @@ class setupUiMainWindow(Ui_setupMainWindow):
         self.buttonBox.rejected.connect(setupMainWindow.close)
 
     def setLanguage(self, setupMainWindow):
-        if self.config.General.Language == 0:
-            self.trans.load(join(consts.langs_path, 'en-US'))
+        trans_path = self.transLoader.getSelectedLanguagePath(self.languageComboBox.currentIndex())
+        logging.info(f"[GUI] Language changed to {self.languageComboBox.currentText()}, *.qm file in: {trans_path}")
+        if isfile(trans_path):
+            self.trans.load(trans_path)
         else:
-            self.trans.load(join(consts.langs_path, 'zh-CN'))
+            self.trans.load(self.transLoader.getDefaultLanguagePath())
         _app = QApplication.instance()
         _app.installTranslator(self.trans)
         self.retranslateUi(setupMainWindow)
     
     def languageComboBoxChanged(self, setupMainWindow):
-        self.config.General.Language = self.languageComboBox.currentIndex()
+        self.config.General.Language = self.languageComboBox.currentText()
         self.setLanguage(setupMainWindow)
 
     def songsDBModeComboBoxChanged(self, section):
@@ -95,10 +112,13 @@ class setupUiMainWindow(Ui_setupMainWindow):
         else:
             pass
 
-    def writeConfigFile(self):
+    def writeFiles(self):
+        # toml config file
         config_path = consts.config_path
         with open(config_path, 'w', encoding='utf-8') as f:
             toml.dump(self.config.toDict(), f)
+        # language qm files
+        copytree(consts.res_langs_path, consts.exec_langs_path)
 
     def checkWidgetsIsValid(self):
         if self.songsDBModeComboBox.currentText() == 'osu!' and not self.osuRootPathLineEdit.text():
@@ -132,14 +152,14 @@ class setupUiMainWindow(Ui_setupMainWindow):
     def setupSettings(self):
         if not self.checkWidgetsIsValid()[0]: return
         config = self.config
-        config.General.Language = self.languageComboBox.currentIndex()
+        config.General.Language = self.transLoader.getSelectedLanguageTag(self.languageComboBox.currentIndex())
         config.General.OsuRootDir = self.osuRootPathLineEdit.text()
         config.General.OsuSongsDir = self.songsPathLineEdit.text()
         config.General.OsuSkinsDir = self.skinsPathLineEdit.text()
         config.General.DanserRootDir = self.danserPathLineEdit.text()
         config.General.SongsDBMode = self.songsDBModeComboBox.currentText()
 
-        self.writeConfigFile()
+        self.writeFiles()
         self.songsDBUpdateEvent()
 
 class setupMainWindow(QMainWindow):

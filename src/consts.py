@@ -1,4 +1,3 @@
-from http.server import executable
 import os
 import platform
 
@@ -12,8 +11,8 @@ config_path = join(root_path, 'settings.toml')
 danser_config_path = join('settings', 'default.json')
 danser_api_path = join('settings', 'api.txt')
 danser_exec_file_name = f'danser{executable_file_suffix}'
-langs_path = join(res_root_path, 'langs')
-
+exec_langs_path = join(root_path, 'langs')
+res_langs_path = join(res_root_path, 'langs')
 
 class LogPath:
 	app = "app.log"
@@ -28,7 +27,7 @@ DanserMode = 'danser' # danser/knockout/play/replay
 IsRecord = false
 SongsDBMode = 'osu!' # osu!/danser
 OsuApi = '' # get it from https://osu.ppy.sh/api/
-Language = 0 # 0: English, 1: Chinese (Simplified)
+Language = 'en-US' # en-US : English, zh-CN : Chinese (Simplified)
 
 [Graphics]
 Fullscreen = false

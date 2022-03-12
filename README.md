@@ -54,14 +54,21 @@ Read [WIKI (unfinished)](https://github.com/spaceskynet/danser-gui/wiki) for mor
 
 </details>
 
+## How to Contribute Translations
+
+1. Use `pip install pyqt5-tools` to install `pylupdate5`, and you can download Qt Linguist in [this page](https://download.qt.io/linguist_releases/) on Windows or install it from your package manager on Linux.
+2. Clone this repository and go to the `src` folder. Add your language tag `xx-xx` into the `langs` list in `generate_ts.sh` or `generate_ts.bat`, then run the correct script. (Like `langs=(en-US zh-CN xx-xx)` or `set langs=en-US zh-CN xx-xx`)
+3. You can find `xx-xx` in the `langs` folder, then use the Qt Linguist to open the `lang.ts` in `langs/xx-xx` folder and you can translate it! Don't forget to change the language name in `lang.txt`.
+4. After translation, you can pull request on this repository!
+
 ## Credits
 
-This program (Danser GUI) is mainly created by [@SpaceSkyNet](https://github.com/spaceskynet), which is licensed under the [MIT License](./LICENSE).
+This program (Danser GUI) is mainly created by [@SpaceSkyNet](https://github.com/spaceskynet), which is licensed under the [MIT License](./LICENSE). If you support this project, you can become a stargazer by clicking the star in the upper right corner of this [page](https://github.com/spaceskynet/danser-gui/). It must be awesome!
 
 **Thanks to These Projects:**
 
 1. [danser-go](https://github.com/Wieku/danser-go): a CLI visualisation tool for osu!standard maps.
-2. [osu-db-tools]( https://github.com/jaasonw/osu-db-tools): a collection of libraries and scripts for manipulating the osu! .db files.
+2. [osu-db-tools](https://github.com/jaasonw/osu-db-tools): a collection of libraries and scripts for manipulating the osu! .db files.
 3. [osu-replay-parser](https://github.com/kszlim/osu-replay-parser): a library written in Python, which is a parser for osr (osu! replays) file format.
 4. [osr2mp4-app](https://github.com/uyitroa/osr2mp4-app): An application to convert replay files to video.
 5. [ordr-client](https://github.com/MasterIO02/ordr-client) & [ordr-server](https://github.com/MasterIO02/ordr-server): a free and easy-to-use API / [website](https://ordr.issou.best/) that allows you to render osu! videos of replays using danser.

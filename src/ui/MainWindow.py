@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWindowkADBvs.ui'
+## Form generated from reading UI file 'MainWindow.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -14,6 +14,7 @@ from PyQt5.QtWidgets import (QWidget, QGridLayout, QTabWidget, QHBoxLayout, QVBo
                              QLabel, QCheckBox, QPushButton, QGroupBox, QLineEdit, QSlider, QComboBox, QSpinBox, QDoubleSpinBox, QAbstractSpinBox, QRadioButton, QButtonGroup, QSizePolicy)
 from ui.widgets import QClickedLineEdit, QClickedLabel
 from superqt import QLabeledSlider, QLabeledDoubleSlider, QLabeledRangeSlider, QLabeledDoubleRangeSlider
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -165,24 +166,14 @@ class Ui_MainWindow(object):
         self.basicGroupBox.setObjectName(u"basicGroupBox")
         self.gridLayout_6 = QGridLayout(self.basicGroupBox)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.basicFormLayout = QFormLayout()
-        self.basicFormLayout.setObjectName(u"basicFormLayout")
-        self.basicFormLayout.setHorizontalSpacing(6)
-        self.usernameVerticalLayout = QVBoxLayout()
-        self.usernameVerticalLayout.setObjectName(u"usernameVerticalLayout")
-        self.usernameLabel = QLabel(self.basicGroupBox)
-        self.usernameLabel.setObjectName(u"usernameLabel")
+        self.empty_widget_8 = QWidget(self.basicGroupBox)
+        self.empty_widget_8.setObjectName(u"empty_widget_8")
 
-        self.usernameVerticalLayout.addWidget(self.usernameLabel)
+        self.gridLayout_6.addWidget(self.empty_widget_8, 1, 0, 1, 1)
 
-        self.usernameLineEdit = QLineEdit(self.basicGroupBox)
-        self.usernameLineEdit.setObjectName(u"usernameLineEdit")
-
-        self.usernameVerticalLayout.addWidget(self.usernameLineEdit)
-
-
-        self.basicFormLayout.setLayout(0, QFormLayout.LabelRole, self.usernameVerticalLayout)
-
+        self.basicGridLayout = QGridLayout()
+        self.basicGridLayout.setObjectName(u"basicGridLayout")
+        self.basicGridLayout.setHorizontalSpacing(6)
         self.songsDBGridLayout = QGridLayout()
         self.songsDBGridLayout.setObjectName(u"songsDBGridLayout")
         self.songsDBModeLabel = QLabel(self.basicGroupBox)
@@ -203,7 +194,7 @@ class Ui_MainWindow(object):
         self.songsDBGridLayout.addWidget(self.songsDBUpdatePushButton, 1, 1, 1, 1)
 
 
-        self.basicFormLayout.setLayout(0, QFormLayout.FieldRole, self.songsDBGridLayout)
+        self.basicGridLayout.addLayout(self.songsDBGridLayout, 0, 1, 1, 1)
 
         self.songsPathFormLayout = QFormLayout()
         self.songsPathFormLayout.setObjectName(u"songsPathFormLayout")
@@ -219,23 +210,7 @@ class Ui_MainWindow(object):
         self.songsPathFormLayout.setWidget(0, QFormLayout.FieldRole, self.songsPathLineEdit)
 
 
-        self.basicFormLayout.setLayout(1, QFormLayout.SpanningRole, self.songsPathFormLayout)
-
-        self.skinsPathFormLayout = QFormLayout()
-        self.skinsPathFormLayout.setObjectName(u"skinsPathFormLayout")
-        self.skinsPathLabel = QLabel(self.basicGroupBox)
-        self.skinsPathLabel.setObjectName(u"skinsPathLabel")
-
-        self.skinsPathFormLayout.setWidget(0, QFormLayout.LabelRole, self.skinsPathLabel)
-
-        self.skinsPathLineEdit = QClickedLineEdit(self.basicGroupBox)
-        self.skinsPathLineEdit.setObjectName(u"skinsPathLineEdit")
-        self.skinsPathLineEdit.setReadOnly(True)
-
-        self.skinsPathFormLayout.setWidget(0, QFormLayout.FieldRole, self.skinsPathLineEdit)
-
-
-        self.basicFormLayout.setLayout(2, QFormLayout.SpanningRole, self.skinsPathFormLayout)
+        self.basicGridLayout.addLayout(self.songsPathFormLayout, 2, 0, 1, 2)
 
         self.danserPathFormLayout = QFormLayout()
         self.danserPathFormLayout.setObjectName(u"danserPathFormLayout")
@@ -251,7 +226,38 @@ class Ui_MainWindow(object):
         self.danserPathFormLayout.setWidget(0, QFormLayout.FieldRole, self.danserPathLineEdit)
 
 
-        self.basicFormLayout.setLayout(3, QFormLayout.SpanningRole, self.danserPathFormLayout)
+        self.basicGridLayout.addLayout(self.danserPathFormLayout, 4, 0, 1, 2)
+
+        self.languageFormLayout = QFormLayout()
+        self.languageFormLayout.setObjectName(u"languageFormLayout")
+        self.languageLabel = QLabel(self.basicGroupBox)
+        self.languageLabel.setObjectName(u"languageLabel")
+
+        self.languageFormLayout.setWidget(0, QFormLayout.LabelRole, self.languageLabel)
+
+        self.languageComboBox = QComboBox(self.basicGroupBox)
+        self.languageComboBox.setObjectName(u"languageComboBox")
+
+        self.languageFormLayout.setWidget(0, QFormLayout.FieldRole, self.languageComboBox)
+
+
+        self.basicGridLayout.addLayout(self.languageFormLayout, 6, 0, 1, 2)
+
+        self.skinsPathFormLayout = QFormLayout()
+        self.skinsPathFormLayout.setObjectName(u"skinsPathFormLayout")
+        self.skinsPathLabel = QLabel(self.basicGroupBox)
+        self.skinsPathLabel.setObjectName(u"skinsPathLabel")
+
+        self.skinsPathFormLayout.setWidget(0, QFormLayout.LabelRole, self.skinsPathLabel)
+
+        self.skinsPathLineEdit = QClickedLineEdit(self.basicGroupBox)
+        self.skinsPathLineEdit.setObjectName(u"skinsPathLineEdit")
+        self.skinsPathLineEdit.setReadOnly(True)
+
+        self.skinsPathFormLayout.setWidget(0, QFormLayout.FieldRole, self.skinsPathLineEdit)
+
+
+        self.basicGridLayout.addLayout(self.skinsPathFormLayout, 3, 0, 1, 2)
 
         self.osuApiFormLayout = QFormLayout()
         self.osuApiFormLayout.setObjectName(u"osuApiFormLayout")
@@ -267,27 +273,41 @@ class Ui_MainWindow(object):
         self.osuApiFormLayout.setWidget(0, QFormLayout.FieldRole, self.osuApiLineEdit)
 
 
-        self.basicFormLayout.setLayout(4, QFormLayout.SpanningRole, self.osuApiFormLayout)
+        self.basicGridLayout.addLayout(self.osuApiFormLayout, 5, 0, 1, 2)
 
-        self.languageFormLayout = QFormLayout()
-        self.languageFormLayout.setObjectName(u"languageFormLayout")
-        self.languageLabel = QLabel(self.basicGroupBox)
-        self.languageLabel.setObjectName(u"languageLabel")
+        self.usernameVerticalLayout = QVBoxLayout()
+        self.usernameVerticalLayout.setObjectName(u"usernameVerticalLayout")
+        self.usernameLabel = QLabel(self.basicGroupBox)
+        self.usernameLabel.setObjectName(u"usernameLabel")
 
-        self.languageFormLayout.setWidget(0, QFormLayout.LabelRole, self.languageLabel)
+        self.usernameVerticalLayout.addWidget(self.usernameLabel)
 
-        self.languageComboBox = QComboBox(self.basicGroupBox)
-        self.languageComboBox.addItem("")
-        self.languageComboBox.addItem("")
-        self.languageComboBox.setObjectName(u"languageComboBox")
+        self.usernameLineEdit = QLineEdit(self.basicGroupBox)
+        self.usernameLineEdit.setObjectName(u"usernameLineEdit")
 
-        self.languageFormLayout.setWidget(0, QFormLayout.FieldRole, self.languageComboBox)
+        self.usernameVerticalLayout.addWidget(self.usernameLineEdit)
 
 
-        self.basicFormLayout.setLayout(5, QFormLayout.SpanningRole, self.languageFormLayout)
+        self.basicGridLayout.addLayout(self.usernameVerticalLayout, 0, 0, 1, 1)
+
+        self.osuRootPathFormLayout = QFormLayout()
+        self.osuRootPathFormLayout.setObjectName(u"osuRootPathFormLayout")
+        self.osuRootPathLabel = QLabel(self.basicGroupBox)
+        self.osuRootPathLabel.setObjectName(u"osuRootPathLabel")
+
+        self.osuRootPathFormLayout.setWidget(0, QFormLayout.LabelRole, self.osuRootPathLabel)
+
+        self.osuRootPathLineEdit = QClickedLineEdit(self.basicGroupBox)
+        self.osuRootPathLineEdit.setObjectName(u"osuRootPathLineEdit")
+        self.osuRootPathLineEdit.setReadOnly(True)
+
+        self.osuRootPathFormLayout.setWidget(0, QFormLayout.FieldRole, self.osuRootPathLineEdit)
 
 
-        self.gridLayout_6.addLayout(self.basicFormLayout, 0, 0, 1, 1)
+        self.basicGridLayout.addLayout(self.osuRootPathFormLayout, 1, 0, 1, 2)
+
+
+        self.gridLayout_6.addLayout(self.basicGridLayout, 0, 0, 1, 1)
 
 
         self.generalSettingsGridLayout.addWidget(self.basicGroupBox, 0, 0, 2, 1)
@@ -2329,24 +2349,22 @@ class Ui_MainWindow(object):
         self.osuPathLabel.setText(QCoreApplication.translate("MainWindow", u"Beatmap(.osu) path:", None))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.generalTab), QCoreApplication.translate("MainWindow", u"General", None))
         self.basicGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Basic", None))
-        self.usernameLabel.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
-#if QT_CONFIG(tooltip)
-        self.usernameLineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"Your username (not the username of the replay)", None))
-#endif // QT_CONFIG(tooltip)
         self.songsDBModeLabel.setText(QCoreApplication.translate("MainWindow", u"Songs DB Mode:", None))
 
         self.songsDBUpdatePushButton.setText(QCoreApplication.translate("MainWindow", u"Update", None))
         self.songsPathLabel.setText(QCoreApplication.translate("MainWindow", u"Songs Path:", None))
-        self.skinsPathLabel.setText(QCoreApplication.translate("MainWindow", u"Skins Path:", None))
         self.danserPathLabel.setText(QCoreApplication.translate("MainWindow", u"danser Path:", None))
+        self.languageLabel.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
+        self.skinsPathLabel.setText(QCoreApplication.translate("MainWindow", u"Skins Path:", None))
         self.osuApiPathLabel.setText(QCoreApplication.translate("MainWindow", u"osu! api:", None))
 #if QT_CONFIG(tooltip)
         self.osuApiLineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"get it from https://osu.ppy.sh/api/", None))
 #endif // QT_CONFIG(tooltip)
-        self.languageLabel.setText(QCoreApplication.translate("MainWindow", u"Language:", None))
-        self.languageComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"English", None))
-        self.languageComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Chinese(Simplified)", None))
-
+        self.usernameLabel.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
+#if QT_CONFIG(tooltip)
+        self.usernameLineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"Your username (not the username of the replay)", None))
+#endif // QT_CONFIG(tooltip)
+        self.osuRootPathLabel.setText(QCoreApplication.translate("MainWindow", u"osu! Root Path:", None))
         self.volumeGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Volume", None))
         self.globalVolumeLabel.setText(QCoreApplication.translate("MainWindow", u"Global:", None))
         self.musicVolumeLabel.setText(QCoreApplication.translate("MainWindow", u"Music:", None))

@@ -32,8 +32,6 @@ class Ui_setupMainWindow(object):
         self.languageFormLayout.setWidget(0, QFormLayout.LabelRole, self.languageLabel)
 
         self.languageComboBox = QComboBox(self.centralwidget)
-        self.languageComboBox.addItem("")
-        self.languageComboBox.addItem("")
         self.languageComboBox.setObjectName(u"languageComboBox")
 
         self.languageFormLayout.setWidget(0, QFormLayout.FieldRole, self.languageComboBox)
@@ -138,8 +136,6 @@ class Ui_setupMainWindow(object):
     def retranslateUi(self, setupMainWindow):
         setupMainWindow.setWindowTitle(QCoreApplication.translate("setupMainWindow", u"Setup", None))
         self.languageLabel.setText(QCoreApplication.translate("setupMainWindow", u"Language:", None))
-        self.languageComboBox.setItemText(0, QCoreApplication.translate("setupMainWindow", u"English", None))
-        self.languageComboBox.setItemText(1, QCoreApplication.translate("setupMainWindow", u"Chinese(Simplified)", None))
 
         self.songsDBModeLabel.setText(QCoreApplication.translate("setupMainWindow", u"Songs DB Mode:", None))
 

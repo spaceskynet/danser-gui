@@ -234,29 +234,14 @@
                    <string>Basic</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_6">
+                   <item row="1" column="0">
+                    <widget class="QWidget" name="empty_widget_8" native="true"/>
+                   </item>
                    <item row="0" column="0">
-                    <layout class="QFormLayout" name="basicFormLayout">
+                    <layout class="QGridLayout" name="basicGridLayout">
                      <property name="horizontalSpacing">
                       <number>6</number>
                      </property>
-                     <item row="0" column="0">
-                      <layout class="QVBoxLayout" name="usernameVerticalLayout">
-                       <item>
-                        <widget class="QLabel" name="usernameLabel">
-                         <property name="text">
-                          <string>Username:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="usernameLineEdit">
-                         <property name="toolTip">
-                          <string>Your username (not the username of the replay)</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
                      <item row="0" column="1">
                       <layout class="QGridLayout" name="songsDBGridLayout">
                        <item row="0" column="0" colspan="2">
@@ -289,7 +274,7 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="1" column="0" colspan="2">
+                     <item row="2" column="0" colspan="2">
                       <layout class="QFormLayout" name="songsPathFormLayout">
                        <item row="0" column="0">
                         <widget class="QLabel" name="songsPathLabel">
@@ -307,25 +292,7 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="2" column="0" colspan="2">
-                      <layout class="QFormLayout" name="skinsPathFormLayout">
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="skinsPathLabel">
-                         <property name="text">
-                          <string>Skins Path:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QClickedLineEdit" name="skinsPathLineEdit">
-                         <property name="readOnly">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item row="3" column="0" colspan="2">
+                     <item row="4" column="0" colspan="2">
                       <layout class="QFormLayout" name="danserPathFormLayout">
                        <item row="0" column="0">
                         <widget class="QLabel" name="danserPathLabel">
@@ -343,7 +310,39 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="4" column="0" colspan="2">
+                     <item row="6" column="0" colspan="2">
+                      <layout class="QFormLayout" name="languageFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="languageLabel">
+                         <property name="text">
+                          <string>Language:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QComboBox" name="languageComboBox"/>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="3" column="0" colspan="2">
+                      <layout class="QFormLayout" name="skinsPathFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="skinsPathLabel">
+                         <property name="text">
+                          <string>Skins Path:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QClickedLineEdit" name="skinsPathLineEdit">
+                         <property name="readOnly">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="5" column="0" colspan="2">
                       <layout class="QFormLayout" name="osuApiFormLayout">
                        <item row="0" column="0">
                         <widget class="QLabel" name="osuApiPathLabel">
@@ -364,27 +363,38 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="5" column="0" colspan="2">
-                      <layout class="QFormLayout" name="languageFormLayout">
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="languageLabel">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="usernameVerticalLayout">
+                       <item>
+                        <widget class="QLabel" name="usernameLabel">
                          <property name="text">
-                          <string>Language:</string>
+                          <string>Username:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="usernameLineEdit">
+                         <property name="toolTip">
+                          <string>Your username (not the username of the replay)</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="0" colspan="2">
+                      <layout class="QFormLayout" name="osuRootPathFormLayout">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="osuRootPathLabel">
+                         <property name="text">
+                          <string>osu! Root Path:</string>
                          </property>
                         </widget>
                        </item>
                        <item row="0" column="1">
-                        <widget class="QComboBox" name="languageComboBox">
-                         <item>
-                          <property name="text">
-                           <string>English</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Chinese(Simplified)</string>
-                          </property>
-                         </item>
+                        <widget class="QClickedLineEdit" name="osuRootPathLineEdit">
+                         <property name="readOnly">
+                          <bool>true</bool>
+                         </property>
                         </widget>
                        </item>
                       </layout>
