@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<!DOCTYPE TS><TS version="2.0" language="zh_CN" sourcelanguage="">
 <context>
     <name>MainWindow</name>
     <message>
@@ -850,7 +849,7 @@
 {MD5}  →  谱面 MD5（*.osu 文件）
 
 例子:
-	{Player} - {MapTitle}[{Difficulty}].mp4  →  Cookiezi - FREEDOM DiVE[FOUR DIMENSIONS].mp4</translation>
+<byte value="x9"/>{Player} - {MapTitle}[{Difficulty}].mp4  →  Cookiezi - FREEDOM DiVE[FOUR DIMENSIONS].mp4</translation>
     </message>
     <message>
         <location filename="../../ui/gui.py" line="249"/>
