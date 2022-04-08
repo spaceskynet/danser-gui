@@ -5,12 +5,6 @@ import consts
 from munch import Munch, DefaultMunch
 from os.path import isfile, join
 
-def decode_config_file(toml_path):
-    with open(toml_path, mode='rb') as f:
-        content = f.read()
-    if content.startswith(b'\xef\xbb\xbf'):
-        content = content[3:]
-    return content.decode('utf8')
 
 @logged(logging.getLogger(__name__))
 @traced
@@ -35,11 +29,19 @@ class DanserGUIConfig(object):
         else:
             self.danser_config = None
             logging.warning(f"[GUI][CONFIG] Danser Config can't be found in: {danser_config_path}")
+    
+    @staticmethod
+    def decode_config_file(toml_path):
+        with open(toml_path, mode='rb') as f:
+            content = f.read()
+        if content.startswith(b'\xef\xbb\xbf'):
+            content = content[3:]
+        return content.decode('utf8')
 
     def read(self, config_path = ''):
         if not isfile(config_path):
             config_path = self.config_path
-        self.config = DefaultMunch.fromDict(toml.loads(decode_config_file(config_path)))
+        self.config = DefaultMunch.fromDict(toml.loads(self.decode_config_file(config_path)))
         logging.info(f"[GUI][CONFIG] GUI Config is read from: {config_path}")
 
     def write(self, config_path = ''):
@@ -245,11 +247,19 @@ class DanserConfig(object):
     def __init__(self, config_path = ''):
         self.config_path = config_path if isfile(config_path) else join('danser-go', consts.danser_config_path)
         self.read()
-    
+
+    @staticmethod
+    def decode_config_file(json_path):
+        with open(json_path, mode='rb') as f:
+            content = f.read()
+        if content.startswith(b'\xef\xbb\xbf'):
+            content = content[3:]
+        return content.decode('utf8')
+
     def read(self, config_path = ''):
         if not isfile(config_path):
             config_path = self.config_path
-        self.config = Munch.fromDict(json.loads(decode_config_file(config_path)))
+        self.config = Munch.fromDict(json.loads(self.decode_config_file(config_path)))
         logging.info(f"[DANSER][CONFIG] Danser Config is read from: {config_path}")
 
     def write(self, config_path = ''):

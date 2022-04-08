@@ -731,6 +731,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         _app = MainWindow.App.instance()
         _app.installTranslator(self.trans)
         self.retranslateUi(MainWindow)
+        self.progressDialog.retranslateUi()
 
     def languageComboBoxChanged(self, MainWindow):
         self.syncGuiConfigWithMainWindow(MainWindow)
@@ -956,7 +957,7 @@ class DanserMainWindow(QMainWindow):
         ## Playfield
         MainWindow.seizureWarningCheckBox.setChecked(config.Playfield.SeizureWarning)
         MainWindow.loadStoryboardCheckBox.setChecked(config.Playfield.LoadStoryboard)
-        MainWindow.loadVideoCheckBox.setChecked(config.Playfield.SeizureWarning)
+        MainWindow.loadVideoCheckBox.setChecked(config.Playfield.LoadVideo)
         MainWindow.bgParallaxCheckBox.setChecked(config.Playfield.BGParallax)
         MainWindow.showDanserLogoCheckBox.setChecked(config.Playfield.ShowDanserLogo)
         MainWindow.introBGDimSlider.setValue(config.Playfield.IntroBGDim)
