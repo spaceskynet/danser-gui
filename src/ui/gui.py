@@ -117,12 +117,12 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.dansergui_settings = MainWindow.dansergui_settings
         self.rewriteClassesInit()
 
+        # default to copy langs file (maybe more items will be add)
+        copytree(consts.res_langs_path, consts.exec_langs_path)
         self.trans = QTranslator(MainWindow)
         self.transLoader = TranslationLoader()
+        
         # add langs item
-        if len(self.transLoader.valid_langs_name_list) == 0:
-            copytree(consts.res_langs_path, consts.exec_langs_path)
-            self.transLoader.__init__()
         self.languageComboBox.addItems(self.transLoader.valid_langs_name_list)
         self.languageComboBox.activated.connect(lambda: (self.languageComboBoxChanged(MainWindow)))
 
@@ -141,6 +141,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.replayModifyThread.finished.connect(self.replayModifyEventFinished)
 
         self.openKnockoutReplaysFolderPushButton.clicked.connect(self.openKnockoutReplaysFolder)
+        self.openRecordingOutputFolderPushButton.clicked.connect(self.openRecordingOutputFolder)
 
         self.graphicsWidth.setValidator(QIntValidator(self.graphicsWidth))
         self.graphicsHeight.setValidator(QIntValidator(self.graphicsHeight))
@@ -290,8 +291,9 @@ class DanserUiMainWindow(Ui_MainWindow):
     def checkFFmpegIsExists(self):
         danser_root_path = self.gui_config.General.DanserRootDir
         ffmpeg_file = f"ffmpeg{consts.executable_file_suffix}"
-        # find ffmpeg in danser folder
+        # find ffmpeg in danser folder || danser/ffmpeg folder
         if isfile(join(danser_root_path, ffmpeg_file)): return (True, None)
+        if isfile(join(danser_root_path, "ffmpeg", ffmpeg_file)): return (True, None)
         # find ffmpeg in PATH
         env_paths = consts.env_paths
         for env_path in env_paths:
@@ -361,6 +363,10 @@ class DanserUiMainWindow(Ui_MainWindow):
             if MainWindow.debug: MainWindow.danserUiDebugModeWindow.recordingOutputNameLineEdit.setText(output_file_name)
             arguments.append('-out'), arguments.append(f'{output_file_name}')
         
+        # Local Audio Offset
+        local_audio_offset = self.localAudioOffsetSlider.value()
+        if self.localAudioOffsetSlider.value() != 0: arguments.append(f"-offset={local_audio_offset}")
+
         # Timing
         start_time, end_time = self.timingRangeSlider.value()
         if start_time != self.timingRangeSlider.minimum(): arguments.append(f"-start={start_time}")
@@ -458,17 +464,28 @@ class DanserUiMainWindow(Ui_MainWindow):
         if not checked: return
         customWarning(QCoreApplication.translate("MainWindow", u"please note that the operation is irreversible, this will modify all osr files in the replays directory! Remember to backup osr files at first!", None))
 
+    @staticmethod
+    def openFolder(folder_path):
+        if consts.running_system == 'Windows':
+            os.startfile(folder_path)
+        elif consts.running_system == 'Linux':
+            os.system(f"xdg-open {folder_path}")
+        else: # maybe danser can be used in MacOS in the future
+            os.system(f"open {folder_path}")
+
     def openKnockoutReplaysFolder(self, checked):
         if not self.danserPathLineEdit.text():
             isEmptyWarning(QCoreApplication.translate("MainWindow", u"danser Path", None))
             return
         danser_replays_path = join(self.danserPathLineEdit.text(), 'replays')
-        if consts.running_system == 'Windows':
-            os.startfile(danser_replays_path)
-        elif consts.running_system == 'Linux':
-            os.system(f"xdg-open {danser_replays_path}")
-        else: # maybe danser can be used in MacOS
-            os.system(f"open {danser_replays_path}")
+        self.openFolder(danser_replays_path)
+
+    def openRecordingOutputFolder(self, checked):
+        if not self.outputPathLineEdit.text():
+            isEmptyWarning(QCoreApplication.translate("MainWindow", u"Output Path", None))
+            return
+        output_path = self.outputPathLineEdit.text()
+        self.openFolder(output_path)
 
     def replayModifyEvent(self, MainWindow, is_modify_beatmap_hash, is_add_date):
         root_path = self.gui_config.General.DanserRootDir
@@ -756,6 +773,16 @@ class DanserMainWindow(QMainWindow):
 
         self.dansergui_settings = DanserGUIConfig()
         self.gui_config = self.dansergui_settings.config
+        self.default_config = self.dansergui_settings.default_config
+
+        windows_width, windows_height = 720, 405
+        linux_width, linux_height = 848, 477
+
+        if consts.running_system == 'Windows':
+            self.default_width, self.default_height = windows_width, windows_height
+        else:
+            self.default_width, self.default_height = linux_width, linux_height
+        self.default_config.General.WindowWidth, self.default_config.General.WindowHeight = self.default_width, self.default_height
 
         self.MainWindow = DanserUiMainWindow(self)
 
@@ -771,18 +798,10 @@ class DanserMainWindow(QMainWindow):
         self.MainWindow.setLanguage(self)
         self.MainWindow.setWidgetsStatus(self)
 
-
         self.setFocus()
 
-        windows_width, windows_height = 704, 396
-        linux_width, linux_height = 848, 477 
-
-        if consts.running_system == 'Windows':
-            self.default_width, self.default_height = windows_width, windows_height
-        else:
-            self.default_width, self.default_height = linux_width, linux_height
-            self.setMinimumSize(self.default_width, self.default_height)
-            self.resize(self.default_width, self.default_height)
+        self.setMinimumSize(self.default_width, self.default_height)
+        self.resize(self.gui_config.General.WindowWidth, self.gui_config.General.WindowHeight)
         self.show()
 	
     def catch_exceptions(self, ty, value, traceback_object):
@@ -827,6 +846,14 @@ class DanserMainWindow(QMainWindow):
         if type(config.General.Language) == int:
             config.General.Language = 'zh-CN' if config.General.Language == 1 else 'en-US'
 
+        if config.Knockout.GraceEndTime is None:
+            config.Knockout.GraceEndTime = default_config.Knockout.GraceEndTime
+        if config.Recording.LocalAudioOffset is None:
+            config.Recording.LocalAudioOffset = default_config.Recording.LocalAudioOffset
+        if config.General.WindowWidth is None or config.General.WindowHeight is None:
+            config.General.WindowWidth = default_config.General.WindowWidth
+            config.General.WindowHeight = default_config.General.WindowHeight
+
     def setMainWindowByConfig(self):
         self.updateConfigByDefault()
         MainWindow, config = self.MainWindow, self.gui_config
@@ -863,6 +890,7 @@ class DanserMainWindow(QMainWindow):
 
         ## Knockout
         MainWindow.knockoutModeComboBox.setCurrentIndex(config.Knockout.Mode)
+        MainWindow.graceEndTimeDoubleSpinBox.setValue(config.Knockout.GraceEndTime)
         MainWindow.maxPlayersSpinBox.setValue(config.Knockout.MaxPlayers)
         MainWindow.bubbleMinimumComboSpinBox.setValue(config.Knockout.BubbleMinimumCombo)
         MainWindow.revivePlayersAtEndCheckBox.setChecked(config.Knockout.RevivePlayersAtEnd)
@@ -884,6 +912,7 @@ class DanserMainWindow(QMainWindow):
         MainWindow.motionBlurcheckBox.setChecked(config.Recording.MotionBlur)
         MainWindow.outputPathLineEdit.setText(abspath(config.Recording.OutputPath))
         MainWindow.outputNameLineEdit.setText(config.Recording.OutputName)
+        MainWindow.localAudioOffsetSlider.setValue(config.Recording.LocalAudioOffset)
 
         encoder_options = {'cpu':0, 'nvidia':1, 'amd':2, 'intel':3, 'customize':4}
         MainWindow.recordingEncoderComboBox.setCurrentIndex(encoder_options[config.Recording.Encoder])
@@ -982,6 +1011,8 @@ class DanserMainWindow(QMainWindow):
         config.General.IsRecord = MainWindow.isRecordCheckBox.isChecked()
         config.General.OsuApi = MainWindow.osuApiLineEdit.text()
         config.General.Language = MainWindow.transLoader.getSelectedLanguageTag(MainWindow.languageComboBox.currentIndex())
+        config.General.WindowWidth = self.width()
+        config.General.WindowHeight = self.height()
 
         ## Graphics
         config.Graphics.Width = int(MainWindow.graphicsWidth.text() if MainWindow.graphicsWidth.text() else 1920)
@@ -999,6 +1030,7 @@ class DanserMainWindow(QMainWindow):
 
         ## Knockout
         config.Knockout.Mode = MainWindow.knockoutModeComboBox.currentIndex()
+        config.Knockout.GraceEndTime = MainWindow.graceEndTimeDoubleSpinBox.value()
         config.Knockout.MaxPlayers = MainWindow.maxPlayersSpinBox.value()
         config.Knockout.BubbleMinimumCombo = MainWindow.bubbleMinimumComboSpinBox.value()
         config.Knockout.RevivePlayersAtEnd = MainWindow.revivePlayersAtEndCheckBox.isChecked()
@@ -1019,6 +1051,8 @@ class DanserMainWindow(QMainWindow):
         config.Recording.MotionBlur = MainWindow.motionBlurcheckBox.isChecked()
         config.Recording.OutputPath = MainWindow.outputPathLineEdit.text()
         config.Recording.OutputName = MainWindow.outputNameLineEdit.text()
+        config.Recording.LocalAudioOffset = MainWindow.localAudioOffsetSlider.value()
+
         encoder_options = ['cpu', 'nvidia', 'amd', 'intel', 'customize']
         config.Recording.Encoder = encoder_options[MainWindow.recordingEncoderComboBox.currentIndex()]
         # if MainWindow.recordingEncoderComboBox.currentIndex() + 1 == MainWindow.recordingEncoderComboBox.count():

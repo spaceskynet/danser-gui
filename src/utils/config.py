@@ -77,6 +77,7 @@ class DanserGUIConfig(object):
 
         # Knockout
         danser_config.Knockout.Mode = config.Knockout.Mode
+        danser_config.Knockout.GraceEndTime = config.Knockout.GraceEndTime
         danser_config.Knockout.MaxPlayers = config.Knockout.MaxPlayers
         danser_config.Knockout.BubbleMinimumCombo = config.Knockout.BubbleMinimumCombo
         danser_config.Knockout.RevivePlayersAtEnd = config.Knockout.RevivePlayersAtEnd

@@ -22,7 +22,7 @@ Read [WIKI (unfinished)](https://github.com/spaceskynet/danser-gui/wiki) for mor
 ## A Few Points to Pay Attention !!
 
 1. If you don't have danser already, you can follow [THIS SETUP GUIDE](https://github.com/Wieku/danser-go/wiki/Setup-Guide) to get started! (only steps 1 and 2).
-2. If you want to use the `Record Mode`, please make sure that `ffmpeg` is installed or put in danser folder. You can find ffmpeg [HERE](https://github.com/BtbN/FFmpeg-Builds/releases/), and you can follow [THIS FFMPEG SETUP GUIDE](https://github.com/Wieku/danser-go/wiki/FFmpeg) to install ffmpeg.
+2. If you want to use the `Record Mode`, please make sure that `ffmpeg` is installed globally or put in danser folder (or in the ffmpeg folder of the danser folder). You can find ffmpeg [HERE](https://github.com/BtbN/FFmpeg-Builds/releases/), and you can follow [THIS FFMPEG SETUP GUIDE](https://github.com/Wieku/danser-go/wiki/FFmpeg) to install ffmpeg.
 3. If you already have osu!, the beatmap database mode is best to choose `osu!` mode, if you only have `Skins` and `Songs` directory, please choose `danser` mode.
 4. If you want to use osu! default skin as the fallback skin, please download the [default_fallback](https://github.com/spaceskynet/git-cloud/blob/master/osu!/Skins/default_fallback.osk) skin and extract it to your `Skins` folder.
 5. This program is still in beta, if you want to get more information, you can enter `debug` mode with the `-d` or `-debug` flag.

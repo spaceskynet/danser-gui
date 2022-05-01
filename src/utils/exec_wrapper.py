@@ -116,7 +116,7 @@ class DanserExecByArgsThread(QThread):
         self.p.readyReadStandardOutput.connect(lambda: (logging.info(f"[DANSER][STDOUT] {self.readProcessAllStandardOutput()}")))
         self.p.readyReadStandardError.connect(lambda: (logging.info(f"[DANSER][STDERR] {self.readProcessAllStandardError()}")))
         self.p.finished.connect(lambda: (logging.info("[GUI][DanserExecByArgsThread] Finshed!")))
-        self.p.waitForStarted() 
+        self.p.waitForStarted()
         self.p.waitForFinished(-1)
     
 

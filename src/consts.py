@@ -26,7 +26,7 @@ DanserRootDir = ''
 DanserMode = 'danser' # danser/knockout/play/replay
 IsRecord = false
 SongsDBMode = 'osu!' # osu!/danser
-OsuApi = '' # get it from https://osu.ppy.sh/api/
+OsuApi = '' # get it from https://osu.ppy.sh/p/api/
 Language = 'en-US' # en-US : English, zh-CN : Chinese (Simplified)
 
 [Graphics]
@@ -40,7 +40,8 @@ ShowFPS = true
 
 [Knockout]
 Mode = 0
-ExcludeMods = "EZHT"
+GraceEndTime = -10.0
+ExcludeMods = ""
 HideMods = ""
 MaxPlayers = 50
 BubbleMinimumCombo = 200
@@ -62,6 +63,7 @@ Encoder = 'cpu'
 MotionBlur = false
 OutputPath = 'Videos'
 OutputName = '{Player} - {Artist}[{Creator}] - {MapTitle}[{Difficulty}].mp4'
+LocalAudioOffset = 0
 
 [Recording.EncoderConfig]
 VideoCodec = "libx264"

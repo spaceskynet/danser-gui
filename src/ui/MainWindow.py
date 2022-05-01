@@ -76,6 +76,11 @@ class Ui_MainWindow(object):
 
         self.danserModeAndIsRecordHorizontalLayout.addWidget(self.isRecordCheckBox)
 
+        self.openRecordingOutputFolderPushButton = QPushButton(self.generalTab)
+        self.openRecordingOutputFolderPushButton.setObjectName(u"openRecordingOutputFolderPushButton")
+
+        self.danserModeAndIsRecordHorizontalLayout.addWidget(self.openRecordingOutputFolderPushButton)
+
 
         self.generalSettingVerticalLayout.addLayout(self.danserModeAndIsRecordHorizontalLayout)
 
@@ -800,8 +805,8 @@ class Ui_MainWindow(object):
         self.gridLayout_34.setObjectName(u"gridLayout_34")
         self.knockoutGeneralGroupBox = QGroupBox(self.knockoutSettings)
         self.knockoutGeneralGroupBox.setObjectName(u"knockoutGeneralGroupBox")
-        self.verticalLayout_3 = QVBoxLayout(self.knockoutGeneralGroupBox)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.gridLayout_35 = QGridLayout(self.knockoutGeneralGroupBox)
+        self.gridLayout_35.setObjectName(u"gridLayout_35")
         self.knockoutModeFormLayout = QFormLayout()
         self.knockoutModeFormLayout.setObjectName(u"knockoutModeFormLayout")
         self.knockoutModeLabel = QLabel(self.knockoutGeneralGroupBox)
@@ -820,47 +825,7 @@ class Ui_MainWindow(object):
         self.knockoutModeFormLayout.setWidget(0, QFormLayout.FieldRole, self.knockoutModeComboBox)
 
 
-        self.verticalLayout_3.addLayout(self.knockoutModeFormLayout)
-
-        self.spinBoxHorizontalLayout = QHBoxLayout()
-        self.spinBoxHorizontalLayout.setObjectName(u"spinBoxHorizontalLayout")
-        self.maxPlayersFormLayout = QFormLayout()
-        self.maxPlayersFormLayout.setObjectName(u"maxPlayersFormLayout")
-        self.maxPlayersLabel = QLabel(self.knockoutGeneralGroupBox)
-        self.maxPlayersLabel.setObjectName(u"maxPlayersLabel")
-
-        self.maxPlayersFormLayout.setWidget(0, QFormLayout.LabelRole, self.maxPlayersLabel)
-
-        self.maxPlayersSpinBox = QSpinBox(self.knockoutGeneralGroupBox)
-        self.maxPlayersSpinBox.setObjectName(u"maxPlayersSpinBox")
-        self.maxPlayersSpinBox.setMinimum(1)
-        self.maxPlayersSpinBox.setMaximum(50)
-        self.maxPlayersSpinBox.setSingleStep(1)
-        self.maxPlayersSpinBox.setValue(50)
-
-        self.maxPlayersFormLayout.setWidget(0, QFormLayout.FieldRole, self.maxPlayersSpinBox)
-
-
-        self.spinBoxHorizontalLayout.addLayout(self.maxPlayersFormLayout)
-
-        self.bubbleMinimumComboFormLayout = QFormLayout()
-        self.bubbleMinimumComboFormLayout.setObjectName(u"bubbleMinimumComboFormLayout")
-        self.bubbleMinimumComboLabel = QLabel(self.knockoutGeneralGroupBox)
-        self.bubbleMinimumComboLabel.setObjectName(u"bubbleMinimumComboLabel")
-
-        self.bubbleMinimumComboFormLayout.setWidget(0, QFormLayout.LabelRole, self.bubbleMinimumComboLabel)
-
-        self.bubbleMinimumComboSpinBox = QSpinBox(self.knockoutGeneralGroupBox)
-        self.bubbleMinimumComboSpinBox.setObjectName(u"bubbleMinimumComboSpinBox")
-        self.bubbleMinimumComboSpinBox.setMaximum(10000)
-
-        self.bubbleMinimumComboFormLayout.setWidget(0, QFormLayout.FieldRole, self.bubbleMinimumComboSpinBox)
-
-
-        self.spinBoxHorizontalLayout.addLayout(self.bubbleMinimumComboFormLayout)
-
-
-        self.verticalLayout_3.addLayout(self.spinBoxHorizontalLayout)
+        self.gridLayout_35.addLayout(self.knockoutModeFormLayout, 0, 0, 1, 2)
 
         self.sortHorizontalLayout = QHBoxLayout()
         self.sortHorizontalLayout.setObjectName(u"sortHorizontalLayout")
@@ -887,7 +852,7 @@ class Ui_MainWindow(object):
         self.sortHorizontalLayout.addWidget(self.liveSortCheckBox)
 
 
-        self.verticalLayout_3.addLayout(self.sortHorizontalLayout)
+        self.gridLayout_35.addLayout(self.sortHorizontalLayout, 2, 0, 1, 2)
 
         self.knockoutCursorSizeGridLayout = QGridLayout()
         self.knockoutCursorSizeGridLayout.setObjectName(u"knockoutCursorSizeGridLayout")
@@ -903,7 +868,7 @@ class Ui_MainWindow(object):
         self.knockoutCursorSizeGridLayout.addWidget(self.knockoutCursorSizeSlider, 0, 2, 2, 1)
 
 
-        self.verticalLayout_3.addLayout(self.knockoutCursorSizeGridLayout)
+        self.gridLayout_35.addLayout(self.knockoutCursorSizeGridLayout, 3, 0, 1, 2)
 
         self.checkBoxHorizontalLayout = QHBoxLayout()
         self.checkBoxHorizontalLayout.setObjectName(u"checkBoxHorizontalLayout")
@@ -918,19 +883,33 @@ class Ui_MainWindow(object):
         self.checkBoxHorizontalLayout.addWidget(self.HideOverlayOnBreaksCheckBox)
 
 
-        self.verticalLayout_3.addLayout(self.checkBoxHorizontalLayout)
+        self.gridLayout_35.addLayout(self.checkBoxHorizontalLayout, 4, 0, 1, 2)
 
-        self.addDanserCheckBox = QCheckBox(self.knockoutGeneralGroupBox)
-        self.addDanserCheckBox.setObjectName(u"addDanserCheckBox")
+        self.maxPlayersFormLayout = QFormLayout()
+        self.maxPlayersFormLayout.setObjectName(u"maxPlayersFormLayout")
+        self.maxPlayersLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.maxPlayersLabel.setObjectName(u"maxPlayersLabel")
 
-        self.verticalLayout_3.addWidget(self.addDanserCheckBox)
+        self.maxPlayersFormLayout.setWidget(0, QFormLayout.LabelRole, self.maxPlayersLabel)
+
+        self.maxPlayersSpinBox = QSpinBox(self.knockoutGeneralGroupBox)
+        self.maxPlayersSpinBox.setObjectName(u"maxPlayersSpinBox")
+        self.maxPlayersSpinBox.setMinimum(1)
+        self.maxPlayersSpinBox.setMaximum(50)
+        self.maxPlayersSpinBox.setSingleStep(1)
+        self.maxPlayersSpinBox.setValue(50)
+
+        self.maxPlayersFormLayout.setWidget(0, QFormLayout.FieldRole, self.maxPlayersSpinBox)
+
+
+        self.gridLayout_35.addLayout(self.maxPlayersFormLayout, 5, 0, 1, 1)
 
         self.danserNameFormLayout = QFormLayout()
         self.danserNameFormLayout.setObjectName(u"danserNameFormLayout")
-        self.danserNameLabel = QLabel(self.knockoutGeneralGroupBox)
-        self.danserNameLabel.setObjectName(u"danserNameLabel")
+        self.addDanserCheckBox = QCheckBox(self.knockoutGeneralGroupBox)
+        self.addDanserCheckBox.setObjectName(u"addDanserCheckBox")
 
-        self.danserNameFormLayout.setWidget(0, QFormLayout.LabelRole, self.danserNameLabel)
+        self.danserNameFormLayout.setWidget(0, QFormLayout.LabelRole, self.addDanserCheckBox)
 
         self.danserNameLineEdit = QLineEdit(self.knockoutGeneralGroupBox)
         self.danserNameLineEdit.setObjectName(u"danserNameLineEdit")
@@ -938,12 +917,53 @@ class Ui_MainWindow(object):
         self.danserNameFormLayout.setWidget(0, QFormLayout.FieldRole, self.danserNameLineEdit)
 
 
-        self.verticalLayout_3.addLayout(self.danserNameFormLayout)
+        self.gridLayout_35.addLayout(self.danserNameFormLayout, 6, 0, 1, 2)
 
         self.openKnockoutReplaysFolderPushButton = QPushButton(self.knockoutGeneralGroupBox)
         self.openKnockoutReplaysFolderPushButton.setObjectName(u"openKnockoutReplaysFolderPushButton")
 
-        self.verticalLayout_3.addWidget(self.openKnockoutReplaysFolderPushButton)
+        self.gridLayout_35.addWidget(self.openKnockoutReplaysFolderPushButton, 7, 0, 1, 2)
+
+        self.spinBoxHorizontalLayout = QHBoxLayout()
+        self.spinBoxHorizontalLayout.setObjectName(u"spinBoxHorizontalLayout")
+        self.graceEndTimeHorizontalLayout = QHBoxLayout()
+        self.graceEndTimeHorizontalLayout.setObjectName(u"graceEndTimeHorizontalLayout")
+        self.graceEndTimeLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.graceEndTimeLabel.setObjectName(u"graceEndTimeLabel")
+
+        self.graceEndTimeHorizontalLayout.addWidget(self.graceEndTimeLabel)
+
+        self.graceEndTimeDoubleSpinBox = QDoubleSpinBox(self.knockoutGeneralGroupBox)
+        self.graceEndTimeDoubleSpinBox.setObjectName(u"graceEndTimeDoubleSpinBox")
+        self.graceEndTimeDoubleSpinBox.setDecimals(1)
+        self.graceEndTimeDoubleSpinBox.setMinimum(-100.000000000000000)
+        self.graceEndTimeDoubleSpinBox.setSingleStep(1.000000000000000)
+        self.graceEndTimeDoubleSpinBox.setStepType(QAbstractSpinBox.AdaptiveDecimalStepType)
+        self.graceEndTimeDoubleSpinBox.setValue(-10.000000000000000)
+
+        self.graceEndTimeHorizontalLayout.addWidget(self.graceEndTimeDoubleSpinBox)
+
+
+        self.spinBoxHorizontalLayout.addLayout(self.graceEndTimeHorizontalLayout)
+
+        self.bubbleMinimumComboHorizontalLayout = QHBoxLayout()
+        self.bubbleMinimumComboHorizontalLayout.setObjectName(u"bubbleMinimumComboHorizontalLayout")
+        self.bubbleMinimumComboLabel = QLabel(self.knockoutGeneralGroupBox)
+        self.bubbleMinimumComboLabel.setObjectName(u"bubbleMinimumComboLabel")
+
+        self.bubbleMinimumComboHorizontalLayout.addWidget(self.bubbleMinimumComboLabel)
+
+        self.bubbleMinimumComboSpinBox = QSpinBox(self.knockoutGeneralGroupBox)
+        self.bubbleMinimumComboSpinBox.setObjectName(u"bubbleMinimumComboSpinBox")
+        self.bubbleMinimumComboSpinBox.setMaximum(10000)
+
+        self.bubbleMinimumComboHorizontalLayout.addWidget(self.bubbleMinimumComboSpinBox)
+
+
+        self.spinBoxHorizontalLayout.addLayout(self.bubbleMinimumComboHorizontalLayout)
+
+
+        self.gridLayout_35.addLayout(self.spinBoxHorizontalLayout, 1, 0, 1, 2)
 
 
         self.gridLayout_34.addWidget(self.knockoutGeneralGroupBox, 0, 0, 2, 1)
@@ -1380,6 +1400,24 @@ class Ui_MainWindow(object):
 
 
         self.recordingGeneralVerticalLayout.addLayout(self.outputNameVerticalLayout)
+
+        self.localAudioOffsetVerticalLayout = QVBoxLayout()
+        self.localAudioOffsetVerticalLayout.setObjectName(u"localAudioOffsetVerticalLayout")
+        self.localAudioOffsetLabel = QLabel(self.recordingGroupBox)
+        self.localAudioOffsetLabel.setObjectName(u"localAudioOffsetLabel")
+
+        self.localAudioOffsetVerticalLayout.addWidget(self.localAudioOffsetLabel)
+
+        self.localAudioOffsetSlider = QLabeledSlider(self.recordingGroupBox)
+        self.localAudioOffsetSlider.setObjectName(u"localAudioOffsetSlider")
+        self.localAudioOffsetSlider.setMinimum(-100)
+        self.localAudioOffsetSlider.setMaximum(100)
+        self.localAudioOffsetSlider.setOrientation(Qt.Horizontal)
+
+        self.localAudioOffsetVerticalLayout.addWidget(self.localAudioOffsetSlider)
+
+
+        self.recordingGeneralVerticalLayout.addLayout(self.localAudioOffsetVerticalLayout)
 
 
         self.recordingGridLayout.addLayout(self.recordingGeneralVerticalLayout, 0, 0, 1, 1)
@@ -2343,6 +2381,7 @@ class Ui_MainWindow(object):
         self.isRecordCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"realtime preview or generate recording", None))
 #endif // QT_CONFIG(tooltip)
         self.isRecordCheckBox.setText(QCoreApplication.translate("MainWindow", u"Record Mode", None))
+        self.openRecordingOutputFolderPushButton.setText(QCoreApplication.translate("MainWindow", u"Open Output Folder", None))
         self.osrSelectButton.setText(QCoreApplication.translate("MainWindow", u"SELECT REPLAY(.OSR)", None))
         self.osuSelectButton.setText(QCoreApplication.translate("MainWindow", u"SELECT BEATMAP(.OSU)", None))
         self.osrPathLabel.setText(QCoreApplication.translate("MainWindow", u"Replay(.osr) path:", None))
@@ -2360,6 +2399,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.osuApiLineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"get it from https://osu.ppy.sh/api/", None))
 #endif // QT_CONFIG(tooltip)
+        self.osuApiLineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Don't tell this to anyone!", None))
         self.usernameLabel.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
 #if QT_CONFIG(tooltip)
         self.usernameLineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"Your username (not the username of the replay)", None))
@@ -2410,11 +2450,6 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.knockoutModeComboBox.setToolTip(QCoreApplication.translate("MainWindow", u"Knockout mode. More info.", None))
 #endif // QT_CONFIG(tooltip)
-        self.maxPlayersLabel.setText(QCoreApplication.translate("MainWindow", u"Max Players:", None))
-#if QT_CONFIG(tooltip)
-        self.bubbleMinimumComboLabel.setToolTip(QCoreApplication.translate("MainWindow", u"Minimum combo before combo break to show a bubble in XReplays mode", None))
-#endif // QT_CONFIG(tooltip)
-        self.bubbleMinimumComboLabel.setText(QCoreApplication.translate("MainWindow", u"Bubble Minimum Combo:", None))
         self.sortByLabel.setText(QCoreApplication.translate("MainWindow", u"Sort By:", None))
 
         self.liveSortCheckBox.setText(QCoreApplication.translate("MainWindow", u"Live Sort", None))
@@ -2428,9 +2463,18 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.revivePlayersAtEndCheckBox.setText(QCoreApplication.translate("MainWindow", u"Revive Players At End", None))
         self.HideOverlayOnBreaksCheckBox.setText(QCoreApplication.translate("MainWindow", u"Hide Overlay On Breaks", None))
+        self.maxPlayersLabel.setText(QCoreApplication.translate("MainWindow", u"Max Players:", None))
         self.addDanserCheckBox.setText(QCoreApplication.translate("MainWindow", u"Add Danser", None))
-        self.danserNameLabel.setText(QCoreApplication.translate("MainWindow", u"Danser Name:", None))
+        self.danserNameLineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Danser Name", None))
         self.openKnockoutReplaysFolderPushButton.setText(QCoreApplication.translate("MainWindow", u"open knockout replays folder", None))
+#if QT_CONFIG(tooltip)
+        self.graceEndTimeLabel.setToolTip(QCoreApplication.translate("MainWindow", u"In ComboBreak mode, players won't get knocked out if they break combo before this value (in seconds)", None))
+#endif // QT_CONFIG(tooltip)
+        self.graceEndTimeLabel.setText(QCoreApplication.translate("MainWindow", u"Grace End Time:", None))
+#if QT_CONFIG(tooltip)
+        self.bubbleMinimumComboLabel.setToolTip(QCoreApplication.translate("MainWindow", u"Minimum combo before combo break to show a bubble in XReplays mode", None))
+#endif // QT_CONFIG(tooltip)
+        self.bubbleMinimumComboLabel.setText(QCoreApplication.translate("MainWindow", u"Bubble Minimum Combo:", None))
 #if QT_CONFIG(tooltip)
         self.excludeModsGroupBox.setToolTip(QCoreApplication.translate("MainWindow", u"Exclude plays which contain one of the mods set here", None))
 #endif // QT_CONFIG(tooltip)
@@ -2473,6 +2517,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.outputNameLineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"output name template tooltips", None))
 #endif // QT_CONFIG(tooltip)
+        self.localAudioOffsetLabel.setText(QCoreApplication.translate("MainWindow", u"Local Audio Offset:", None))
         self.encoderConfigGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Encoder Config Customize", None))
         self.videoCodecCustomizeLabel.setText(QCoreApplication.translate("MainWindow", u"Video Codec:", None))
         self.encoderOptionCustomizeLabel.setText(QCoreApplication.translate("MainWindow", u"Encoder Option:", None))

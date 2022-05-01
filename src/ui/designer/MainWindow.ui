@@ -130,6 +130,13 @@
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="openRecordingOutputFolderPushButton">
+                <property name="text">
+                 <string>Open Output Folder</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item>
@@ -358,6 +365,9 @@
                          </property>
                          <property name="echoMode">
                           <enum>QLineEdit::Password</enum>
+                         </property>
+                         <property name="placeholderText">
+                          <string>Don't tell this to anyone!</string>
                          </property>
                         </widget>
                        </item>
@@ -1052,8 +1062,8 @@
                 <property name="title">
                  <string>General</string>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_3">
-                 <item>
+                <layout class="QGridLayout" name="gridLayout_35">
+                 <item row="0" column="0" colspan="2">
                   <layout class="QFormLayout" name="knockoutModeFormLayout">
                    <item row="0" column="0">
                     <widget class="QLabel" name="knockoutModeLabel">
@@ -1096,59 +1106,7 @@
                    </item>
                   </layout>
                  </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="spinBoxHorizontalLayout">
-                   <item>
-                    <layout class="QFormLayout" name="maxPlayersFormLayout">
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="maxPlayersLabel">
-                       <property name="text">
-                        <string>Max Players:</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QSpinBox" name="maxPlayersSpinBox">
-                       <property name="minimum">
-                        <number>1</number>
-                       </property>
-                       <property name="maximum">
-                        <number>50</number>
-                       </property>
-                       <property name="singleStep">
-                        <number>1</number>
-                       </property>
-                       <property name="value">
-                        <number>50</number>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <layout class="QFormLayout" name="bubbleMinimumComboFormLayout">
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="bubbleMinimumComboLabel">
-                       <property name="toolTip">
-                        <string>Minimum combo before combo break to show a bubble in XReplays mode</string>
-                       </property>
-                       <property name="text">
-                        <string>Bubble Minimum Combo:</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QSpinBox" name="bubbleMinimumComboSpinBox">
-                       <property name="maximum">
-                        <number>10000</number>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
+                 <item row="2" column="0" colspan="2">
                   <layout class="QHBoxLayout" name="sortHorizontalLayout">
                    <item>
                     <layout class="QFormLayout" name="sortByFormLayout">
@@ -1184,7 +1142,7 @@
                    </item>
                   </layout>
                  </item>
-                 <item>
+                 <item row="3" column="0" colspan="2">
                   <layout class="QGridLayout" name="knockoutCursorSizeGridLayout">
                    <item row="1" column="1">
                     <widget class="QLabel" name="knockoutCursorSizeLabel">
@@ -1206,7 +1164,7 @@ Maximum cursor size (when there is only 1 player left)</string>
                    </item>
                   </layout>
                  </item>
-                 <item>
+                 <item row="4" column="0" colspan="2">
                   <layout class="QHBoxLayout" name="checkBoxHorizontalLayout">
                    <item>
                     <widget class="QCheckBox" name="revivePlayersAtEndCheckBox">
@@ -1227,33 +1185,115 @@ Maximum cursor size (when there is only 1 player left)</string>
                    </item>
                   </layout>
                  </item>
-                 <item>
-                  <widget class="QCheckBox" name="addDanserCheckBox">
-                   <property name="text">
-                    <string>Add Danser</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QFormLayout" name="danserNameFormLayout">
+                 <item row="5" column="0">
+                  <layout class="QFormLayout" name="maxPlayersFormLayout">
                    <item row="0" column="0">
-                    <widget class="QLabel" name="danserNameLabel">
+                    <widget class="QLabel" name="maxPlayersLabel">
                      <property name="text">
-                      <string>Danser Name:</string>
+                      <string>Max Players:</string>
                      </property>
                     </widget>
                    </item>
                    <item row="0" column="1">
-                    <widget class="QLineEdit" name="danserNameLineEdit"/>
+                    <widget class="QSpinBox" name="maxPlayersSpinBox">
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>50</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>1</number>
+                     </property>
+                     <property name="value">
+                      <number>50</number>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
-                 <item>
+                 <item row="6" column="0" colspan="2">
+                  <layout class="QFormLayout" name="danserNameFormLayout">
+                   <item row="0" column="0">
+                    <widget class="QCheckBox" name="addDanserCheckBox">
+                     <property name="text">
+                      <string>Add Danser</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="danserNameLineEdit">
+                     <property name="placeholderText">
+                      <string>Danser Name</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="7" column="0" colspan="2">
                   <widget class="QPushButton" name="openKnockoutReplaysFolderPushButton">
                    <property name="text">
                     <string>open knockout replays folder</string>
                    </property>
                   </widget>
+                 </item>
+                 <item row="1" column="0" colspan="2">
+                  <layout class="QHBoxLayout" name="spinBoxHorizontalLayout">
+                   <item>
+                    <layout class="QHBoxLayout" name="graceEndTimeHorizontalLayout">
+                     <item>
+                      <widget class="QLabel" name="graceEndTimeLabel">
+                       <property name="toolTip">
+                        <string>In ComboBreak mode, players won't get knocked out if they break combo before this value (in seconds)</string>
+                       </property>
+                       <property name="text">
+                        <string>Grace End Time:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDoubleSpinBox" name="graceEndTimeDoubleSpinBox">
+                       <property name="decimals">
+                        <number>1</number>
+                       </property>
+                       <property name="minimum">
+                        <double>-100.000000000000000</double>
+                       </property>
+                       <property name="singleStep">
+                        <double>1.000000000000000</double>
+                       </property>
+                       <property name="stepType">
+                        <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+                       </property>
+                       <property name="value">
+                        <double>-10.000000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="bubbleMinimumComboHorizontalLayout">
+                     <item>
+                      <widget class="QLabel" name="bubbleMinimumComboLabel">
+                       <property name="toolTip">
+                        <string>Minimum combo before combo break to show a bubble in XReplays mode</string>
+                       </property>
+                       <property name="text">
+                        <string>Bubble Minimum Combo:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="bubbleMinimumComboSpinBox">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -1915,6 +1955,30 @@ Maximum cursor size (when there is only 1 player left)</string>
                         <widget class="QLineEdit" name="outputNameLineEdit">
                          <property name="toolTip">
                           <string>output name template tooltips</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="localAudioOffsetVerticalLayout">
+                       <item>
+                        <widget class="QLabel" name="localAudioOffsetLabel">
+                         <property name="text">
+                          <string>Local Audio Offset:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabeledSlider" name="localAudioOffsetSlider">
+                         <property name="minimum">
+                          <number>-100</number>
+                         </property>
+                         <property name="maximum">
+                          <number>100</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
                          </property>
                         </widget>
                        </item>
