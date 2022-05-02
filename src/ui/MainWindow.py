@@ -1655,7 +1655,7 @@ class Ui_MainWindow(object):
         self.resultsScreenGroupBox.setObjectName(u"resultsScreenGroupBox")
         self.verticalLayout_2 = QVBoxLayout(self.resultsScreenGroupBox)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(-1, 4, 9, 0)
+        self.verticalLayout_2.setContentsMargins(-1, 9, 9, 0)
         self.resultsScreenVerticalLayout = QVBoxLayout()
         self.resultsScreenVerticalLayout.setObjectName(u"resultsScreenVerticalLayout")
         self.resultsScreenShowCheckBox = QCheckBox(self.resultsScreenGroupBox)
@@ -1742,6 +1742,12 @@ class Ui_MainWindow(object):
         self.scoreBoardShowAvatarsCheckBox.setEnabled(False)
 
         self.scoreBoardVerticalLayout.addWidget(self.scoreBoardShowAvatarsCheckBox)
+
+        self.scoreBoardModsOnlyCheckBox = QCheckBox(self.scoreBoardGroupBox)
+        self.scoreBoardModsOnlyCheckBox.setObjectName(u"scoreBoardModsOnlyCheckBox")
+        self.scoreBoardModsOnlyCheckBox.setEnabled(False)
+
+        self.scoreBoardVerticalLayout.addWidget(self.scoreBoardModsOnlyCheckBox)
 
 
         self.gridLayout_4.addLayout(self.scoreBoardVerticalLayout, 0, 0, 1, 1)
@@ -2358,6 +2364,7 @@ class Ui_MainWindow(object):
         self.quickStartCheckBox.clicked.connect(self.skipIntroCheckBox.setChecked)
         self.addDanserCheckBox.clicked.connect(self.danserNameLineEdit.setEnabled)
         self.addDateAfterPlayerNamecheckBox.clicked.connect(self.dateFormatComboBox.setEnabled)
+        self.scoreBoardShowCheckBox.clicked.connect(self.scoreBoardModsOnlyCheckBox.setEnabled)
 
         self.mainTabWidget.setCurrentIndex(0)
         self.settingsTabWidget.setCurrentIndex(0)
@@ -2553,6 +2560,10 @@ class Ui_MainWindow(object):
         self.scoreBoardShowCheckBox.setText(QCoreApplication.translate("MainWindow", u"Show", None))
         self.scoreBoardHideOthersCheckBox.setText(QCoreApplication.translate("MainWindow", u"Hide Others", None))
         self.scoreBoardShowAvatarsCheckBox.setText(QCoreApplication.translate("MainWindow", u"Show Avatars", None))
+#if QT_CONFIG(tooltip)
+        self.scoreBoardModsOnlyCheckBox.setToolTip(QCoreApplication.translate("MainWindow", u"Mod leaderboards. For NM plays it will show only NM scores.", None))
+#endif // QT_CONFIG(tooltip)
+        self.scoreBoardModsOnlyCheckBox.setText(QCoreApplication.translate("MainWindow", u"Mods Only", None))
         self.ppCounterGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"PP Counter", None))
         self.ppCounterShowCheckBox.setText(QCoreApplication.translate("MainWindow", u"Show", None))
         self.ppCounterUseLazerPPCheckBox.setText(QCoreApplication.translate("MainWindow", u"Use Lazer PP", None))

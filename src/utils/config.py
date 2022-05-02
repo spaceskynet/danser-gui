@@ -161,6 +161,7 @@ class DanserGUIConfig(object):
         danser_config.Gameplay.ScoreBoard.Show = config.Gameplay.ScoreBoard.Show
         danser_config.Gameplay.ScoreBoard.ShowAvatars = config.Gameplay.ScoreBoard.ShowAvatars
         danser_config.Gameplay.ScoreBoard.HideOthers = config.Gameplay.ScoreBoard.HideOthers
+        danser_config.Gameplay.ScoreBoard.ModsOnly = config.Gameplay.ScoreBoard.ModsOnly
         danser_config.Gameplay.HitCounter.Show = config.Gameplay.HitCounter.Show
         danser_config.Gameplay.AimErrorMeter.Show = config.Gameplay.AimErrorMeter.Show
         danser_config.Gameplay.Boundaries.Enabled = config.Gameplay.Boundaries.Show

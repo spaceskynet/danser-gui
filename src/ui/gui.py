@@ -228,6 +228,7 @@ class DanserUiMainWindow(Ui_MainWindow):
         self.modsFoldInReplaysCheckBox.setEnabled(self.modsShowCheckBox.isChecked())
         self.scoreBoardHideOthersCheckBox.setEnabled(self.scoreBoardShowCheckBox.isChecked())
         self.scoreBoardShowAvatarsCheckBox.setEnabled(self.scoreBoardShowCheckBox.isChecked())
+        self.scoreBoardModsOnlyCheckBox.setEnabled(self.scoreBoardShowCheckBox.isChecked())
         self.hitErrorMeterShowUnstableRateCheckBox.setEnabled(self.hitErrorMeterShowCheckBox.isChecked())
 
         self.longTrailDensitySpinBox.setEnabled(self.forceLongTrailCheckBox.isChecked())
@@ -853,6 +854,8 @@ class DanserMainWindow(QMainWindow):
         if config.General.WindowWidth is None or config.General.WindowHeight is None:
             config.General.WindowWidth = default_config.General.WindowWidth
             config.General.WindowHeight = default_config.General.WindowHeight
+        if config.Gameplay.ScoreBoard.ModsOnly is None:
+            config.Gameplay.ScoreBoard.ModsOnly = default_config.Gameplay.ScoreBoard.ModsOnly
 
     def setMainWindowByConfig(self):
         self.updateConfigByDefault()
@@ -937,6 +940,7 @@ class DanserMainWindow(QMainWindow):
         MainWindow.scoreBoardShowCheckBox.setChecked(config.Gameplay.ScoreBoard.Show)
         MainWindow.scoreBoardShowAvatarsCheckBox.setChecked(config.Gameplay.ScoreBoard.ShowAvatars)
         MainWindow.scoreBoardHideOthersCheckBox.setChecked(config.Gameplay.ScoreBoard.HideOthers)
+        MainWindow.scoreBoardModsOnlyCheckBox.setChecked(config.Gameplay.ScoreBoard.ModsOnly)
         MainWindow.hitCounterShowCheckBox.setChecked(config.Gameplay.HitCounter.Show)
         MainWindow.aimErrorMeterShowCheckBox.setChecked(config.Gameplay.AimErrorMeter.Show)
         MainWindow.boundariesShowCheckBox.setChecked(config.Gameplay.Boundaries.Show)
@@ -1075,6 +1079,7 @@ class DanserMainWindow(QMainWindow):
         config.Gameplay.ScoreBoard.Show = MainWindow.scoreBoardShowCheckBox.isChecked()
         config.Gameplay.ScoreBoard.ShowAvatars = MainWindow.scoreBoardShowAvatarsCheckBox.isChecked()
         config.Gameplay.ScoreBoard.HideOthers = MainWindow.scoreBoardHideOthersCheckBox.isChecked()
+        config.Gameplay.ScoreBoard.ModsOnly = MainWindow.scoreBoardModsOnlyCheckBox.isChecked()
         config.Gameplay.HitCounter.Show = MainWindow.hitCounterShowCheckBox.isChecked()
         config.Gameplay.AimErrorMeter.Show = MainWindow.aimErrorMeterShowCheckBox.isChecked()
         config.Gameplay.Boundaries.Show = MainWindow.boundariesShowCheckBox.isChecked()

@@ -114,6 +114,7 @@ Show = true
 Show = true
 HideOthers = true
 ShowAvatars = false
+ModsOnly = false
 
 [Gameplay.HitCounter]
 Show = true

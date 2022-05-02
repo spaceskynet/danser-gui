@@ -2312,7 +2312,7 @@ Maximum cursor size (when there is only 1 player left)</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_2">
                      <property name="topMargin">
-                      <number>4</number>
+                      <number>9</number>
                      </property>
                      <property name="rightMargin">
                       <number>9</number>
@@ -2434,6 +2434,19 @@ Maximum cursor size (when there is only 1 player left)</string>
                          </property>
                          <property name="text">
                           <string>Show Avatars</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="scoreBoardModsOnlyCheckBox">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="toolTip">
+                          <string>Mod leaderboards. For NM plays it will show only NM scores.</string>
+                         </property>
+                         <property name="text">
+                          <string>Mods Only</string>
                          </property>
                         </widget>
                        </item>
@@ -3291,12 +3304,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>315</x>
-     <y>186</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>436</x>
-     <y>212</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
    </hints>
   </connection>
@@ -3307,12 +3320,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>315</x>
-     <y>186</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>430</x>
-     <y>239</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
    </hints>
   </connection>
@@ -3323,12 +3336,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>201</y>
+     <x>120</x>
+     <y>194</y>
     </hint>
     <hint type="destinationlabel">
-     <x>117</x>
-     <y>223</y>
+     <x>144</x>
+     <y>216</y>
     </hint>
    </hints>
   </connection>
@@ -3339,12 +3352,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>143</x>
-     <y>201</y>
+     <x>170</x>
+     <y>194</y>
     </hint>
     <hint type="destinationlabel">
      <x>175</x>
-     <y>249</y>
+     <y>242</y>
     </hint>
    </hints>
   </connection>
@@ -3355,12 +3368,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>318</x>
-     <y>206</y>
+     <x>335</x>
+     <y>199</y>
     </hint>
     <hint type="destinationlabel">
-     <x>318</x>
-     <y>228</y>
+     <x>335</x>
+     <y>226</y>
     </hint>
    </hints>
   </connection>
@@ -3371,8 +3384,8 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>318</x>
-     <y>206</y>
+     <x>335</x>
+     <y>199</y>
     </hint>
     <hint type="destinationlabel">
      <x>318</x>
@@ -3387,12 +3400,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>477</x>
-     <y>206</y>
+     <x>495</x>
+     <y>194</y>
     </hint>
     <hint type="destinationlabel">
-     <x>477</x>
-     <y>228</y>
+     <x>495</x>
+     <y>216</y>
     </hint>
    </hints>
   </connection>
@@ -3403,12 +3416,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>477</x>
-     <y>206</y>
+     <x>495</x>
+     <y>194</y>
     </hint>
     <hint type="destinationlabel">
-     <x>477</x>
-     <y>250</y>
+     <x>495</x>
+     <y>238</y>
     </hint>
    </hints>
   </connection>
@@ -3435,12 +3448,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>134</x>
-     <y>320</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
-     <x>220</x>
-     <y>320</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
    </hints>
   </connection>
@@ -3451,12 +3464,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>220</x>
-     <y>320</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
-     <x>134</x>
-     <y>320</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
    </hints>
   </connection>
@@ -3467,12 +3480,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>276</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
-     <x>220</x>
-     <y>276</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
    </hints>
   </connection>
@@ -3483,12 +3496,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>220</x>
-     <y>276</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
-     <x>134</x>
-     <y>276</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
    </hints>
   </connection>
@@ -3499,12 +3512,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>156</x>
-     <y>231</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
-     <x>351</x>
-     <y>297</y>
+     <x>131</x>
+     <y>108</y>
     </hint>
    </hints>
   </connection>
@@ -3515,12 +3528,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>535</x>
-     <y>130</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>646</x>
-     <y>133</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
    </hints>
   </connection>
@@ -3531,12 +3544,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>535</x>
-     <y>162</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>646</x>
-     <y>165</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
    </hints>
   </connection>
@@ -3547,12 +3560,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>241</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
      <x>131</x>
-     <y>219</y>
+     <y>99</y>
     </hint>
    </hints>
   </connection>
@@ -3563,12 +3576,12 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>75</x>
-     <y>275</y>
+     <x>89</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>154</x>
-     <y>298</y>
+     <x>131</x>
+     <y>99</y>
     </hint>
    </hints>
   </connection>
@@ -3579,12 +3592,28 @@ Maximum cursor size (when there is only 1 player left)</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>522</x>
-     <y>282</y>
+     <x>161</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
-     <x>546</x>
-     <y>304</y>
+     <x>161</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scoreBoardShowCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>scoreBoardModsOnlyCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>366</x>
+     <y>251</y>
     </hint>
    </hints>
   </connection>
