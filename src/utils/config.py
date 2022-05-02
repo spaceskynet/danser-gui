@@ -7,7 +7,7 @@ from os.path import isfile, join
 
 
 @logged(logging.getLogger(__name__))
-@traced
+@traced('sync')
 class DanserGUIConfig(object):
     def __init__(self, config_path = ''):
         self.config_path = config_path if isfile(config_path) else consts.config_path
@@ -52,7 +52,6 @@ class DanserGUIConfig(object):
             toml.dump(self.config.toDict(), f)
         logging.info(f"[GUI][CONFIG] GUI Config is written to: {config_path}")
 
-    
     def sync(self):
         danser_config, config = self.danser_config.config, self.config
 
@@ -244,7 +243,6 @@ class DanserGUIConfig(object):
                 api.write(config.General.OsuApi)
 
 @logged(logging.getLogger(__name__))
-@traced
 class DanserConfig(object):
     def __init__(self, config_path = ''):
         self.config_path = config_path if isfile(config_path) else join('danser-go', consts.danser_config_path)

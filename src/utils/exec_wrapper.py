@@ -11,7 +11,7 @@ import traceback
 from autologging import traced, logged
 
 @logged(logging.getLogger(__name__))
-@traced
+@traced('run')
 class SongsDBUpdateThread(QThread):
     def __init__(self, songs_db_mode=None, osu_root_path=None, danser_root_path=None, parent=None):
         super(SongsDBUpdateThread, self).__init__(parent)

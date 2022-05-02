@@ -108,7 +108,7 @@ class DanserDebugModeMainWindow(QMainWindow):
         self.show()
 
 @logged(logging.getLogger(__name__))
-@traced
+@traced('generateArgumentsByGuiConfig', 'replayModifyEvent', 'bindKeyEvent', 'startDanserByArgumentsEvent')
 class DanserUiMainWindow(Ui_MainWindow):
     def __init__(self, MainWindow):
         super().__init__()
