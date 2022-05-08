@@ -564,32 +564,32 @@
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="635"/>
+        <location filename="../../ui/gui.py" line="640"/>
         <source>Choose osu beatmap file</source>
         <translation>选择 osu! 谱面文件</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="648"/>
+        <location filename="../../ui/gui.py" line="653"/>
         <source>Choose osu replay file</source>
         <translation>选择 osu! 回放文件</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="678"/>
+        <location filename="../../ui/gui.py" line="687"/>
         <source>Choose osu songs folder</source>
         <translation>选择 osu! 谱面目录</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="690"/>
+        <location filename="../../ui/gui.py" line="699"/>
         <source>Choose osu skins folder</source>
         <translation>选择 osu! 皮肤目录</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="698"/>
+        <location filename="../../ui/gui.py" line="707"/>
         <source>Choose danser root folder</source>
         <translation>选择 Danser 根目录</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="708"/>
+        <location filename="../../ui/gui.py" line="717"/>
         <source>Choose danser record video output folder</source>
         <translation>选择 Danser 录制视频输出目录</translation>
     </message>
@@ -784,17 +784,17 @@
         <translation>结束时间必须大于 12s，请勿选择谱面长度小于 12s 的谱面（否则 Danser 会崩溃）。</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="599"/>
+        <location filename="../../ui/gui.py" line="604"/>
         <source>no recent replay, please pick a replay yourself!</source>
         <translation>近期没有回放文件，请自行选择回放文件！</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="606"/>
+        <location filename="../../ui/gui.py" line="611"/>
         <source>no such beatmap, maybe you need update db or download beatmap from internet or place the beatmap file in the right songs folder!</source>
         <translation>没有这样的谱面，也许你需要更新数据库 或 从互联网下载谱面 或 将谱面文件放在正确的歌曲文件夹中！</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="609"/>
+        <location filename="../../ui/gui.py" line="614"/>
         <source>danser only support std map!</source>
         <translation>Danser 只支持 osu! std 模式的谱面！</translation>
     </message>
@@ -863,7 +863,7 @@
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="734"/>
+        <location filename="../../ui/gui.py" line="743"/>
         <source>songs db is updated successfully!</source>
         <translation>谱面数据库成功更新！</translation>
     </message>
@@ -1102,12 +1102,12 @@ Maximum cursor size (when there is only 1 player left)</source>
         <translation>osu! 根目录：</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="662"/>
+        <location filename="../../ui/gui.py" line="671"/>
         <source>Choose osu root folder</source>
         <translation>选择 osu! 根目录</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="717"/>
+        <location filename="../../ui/gui.py" line="726"/>
         <source>osu Root Path</source>
         <translation>osu! 根目录</translation>
     </message>
@@ -1150,6 +1150,16 @@ Maximum cursor size (when there is only 1 player left)</source>
         <location filename="../../ui/MainWindow.py" line="2566"/>
         <source>Mods Only</source>
         <translation>Mod 排行榜</translation>
+    </message>
+    <message>
+        <location filename="../../ui/gui.py" line="661"/>
+        <source>Wrong replay file format, please check whether the replay file is damaged!</source>
+        <translation>osr 回放文件格式错误，请检查回放文件是否损坏！</translation>
+    </message>
+    <message>
+        <location filename="../../ui/gui.py" line="661"/>
+        <source>Path:</source>
+        <translation>路径：</translation>
     </message>
 </context>
 <context>

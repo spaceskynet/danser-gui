@@ -78,8 +78,7 @@ def find_beatmap_by_mapfile(mapfile_path, db_path, songs_db_mode):
     mapfile = basename(mapfile_path)
     return get_beatmap_info_by_mapfile(db_path, songs_db_mode, mapfile)
 
-def find_beatmap_by_replay(replay_path, db_path, songs_db_mode):
-    replay_file = parse_replay_file(replay_path)
+def find_beatmap_by_replay(replay_file, db_path, songs_db_mode):
     return get_beatmap_info_by_hash(db_path, songs_db_mode, replay_file.beatmap_hash)
 
 if __name__ == "__main__":

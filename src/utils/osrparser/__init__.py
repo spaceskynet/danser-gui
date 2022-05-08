@@ -5,7 +5,13 @@ from osrparse import Replay
 from os.path import getctime, join
 
 def parse_replay_file(replay_path):
-	return Replay.from_path(replay_path)
+    try:
+        replay_file = Replay.from_path(replay_path)
+    except Exception:
+        logging.info(f"[GUI][ERROR] replay file format error! Path: {replay_path}")
+        return None
+    else:
+	    return replay_file
 
 def get_latest_replay(osu_root_path):
     replays_list = [f for f in glob.glob(join(osu_root_path, "Replays", "*.osr"))]

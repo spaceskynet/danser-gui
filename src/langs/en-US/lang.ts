@@ -564,32 +564,32 @@
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="635"/>
+        <location filename="../../ui/gui.py" line="640"/>
         <source>Choose osu beatmap file</source>
         <translation>Choose osu! Beatmap File</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="648"/>
+        <location filename="../../ui/gui.py" line="653"/>
         <source>Choose osu replay file</source>
         <translation>Choose osu! Replay File</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="678"/>
+        <location filename="../../ui/gui.py" line="687"/>
         <source>Choose osu songs folder</source>
         <translation>Choose osu! Songs Folder</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="690"/>
+        <location filename="../../ui/gui.py" line="699"/>
         <source>Choose osu skins folder</source>
         <translation>Choose osu! Skins Folder</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="698"/>
+        <location filename="../../ui/gui.py" line="707"/>
         <source>Choose danser root folder</source>
         <translation>Choose Danser Root Folder</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="708"/>
+        <location filename="../../ui/gui.py" line="717"/>
         <source>Choose danser record video output folder</source>
         <translation>Choose Danser Recording Video Output Folder</translation>
     </message>
@@ -784,17 +784,17 @@
         <translation>The end time must be greater than 12s, please do not select a beatmap whose length is less than 12s (otherwise danser will crash).</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="599"/>
+        <location filename="../../ui/gui.py" line="604"/>
         <source>no recent replay, please pick a replay yourself!</source>
         <translation>There is no replay recently, please choose the replay by yourself!</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="606"/>
+        <location filename="../../ui/gui.py" line="611"/>
         <source>no such beatmap, maybe you need update db or download beatmap from internet or place the beatmap file in the right songs folder!</source>
         <translation>There is no such beatmap, maybe you need to update the database or download the beatmap from the internet or put the beatmap file in the correct song folder!</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="609"/>
+        <location filename="../../ui/gui.py" line="614"/>
         <source>danser only support std map!</source>
         <translation>Danser only support osu! standard maps!</translation>
     </message>
@@ -863,7 +863,7 @@ Example:
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="734"/>
+        <location filename="../../ui/gui.py" line="743"/>
         <source>songs db is updated successfully!</source>
         <translation>Songs DB is updated successfully!</translation>
     </message>
@@ -1102,12 +1102,12 @@ Maximum cursor size (when there is only 1 player left)</translation>
         <translation>osu! Root Path:</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="662"/>
+        <location filename="../../ui/gui.py" line="671"/>
         <source>Choose osu root folder</source>
         <translation>Choose osu! Root Folder</translation>
     </message>
     <message>
-        <location filename="../../ui/gui.py" line="717"/>
+        <location filename="../../ui/gui.py" line="726"/>
         <source>osu Root Path</source>
         <translation>osu! Root Path</translation>
     </message>
@@ -1150,6 +1150,16 @@ Maximum cursor size (when there is only 1 player left)</translation>
         <location filename="../../ui/MainWindow.py" line="2566"/>
         <source>Mods Only</source>
         <translation>Mods Only</translation>
+    </message>
+    <message>
+        <location filename="../../ui/gui.py" line="661"/>
+        <source>Wrong replay file format, please check whether the replay file is damaged!</source>
+        <translation>Wrong replay file format, please check whether the replay file is damaged!</translation>
+    </message>
+    <message>
+        <location filename="../../ui/gui.py" line="661"/>
+        <source>Path:</source>
+        <translation>Path:</translation>
     </message>
 </context>
 <context>

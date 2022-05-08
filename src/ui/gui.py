@@ -14,7 +14,7 @@ from utils.setup import copytree
 from utils.i18n import TranslationLoader
 from utils.skin import get_skins
 from utils.osrparser import get_latest_replay
-from utils.beatmap import (find_beatmap_by_mapfile, find_beatmap_by_replay, parse_replay_file)
+from utils.beatmap import find_beatmap_by_mapfile, find_beatmap_by_replay, parse_replay_file
 from utils.exec_wrapper import SongsDBUpdateThread, DanserExecByArgsThread, ReplayModifyThread
 from utils.exception_handling import isEmptyWarning, customWarning, customError, customInfo
 
@@ -590,9 +590,14 @@ class DanserUiMainWindow(Ui_MainWindow):
             osu_root_path = dirname(self.gui_config.General.OsuSongsDir)
             lastest_replay_path = get_latest_replay(osu_root_path)
             if lastest_replay_path:
+                logging.info(f"[GUI] Auto chosen osr file: {lastest_replay_path}")
                 self.osrPathLineEdit.setText(abspath(lastest_replay_path))
                 if not self.checkSongsDBIsExists(MainWindow): return
-                beatmap = find_beatmap_by_replay(lastest_replay_path, songs_db_path, songs_db_mode)
+                replay_file = parse_replay_file(lastest_replay_path)
+                if not replay_file:
+                    customError("{}\n{} {}".format(QCoreApplication.translate("MainWindow", u"Wrong replay file format, please check whether the replay file is damaged!", None), QCoreApplication.translate("MainWindow", u"Path:", None), lastest_replay_path))
+                    return
+                beatmap = find_beatmap_by_replay(replay_file, songs_db_path, songs_db_mode)
                 if not self.setBeatmap(beatmap):
                     self.osuPathLineEdit.setText("")
             else:
@@ -651,7 +656,11 @@ class DanserUiMainWindow(Ui_MainWindow):
             logging.info(f"[GUI] Chosen osr file: {osr_file_path}")
             self.osrPathLineEdit.setText(abspath(osr_file_path))
             if not self.checkSongsDBIsExists(MainWindow): return
-            beatmap = find_beatmap_by_replay(osr_file_path, songs_db_path, songs_db_mode)
+            replay_file = parse_replay_file(osr_file_path)
+            if not replay_file:
+                customError("{}\n{} {}".format(QCoreApplication.translate("MainWindow", u"Wrong replay file format, please check whether the replay file is damaged!", None), QCoreApplication.translate("MainWindow", u"Path:", None), osr_file_path))
+                return
+            beatmap = find_beatmap_by_replay(replay_file, songs_db_path, songs_db_mode)
             if not self.setBeatmap(beatmap):
                 self.osuPathLineEdit.setText("")
         else:
