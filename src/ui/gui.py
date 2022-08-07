@@ -458,7 +458,10 @@ class DanserUiMainWindow(Ui_MainWindow):
         logging.info("[GUI] startDanserByArgumentsEvent Finished")
         if self.danserExecByArgsThread.is_record:
             self.progressDialog.close()
-            customInfo(QCoreApplication.translate("MainWindow", u"rendering complete!", None))
+            if self.danserExecByArgsThread.success:
+                customInfo(QCoreApplication.translate("MainWindow", u"rendering complete!", None))
+            else:
+                customError(f"[DANSER][ERROR] {self.danserExecByArgsThread.errorMsg or u'Unknown error!'}")
         self.startLogo.setEnabled(True)
 
     def replayModifyWarningEvent(self, checked):
@@ -596,6 +599,7 @@ class DanserUiMainWindow(Ui_MainWindow):
                 replay_file = parse_replay_file(lastest_replay_path)
                 if not replay_file:
                     customError("{}\n{} {}".format(QCoreApplication.translate("MainWindow", u"Wrong replay file format, please check whether the replay file is damaged!", None), QCoreApplication.translate("MainWindow", u"Path:", None), lastest_replay_path))
+                    self.osuPathLineEdit.setText("")
                     return
                 beatmap = find_beatmap_by_replay(replay_file, songs_db_path, songs_db_mode)
                 if not self.setBeatmap(beatmap):
@@ -659,6 +663,7 @@ class DanserUiMainWindow(Ui_MainWindow):
             replay_file = parse_replay_file(osr_file_path)
             if not replay_file:
                 customError("{}\n{} {}".format(QCoreApplication.translate("MainWindow", u"Wrong replay file format, please check whether the replay file is damaged!", None), QCoreApplication.translate("MainWindow", u"Path:", None), osr_file_path))
+                self.osuPathLineEdit.setText("")
                 return
             beatmap = find_beatmap_by_replay(replay_file, songs_db_path, songs_db_mode)
             if not self.setBeatmap(beatmap):
@@ -774,12 +779,15 @@ class DanserMainWindow(QMainWindow):
         self.old_hook = sys.excepthook
         sys.excepthook = self.catch_exceptions
 
-        logging.basicConfig(level=TRACE, filename=consts.LogPath.app, filemode="w", format="%(asctime)s:%(levelname)s:%(name)s:%(funcName)s:%(message)s")
+        handlers = [logging.FileHandler(filename=consts.LogPath.app, mode="w", encoding='utf-8')]
+        
         if debug:
             self.danserDebugModeMainWindow = DanserDebugModeMainWindow()
             self.danserUiDebugModeWindow = self.danserDebugModeMainWindow.MainWindow
-            logging.getLogger().addHandler(self.danserUiDebugModeWindow.fullLogPlainTextEdit)
+            handlers.append(self.danserUiDebugModeWindow.fullLogPlainTextEdit)
             self.closed.connect(self.danserDebugModeMainWindow.close)
+        
+        logging.basicConfig(level=TRACE, handlers=handlers, format="%(asctime)s:%(levelname)s:%(name)s:%(funcName)s:%(message)s")
 
         self.dansergui_settings = DanserGUIConfig()
         self.gui_config = self.dansergui_settings.config

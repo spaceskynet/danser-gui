@@ -13,19 +13,24 @@ from PyQt5.QtWidgets import QPlainTextEdit, QWidget, QVBoxLayout, QLabel, QLineE
 import logging
 
 class QTextEditLogger(logging.Handler, QObject):
-    appendPlainText = pyqtSignal(str) # Safe for multi Thread
+    appendTextSignal = pyqtSignal(str) # Safe for multi Thread
     def __init__(self, parent):
         super().__init__()
         QObject.__init__(self)
         self.widget = QPlainTextEdit(parent)
         self.widget.setReadOnly(True)
-        self.appendPlainText.connect(self.widget.appendPlainText)
+        self.appendTextSignal.connect(self.widget.appendPlainText)
 
     def emit(self, record):
-        msg = self.format(record)
-        if self.widget.blockCount() > 1000:
-            self.widget.setPlainText("")
-        self.appendPlainText.emit(msg)
+        try:
+            msg = str(self.format(record))
+            if self.widget.blockCount() > 1000:
+                self.widget.setPlainText("")
+            self.appendTextSignal.emit(msg)
+        except RecursionError:
+            raise
+        except Exception:
+            self.handleError(record)
 
 class Ui_debugModeWindow(object):
     def setupUi(self, debugModeWindow):

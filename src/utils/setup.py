@@ -168,7 +168,9 @@ class setupMainWindow(QMainWindow):
         super().__init__()
         self.old_hook = sys.excepthook
         sys.excepthook = self.catch_exceptions
-        logging.basicConfig(level=TRACE, filename=consts.LogPath.setup, filemode="w", format="%(asctime)s:%(levelname)s:%(name)s:%(funcName)s:%(message)s")
+        handler = logging.FileHandler(filename=consts.LogPath.setup, mode="w", encoding='utf-8')
+        logging.basicConfig(level=TRACE, handlers=[handler], format="%(asctime)s:%(levelname)s:%(name)s:%(funcName)s:%(message)s")
+
 
         self.config = Munch.fromDict(toml.loads(consts.default_settings_toml))
         self.UiMainWindow = setupUiMainWindow(self)

@@ -80,11 +80,14 @@ class DanserExecByArgsThread(QThread):
         self.init(root_path, arguments, is_record)
         self.curdir = abspath(curdir)
         self.working = True
+        self.success = True
+        self.errorMsg = None
 
     def init(self, root_path=None, arguments=None, is_record=False):
         self.arguments = arguments
         self.root_path = root_path
         self.is_record = is_record
+        self.success = True
     
     def __del__(self):
         self.working = False
@@ -98,6 +101,13 @@ class DanserExecByArgsThread(QThread):
         if match:
             self.setProgressValue.emit(match.groups())
         # Progress: 10%, Speed: 0.59x, ETA: 35s
+    
+    def setErrorMsg(self, standard_error_decode):
+        self.success = False
+        pattern = re.compile(r"panic: (.*)\n")
+        match = pattern.search(standard_error_decode)
+        if match:
+            self.errorMsg = "\n".join(match.groups())
 
     def readProcessAllStandardOutput(self):
         standardOutputDecode = bytes(self.p.readAllStandardOutput()).decode()
@@ -106,6 +116,9 @@ class DanserExecByArgsThread(QThread):
         return standardOutputDecode
 
     def readProcessAllStandardError(self):
+        standardErrorDecode = bytes(self.p.readAllStandardError()).decode()
+        if 'panic:' in standardErrorDecode:
+            self.setErrorMsg(standardErrorDecode)
         return bytes(self.p.readAllStandardError()).decode()
 
     def run(self):
