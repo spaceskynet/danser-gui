@@ -9,6 +9,12 @@
 
 [中文说明](README-zh.md)
 
+## Now DANSER has an official launcher, I recommend you to use it.
+
+Some problems: the current official launcher does not support high DPI very well, and there is no support for Unicode characters for the time being (this means that the names of many of our skins cannot be displayed normally, because the names of skins generally contain a lot of Unicode characters).
+
+If you think the official launcher settings are a bit complicated, you can continue to use this project, but note that the Danser version supported by this project is up to **0.6.9**, which is also the version I recommend everyone to use.
+
 ## How to Install Danser GUI
 
 1. Go to the latest release page [HERE](https://github.com/spaceskynet/danser-gui/releases/latest)
